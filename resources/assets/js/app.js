@@ -16,7 +16,22 @@ require('./bootstrap');
 import App    from "./components/app/app.vue"
 import {router} from "./router/router"
 
+/**
+ * Event bus object.
+ */
+const EventBus: Vue =  new window.Vue();
 
+Object.defineProperties( window.Vue.prototype, {
+    $bus: {
+        get: function () {
+            return EventBus
+        }
+    },
+});
+
+/**
+ * App view.
+ */
 new Vue({
     el: '#app',
     router: router,

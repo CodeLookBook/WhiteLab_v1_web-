@@ -7,12 +7,6 @@
 
         main-content-slot
 
-            top-navbar-slot
-                slot(name="APP-TOP-NAVBAR")
-
-            content-slot
-                slot
-
 </template>
 <style lang="sass">
 
@@ -33,8 +27,6 @@
 
     import MainContentSlot from "./layout/main-content-slot.vue";
     import SideNavbarSlot  from "./layout/side-navbar-slot.vue" ;
-    import TopNavbarSlot   from "./layout/top-navbar-slot.vue"  ;
-    import ContentSlot     from "./layout/content-slot.vue"     ;
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -79,8 +71,6 @@
         components: {
             MainContentSlot,
             SideNavbarSlot,
-            TopNavbarSlot,
-            ContentSlot,
         }
 
     }

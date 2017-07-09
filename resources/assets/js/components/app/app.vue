@@ -1,7 +1,7 @@
 <template lang="pug">
 
     layout
-        top-navbar(slot="APP-TOP-NAVBAR")
+        //top-navbar(slot="APP-TOP-NAVBAR")
         router-view
 
 </template>

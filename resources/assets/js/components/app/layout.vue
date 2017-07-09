@@ -3,9 +3,15 @@
     .APP-LAYOUT
 
         side-navbar-slot
-            slot(name="APP-SIDE-NAVBAR")
+            slot(name="SIDE-NAVBAR-SLOT")
 
         main-content-slot
+
+            .WRAPPER(slot="TOP-NAVBAR-SLOT")
+                slot(name="TOP-NAVBAR-SLOT")
+
+            .WRAPPER(slot="TOP-NAVBAR-SLOT")
+                slot(name="CONTENT-SLOT")
 
 </template>
 <style lang="sass">

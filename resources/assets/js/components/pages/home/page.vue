@@ -1,14 +1,21 @@
 <template lang="pug">
 
     .HOME-PAGE
-        h1 HOME PAGE
+        .BLOCK.TABLE
+            h1 HOME PAGE
+        .BLOCK.TABLE
+            h1 HOME PAGE
 
 </template>
-<style lang="scss">
+<style lang="sass">
 
-    //BREAKPOINTS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    .HOME-PAGE
+        width: 100%
+        height: 100%
 
-    //DECOR: ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        .BLOCK
+            width: 100%
+            height: 100%
 
 </style>
 <script>

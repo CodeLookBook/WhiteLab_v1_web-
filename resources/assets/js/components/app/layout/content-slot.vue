@@ -18,9 +18,11 @@
 </style>
 <script>
 
-    import {Height      } from "../../../classes/types/Height";
-    import {EVENTS      } from "../../../classes/enum/AppEvents";
-    import {EventObject } from "../../../classes/types/EventObject";
+    import {Height           } from "../../../classes/types/Height";
+    import {COMPONENTS_EVENTS} from "../../../classes/enum/COMPONENTS_EVENTS";
+    import {EVENTS           } from "../../../classes/enum/EVENTS";
+    import {EventFactory     } from "../../../classes/factories/EventFactory";
+    import {EventObject      } from "../../../classes/events/EventObject";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -68,13 +70,14 @@
             height: {
                 set: function (newHeight: Height) {
 
-                    const event: EventObject<Height> = new EventObject(
+                    const event: EventObject = EventFactory.create(
+                        EVENTS.HEIGHT_CHANGED,
                         newHeight,
                         this
                     );
 
                     this.$bus.$emit(
-                        EVENTS.APP.CONTENT_SLOT.HEIGHT_CHANGED,
+                        COMPONENTS_EVENTS.APP.CONTENT_SLOT.HEIGHT_CHANGED,
                         event
                     );
 
@@ -95,6 +98,7 @@
         // --------------------------------------------------------------------
         // METHODS
         // --------------------------------------------------------------------
+
 
 
         // --------------------------------------------------------------------

@@ -10,7 +10,7 @@
             .WRAPPER(slot="TOP-NAVBAR-SLOT")
                 slot(name="TOP-NAVBAR-SLOT")
 
-            .WRAPPER(slot="TOP-NAVBAR-SLOT")
+            .WRAPPER(slot="CONTENT-SLOT")
                 slot(name="CONTENT-SLOT")
 
 </template>
@@ -23,6 +23,9 @@
         +position(r, $t:0, $l:0)
         +size    (100%, 100%)
         overflow: hidden
+
+        .WRAPPER
+            +size    (100%, 100%)
 
 </style>
 <script>

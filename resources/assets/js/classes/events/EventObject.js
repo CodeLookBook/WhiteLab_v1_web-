@@ -1,21 +1,19 @@
 // @flow
 
-import Vue from 'vue';
+class EventObject{
 
-class EventObject <T>{
+    _value:  Object;
+    _target: Object;
 
-    _value:  T;
-    _target: Vue;
-
-    constructor(value: T, target: Vue){
+    constructor(value: Object, target: Object){
         this._value  = value;
         this._target = target;
     }
 
-    get value() : T {
+    get value() : Object {
         return this._value;
     }
-    get target() : Vue{
+    get target() : Object{
         return this._target;
     }
 }

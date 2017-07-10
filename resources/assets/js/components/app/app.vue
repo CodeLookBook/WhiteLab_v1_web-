@@ -1,8 +1,9 @@
 <template lang="pug">
 
     layout
-        //top-navbar(slot="APP-TOP-NAVBAR")
-        router-view
+        div(slot="SIDE-NAVBAR-SLOT") Боковое меню
+        top-navbar(slot="TOP-NAVBAR-SLOT")
+        router-view(slot="CONTENT-SLOT")
 
 </template>
 <style lang="sass">
@@ -14,7 +15,8 @@
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
-    import Layout from "./layout.vue"
+    import Layout    from "./layout.vue"
+    import TopNavbar from "../shared/top-navbar.vue"
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -58,6 +60,7 @@
 
         components: {
             Layout,
+            TopNavbar,
         }
     }
 

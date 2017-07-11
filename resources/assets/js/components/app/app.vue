@@ -2,8 +2,10 @@
 
     layout
         div(slot="SIDE-NAVBAR-SLOT") Боковое меню
-        top-navbar(slot="TOP-NAVBAR-SLOT")
+        top-navbar-slider(slot="TOP-NAVBAR-SLOT")
+
         router-view(slot="CONTENT-SLOT")
+
 
 </template>
 <style lang="sass">
@@ -16,7 +18,7 @@
     // ------------------------------------------------------------------------
 
     import Layout    from "./layout.vue"
-    import TopNavbar from "../shared/top-navbar.vue"
+    import TopNavbarSlider from "../shared/top-navbar-slider.vue"
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -60,7 +62,7 @@
 
         components: {
             Layout,
-            TopNavbar,
+            TopNavbarSlider
         }
     }
 

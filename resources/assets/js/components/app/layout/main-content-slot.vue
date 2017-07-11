@@ -3,8 +3,10 @@
 
     .MAIN-CONTENT-SLOT
         scroll(
-            :pScrolled      = "dEventNames.SCROLLED"      ,
+            :pScrolling     = "dEventNames.SCROLLING"     ,
+            :pScrollingUp   = "dEventNames.SCROLLING_UP"  ,
             :pScrolledUp    = "dEventNames.SCROLLED_UP"   ,
+            :pScrollingDown = "dEventNames.SCROLLING_DOWN",
             :pScrolledDown  = "dEventNames.SCROLLED_DOWN" ,
             :pScrollStarted = "dEventNames.SCROLL_STARTED",
             :pScrollStopped = "dEventNames.SCROLL_STOPPED", )

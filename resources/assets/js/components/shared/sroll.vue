@@ -12,8 +12,8 @@
     @import "../../../sass/_variables"
 
     .SCROLL
-        +size    (100%, 100%)
-        overflow: auto
+        height: 100%
+        overflow-y: scroll
 
 </style>
 <script>
@@ -36,11 +36,19 @@
         // --------------------------------------------------------------------
 
         props:{
-            pScrolled: {
+            pScrolling: {
+                type: String,
+                required: true,
+            },
+            pScrollingUp: {
                 type: String,
                 required: true,
             },
             pScrolledUp: {
+                type: String,
+                required: true,
+            },
+            pScrollingDown: {
                 type: String,
                 required: true,
             },
@@ -92,23 +100,57 @@
         methods: {
             _onScroll(e){
 
+                let newPosition: number = 0;
+                let newState: Size;
 
-                // Create "SCROLLED" event on every custom scroll in browser.
+                // Get NEW scroll POSITION
                 {
-                    const newPosition: number = this.$el.scrollTop;
-                    let newState: Size = new Scroll(newPosition, 'px');
+                    newPosition = this.$el.scrollTop;
+                    newState    = new Scroll(newPosition, 'px');
+                }
+
+                // CREATE "SCROLLING" event on every custom scroll in browser.
+                {
                     let event: EventObject = EventFactory.create(
-                        EVENTS.SCROLLED,
+                        EVENTS.SCROLLING,
                         newState,
                         this
                     );
 
-                    this.$bus.$emit(this.pScrolled, event);
+                    this.$bus.$emit(this.pScrolling, event);
+                }
+
+                // CREATE "SCROLLING UP" event on every custom scroll in browser.
+                {
+                    if(this.dStartPosition.value > this.dEndPosition.value) {
+
+                        let event: EventObject = EventFactory.create(
+                            EVENTS.SCROLLING_UP,
+                            newState,
+                            this
+                        );
+
+                        this.$bus.$emit(this.pScrollingUp, event);
+                    }
+                }
+
+                // CREATE "SCROLLING DOWN" event on every custom scroll in browser.
+                {
+                    if(this.dStartPosition.value < this.dEndPosition.value) {
+
+                        let event: EventObject = EventFactory.create(
+                            EVENTS.SCROLLING_DOWN,
+                            newState,
+                            this
+                        );
+
+                        this.$bus.$emit(this.pScrollingDown, event);
+                    }
                 }
 
                 if(!this._timer) {
 
-                    // Create "SCROLL STARTED" event.
+                    // CREATE "SCROLL STARTED" event.
                     {
                         const newPosition: number = this.$el.scrollTop;
                         let   newState   : Size   = new Scroll(newPosition, 'px');
@@ -171,14 +213,14 @@
                                 this._timer = 0;
                             }
 
-                            //UPDATE 'dEndPosition' PROPERTY
                         } else {
 
-                            //If user didn't stop scrolling then update 'dEndPosition'.
+                            // UPDATE - 'dEndPosition' property value. If user
+                            // didn't stop scrolling .
                             this.dEndPosition = new Scroll(this.$el.scrollTop, "px");
                         }
 
-                    }).bind(this), 200);
+                    }).bind(this), 25);
                 }
             },
         },

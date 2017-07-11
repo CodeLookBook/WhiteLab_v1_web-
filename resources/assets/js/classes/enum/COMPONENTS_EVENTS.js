@@ -17,8 +17,10 @@ const COMPONENTS_EVENTS: {} = Object.freeze({
         MAIN_CONTENT_SLOT:  Object.freeze({
 
             HEIGHT_CHANGED  : _id(),
-            SCROLLED        : _id(),
+            SCROLLING       : _id(),
+            SCROLLING_UP    : _id(),
             SCROLLED_UP     : _id(),
+            SCROLLING_DOWN  : _id(),
             SCROLLED_DOWN   : _id(),
             SCROLL_STARTED  : _id(),
             SCROLL_STOPPED  : _id(),

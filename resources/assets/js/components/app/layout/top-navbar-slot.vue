@@ -107,8 +107,6 @@
 
                 //Save height at the component
                 this.height = new Height(newHeight, 'px');
-
-                console.log(this.height)
             }
         },
 

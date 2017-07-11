@@ -3,8 +3,10 @@
 import {EVENTS          } from "../enum/EVENTS";
 import {EventObject     } from "../events/EventObject";
 import {HeightChanged   } from "../events/HeightChanged";
-import {Scrolled        } from "../events/Scrolled";
+import {Scrolling       } from "../events/Scrolling";
+import {ScrollingUp     } from "../events/ScrollingUp";
 import {ScrolledUp      } from "../events/ScrolledUp";
+import {ScrollingDown   } from "../events/ScrollingDown";
 import {ScrolledDown    } from "../events/ScrolledDown";
 import {ScrollStarted   } from "../events/ScrollStarted";
 import {ScrollStopped   } from "../events/ScrollStopped";
@@ -51,15 +53,27 @@ class Factory {
                 e = new HeightChanged(value, target);
                 break;
 
-            case EVENTS.SCROLLED:
+            case EVENTS.SCROLLING:
 
                 if(!(value instanceof Scroll)) throw new TypeError();
-                e = new Scrolled    (value, target);
+                e = new Scrolling    (value, target);
+                break;
+
+            case EVENTS.SCROLLING_UP:
+
+                if(!(value instanceof Scroll)) throw new TypeError();
+                e = new ScrollingUp    (value, target);
                 break;
 
             case EVENTS.SCROLLED_UP:
                 if(!(value instanceof Scroll)) throw new TypeError();
                 e = new ScrolledUp  (value, target);
+                break;
+
+            case EVENTS.SCROLLING_DOWN:
+
+                if(!(value instanceof Scroll)) throw new TypeError();
+                e = new ScrollingDown(value, target);
                 break;
 
             case EVENTS.SCROLLED_DOWN:
@@ -79,6 +93,7 @@ class Factory {
                 if(!(value instanceof Scroll)) throw new TypeError();
                 e = new ScrollStopped(value, target);
                 break;
+
             default:
                 throw new Error ("Wrong event ID= " + eventId +". Event" +
                         "object wasn't create.'");

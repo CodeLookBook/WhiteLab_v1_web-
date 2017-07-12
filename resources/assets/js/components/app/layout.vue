@@ -110,11 +110,11 @@
             // SUBSCRIBE on events.
             {
                 this.$bus.$on(
-                    COMPONENTS_EVENTS.APP.NAVIGATION.TOGGLE_ITEM_CLICKED,
+                    COMPONENTS_EVENTS.APP.NAVIGATION.TOGGLE_MENU_ITEM_CLICKED,
                     this.onTopNavbarToggleItemClick
                 );
                 this.$bus.$on(
-                    COMPONENTS_EVENTS.APP.NAVIGATION.CLOSE_SIDEBAR_ITEM_CLICKED,
+                    COMPONENTS_EVENTS.APP.NAVIGATION.CLOSE_SIDEBAR_MENU_ITEM_CLICKED,
                     this.onCloseSidebarItemClick
                 )
             }

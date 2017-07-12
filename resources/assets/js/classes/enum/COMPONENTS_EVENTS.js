@@ -16,21 +16,21 @@ const COMPONENTS_EVENTS: {} = Object.freeze({
 
         NAVIGATION: Object.freeze({
 
-            LOGO_ITEM_CLICKED             : _id(),
-            FB_MENU_ITEM_CLICKED          : _id(),
-            IN_MENU_ITEM_CLICKED          : _id(),
-            PRICE_MENU_ITEM_CLICKED       : _id(),
-            ADDRESS_MENU_ITEM_CLICKED     : _id(),
-            VACANCIES_MENU_ITEM_CLICKED   : _id(),
-            LANGUAGE_SUBMENU_ITEM_CLICKED : _id(),
-            RUSSIAN_LANGUAGE_ITEM_CLICKED : _id(),
-            ENGLISH_LANGUAGE_ITEM_CLICKED : _id(),
-            SLOVAK_LANGUAGE_ITEM_CLICKED  : _id(),
-            ORDER_ITEM_CLICKED            : _id(),
-            ORDER_BUTTOM_CLICKED          : _id(),
-            TOGGLE_ITEM_CLICKED           : _id(),
+            LOGO_ITEM_CLICKED                  : _id(),
+            FB_MENU_ITEM_CLICKED               : _id(),
+            IN_MENU_ITEM_CLICKED               : _id(),
+            PRICE_MENU_ITEM_CLICKED            : _id(),
+            ADDRESS_MENU_ITEM_CLICKED          : _id(),
+            VACANCIES_MENU_ITEM_CLICKED        : _id(),
+            LANGUAGE_SUBMENU_ITEM_CLICKED      : _id(),
+            RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED : _id(),
+            ENGLISH_LANGUAGE_MENU_ITEM_CLICKED : _id(),
+            SLOVAK_LANGUAGE_MENU_ITEM_CLICKED  : _id(),
+            ORDER_MENU_ITEM_CLICKED            : _id(),
+            ORDER_MENU_BUTTON_CLICKED          : _id(),
+            TOGGLE_MENU_ITEM_CLICKED           : _id(),
 
-            CLOSE_SIDEBAR_ITEM_CLICKED    : _id(),
+            CLOSE_SIDEBAR_MENU_ITEM_CLICKED    : _id(),
         }),
 
         MAIN_CONTENT_SLOT:  Object.freeze({

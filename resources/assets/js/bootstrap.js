@@ -31,9 +31,12 @@ import Vuex from 'vuex'
 window.Vue.use(Vuex);
 
 
-import ElementUI from 'element-ui'
-/*import locale from 'element-ui/lib/locale/lang/ru-RU'
-window.Vue.use(ElementUI, { locale });*/
+import ElementUI from 'element-ui';
+import locale from 'element-ui/lib/locale/lang/ru-RU';
+import 'element-ui/lib/theme-default/index.css';
+window.Vue.use(ElementUI, { locale });
+
+
 
 
 /**

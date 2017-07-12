@@ -10,15 +10,18 @@
     @import ../../../../sass/variables
 
     .SIDE-NAVBAR-SLOT
-        +position(a, $t:0, $l:-100%)
-        +size    ($h:100%)
-        overflow: auto
+        position  : absolute
+        top       : 0
+        height    : 100%
+        overflow  : auto
+        z-index   : 60000
 
-        @media(min-width: 321px)
-            width: 320px
-
-        @media(max-width: 320px)
-            width: 100%
+        @media (min-width: 261px)
+            left  : -260px
+            width : 260px
+        @media (max-width: 260px)
+            left  : -100%
+            width : 100%
 
 </style>
 <script>

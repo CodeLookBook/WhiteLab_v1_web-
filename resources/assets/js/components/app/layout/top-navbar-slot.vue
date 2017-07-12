@@ -5,16 +5,15 @@
         slot
 
 </template>
-<style lang="sass">
+<style lang="sass" scoped>
 
     @import ../../../../sass/mixins
     @import ../../../../sass/variables
 
     .TOP-NAVBAR-SLOT
         +position(r, $t:0, $l:0)
-        +size    (100%, $top-navbar-slot-height)
-        +border(red)
-
+        //+size    (100%, $top-navbar-slot-height)
+        +size    (100%, auto)
 </style>
 <script>
 

@@ -162,7 +162,7 @@
                     this.height.value - height.value,
                     'px'
                 );
-            }
+            },
         },
 
         // --------------------------------------------------------------------
@@ -195,7 +195,6 @@
                 COMPONENTS_EVENTS.APP.TOP_NAVBAR_SLOT.HEIGHT_CHANGED,
                 this.onAppTopNavbarSlotHeightChange
             );
-
         },
 
         // --------------------------------------------------------------------

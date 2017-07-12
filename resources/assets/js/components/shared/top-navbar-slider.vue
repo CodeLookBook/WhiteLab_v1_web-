@@ -2,18 +2,8 @@
 
 <template lang="pug">
 
-        nav.TOP-NAVBAR-SLIDER.SHOWN.TABLE(:class="dClasses")
+        nav.TOP-NAVBAR-SLIDER.SHOWN(:class="dClasses")
             slot
-            //.ROW
-                .CELL
-                    .CONTENT-WRAPPER.TABLE
-                        .ROW
-                            .CELL
-                                | BRAND
-                            .CELL
-                                | MANU
-                            .CELL
-                                | MANU SWITCHER
 
 </template>
 <style lang="sass" scoped>
@@ -22,26 +12,15 @@
     @import ../../../sass/variables
 
     .TOP-NAVBAR-SLIDER
-        +size($w:100%, $h:$top-navbar-height)
-        padding: 0 10%
-        +border(#ffdb53)
+        +size($w:100%, $h: auto)
+        z-index: 50000
 
         &.SHOWN
             +position  (fixed, $t: 0)
             +transition(top  , 0.5s )
 
         &.HIDDEN
-            top: -$top-navbar-height
-
-        &>.ROW
-            .CELL
-                +border(#76d4ff)
-
-            .CONTENT-WRAPPER
-                +size($w:100%, $h:100%)
-
-                .ROW
-                    .CELL
+            top: -4em
 
 </style>
 <script>

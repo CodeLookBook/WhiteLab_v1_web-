@@ -13,7 +13,6 @@
 
     .CONTENT-SLOT
         +position(r, $t:0, $l:0)
-        +border(green)
 
 </style>
 <script>

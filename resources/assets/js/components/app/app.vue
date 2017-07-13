@@ -14,7 +14,7 @@
                 | {{ITEMS_NAMES.CLOSE_SIDEBAR_MENU_ITEM[language]}} &nbsp &nbsp
                 i.el-icon-close
 
-            el-submenu(:index="EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED")
+            el-submenu.H-LANG(:index="EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED")
                 template(slot="title")
                     | {{ITEMS_NAMES.LANGUAGE_SUBMENU_ITEM[language]}}
                 el-menu-item(:index="EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED")
@@ -24,18 +24,18 @@
                 el-menu-item(:index="EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED" )
                     | {{ITEMS_NAMES.SLOVAK_LANGUAGE_MENU_ITEM[language]}}
 
-            el-menu-item(:index="EVENTS_ID.PRICE_MENU_ITEM_CLICKED"    )
+            el-menu-item.H-PRICE(:index="EVENTS_ID.PRICE_MENU_ITEM_CLICKED"    )
                 | {{ITEMS_NAMES.PRICE_MENU_ITEM[language]}}
-            el-menu-item(:index="EVENTS_ID.ADDRESS_MENU_ITEM_CLICKED"  )
+            el-menu-item.H-ADDRESS(:index="EVENTS_ID.ADDRESS_MENU_ITEM_CLICKED"  )
                 | {{ITEMS_NAMES.ADDRESS_MENU_ITEM[language]}}
-            el-menu-item(:index="EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED")
+            el-menu-item.H-VACANCIES(:index="EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED")
                 | {{ITEMS_NAMES.VACANCIES_MENU_ITEM[language]}}
 
             el-menu-item.H-ORDER(:index="EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.H-BUTTON
                 | {{ITEMS_NAMES.ORDER_MENU_BUTTON[language]}}
-            el-menu-item(:index="EVENTS_ID.IN_MENU_ITEM_CLICKED", class="H-ICON")
+            el-menu-item.H-IN(:index="EVENTS_ID.IN_MENU_ITEM_CLICKED", class="H-ICON")
                 img(src="/images/icons/in-white.png")
-            el-menu-item(:index="EVENTS_ID.FB_MENU_ITEM_CLICKED", class="H-ICON")
+            el-menu-item.H-FB(:index="EVENTS_ID.FB_MENU_ITEM_CLICKED", class="H-ICON")
                 img(src="/images/icons/fb-white.png")
 
         // TOP NAVBAR
@@ -89,9 +89,26 @@
     .SIDE-NAVBAR
         min-height: 100%
 
+        .H-LANG
+            @media(min-width: 667px)
+                display: none
+
+        .H-PRICE
+            @media (min-width: 745px)
+                display: none
+
+        .H-ADDRESS
+            @media(min-width: 950px)
+                display: none
+        .H-VACANCIES
+            @media (min-width: 990px)
+                display: none
+
         .H-ORDER
             cursor          : default
             line-height     : 57px         !important
+            @media(min-width: 564px)
+                display: none
 
             .H-BUTTON
                 display         : inline-block
@@ -119,6 +136,10 @@
 
         .H-CLOSE
             text-align      : right
+
+        .H-IN, .H-FB
+            @media(min-width: 469px)
+                display: none
 
     .TOP-NAVBAR
         @media(min-width: 850px)

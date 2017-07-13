@@ -1,22 +1,8 @@
 // @flow
 
-class Height {
+import {Size} from "./Size";
 
-    _value  : Number | number;
-    _measure: String | string;
-
-    constructor(height: Number | number, measure: String | string) {
-        this._value   = height;
-        this._measure = measure;
-    }
-
-    get value  (): Number | number {
-        return this._value;
-    }
-    get measure(): String | string {
-        return this._measure;
-    }
-}
+class Height extends Size {}
 
 export {Height}
 

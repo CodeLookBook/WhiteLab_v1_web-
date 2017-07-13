@@ -32,7 +32,7 @@
 }
 
 //TRANSITION HELPER
-@mixin t($transition...) {
+@mixin transition($transition...) {
   -moz-transition:    $transition;
   -o-transition:      $transition;
   -webkit-transition: $transition;

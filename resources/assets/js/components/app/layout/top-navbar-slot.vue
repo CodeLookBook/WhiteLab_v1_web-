@@ -5,22 +5,23 @@
         slot
 
 </template>
-<style lang="sass">
+<style lang="sass" scoped>
 
     @import ../../../../sass/mixins
     @import ../../../../sass/variables
 
     .TOP-NAVBAR-SLOT
         +position(r, $t:0, $l:0)
-        +size    (100%, $top-navbar-slot-height)
-        +border(red)
-
+        //+size    (100%, $top-navbar-slot-height)
+        +size    (100%, auto)
 </style>
 <script>
 
-    import {Height      } from "../../../classes/types/Height";
-    import {EVENTS      } from "../../../classes/enum/AppEvents";
-    import {EventObject } from "../../../classes/types/EventObject";
+    import {Height           } from "../../../classes/types/Height";
+    import {COMPONENTS_EVENTS} from "../../../classes/enum/COMPONENTS_EVENTS";
+    import {EVENTS           } from "../../../classes/enum/EVENTS";
+    import {EventObject      } from "../../../classes/events/EventObject";
+    import {EventFactory     } from "../../../classes/factories/EventFactory";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -67,13 +68,14 @@
             height: {
                 set: function (newHeight: Height) {
 
-                    const event: EventObject<Height> = new EventObject(
+                    const event: EventObject = EventFactory.create(
+                        EVENTS.HEIGHT_CHANGED,
                         newHeight,
                         this
                     );
 
                     this.$bus.$emit(
-                        EVENTS.APP.TOP_NAVBAR_SLOT.HEIGHT_CHANGED,
+                        COMPONENTS_EVENTS.APP.TOP_NAVBAR_SLOT.HEIGHT_CHANGED,
                         event
                     );
 
@@ -99,8 +101,8 @@
             onWindowResize(): void {
 
                 //Get current '.TOP-NAVBAR-SLOT' element height
-                const rectangle: ClientRect    = this.$el.getBoundingClientRect();
-                const newHeight: Number|number = rectangle.bottom - rectangle.top;
+                const rectangle: ClientRect = this.$el.getBoundingClientRect();
+                const newHeight: number     = rectangle.bottom - rectangle.top;
 
                 //Save height at the component
                 this.height = new Height(newHeight, 'px');
@@ -117,8 +119,8 @@
              * Set .TOP-NAVBAR-SLOT element actual height.
              */
             {
-                const rectangle: ClientRect    = this.$el.getBoundingClientRect();
-                const newHeight: Number|number = rectangle.bottom - rectangle.top;
+                const rectangle: ClientRect = this.$el.getBoundingClientRect();
+                const newHeight: number     = rectangle.bottom - rectangle.top;
 
                 if(this.pHeight !== null) {
                     this.height = this.pHeight;

@@ -10,4 +10,3 @@
 
 [options]
 unsafe.enable_getters_and_setters=true
-module.file_ext=.vue

@@ -31,6 +31,14 @@ import Vuex from 'vuex'
 window.Vue.use(Vuex);
 
 
+import ElementUI from 'element-ui';
+import locale from 'element-ui/lib/locale/lang/ru-RU';
+import 'element-ui/lib/theme-default/index.css';
+window.Vue.use(ElementUI, { locale });
+
+
+
+
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just

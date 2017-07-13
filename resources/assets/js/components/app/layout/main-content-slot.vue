@@ -2,11 +2,20 @@
 <template lang="pug">
 
     .MAIN-CONTENT-SLOT
-        top-navbar-slot(ref="topNavbarSlot")
-            slot(name="APP-TOP-NAVBAR")
+        scroll(
+            :pScrolling     = "dEventNames.SCROLLING"     ,
+            :pScrollingUp   = "dEventNames.SCROLLING_UP"  ,
+            :pScrolledUp    = "dEventNames.SCROLLED_UP"   ,
+            :pScrollingDown = "dEventNames.SCROLLING_DOWN",
+            :pScrolledDown  = "dEventNames.SCROLLED_DOWN" ,
+            :pScrollStarted = "dEventNames.SCROLL_STARTED",
+            :pScrollStopped = "dEventNames.SCROLL_STOPPED", )
 
-        content-slot(ref="contentSlot")
-            slot
+            top-navbar-slot(ref="topNavbarSlot")
+                slot(name="TOP-NAVBAR-SLOT")
+
+            content-slot(ref="contentSlot")
+                slot(name="CONTENT-SLOT")
 
 </template>
 <style lang="sass">
@@ -17,16 +26,21 @@
     .MAIN-CONTENT-SLOT
         +position(a, $t:0, $l:0)
         +size    (100%, 100%)
-        overflow: auto
+        overflow: hidden
+
 
 </style>
 <script>
 
-    import {Height      } from "../../../classes/types/Height";
-    import {EVENTS      } from "../../../classes/enum/AppEvents";
-    import {EventObject } from "../../../classes/types/EventObject";
-    import TopNavbarSlot  from "./top-navbar-slot.vue";
-    import ContentSlot    from "./content-slot.vue" ;
+    import Scroll              from "../../shared/sroll.vue"
+    import {Height           } from "../../../classes/types/Height";
+    import {COMPONENTS_EVENTS} from "../../../classes/enum/COMPONENTS_EVENTS";
+    import {EVENTS           } from "../../../classes/enum/EVENTS";
+    import {EventObject      } from "../../../classes/events/EventObject";
+    import TopNavbarSlot       from "./top-navbar-slot.vue";
+    import ContentSlot         from "./content-slot.vue" ;
+    import {HeightChanged    } from "../../../classes/events/HeightChanged";
+    import {EventFactory     } from "../../../classes/factories/EventFactory";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -53,8 +67,10 @@
         data(){
             const data: {
                 dHeight: Height,
+                dEventNames: object,
             } =  {
                 dHeight: new Height(0, 'px'),
+                dEventNames: COMPONENTS_EVENTS.APP.MAIN_CONTENT_SLOT,
             };
             return data;
         },
@@ -72,17 +88,18 @@
             height: {
                 set: function (newHeight: Height) {
 
-                    const event: EventObject<Height> = new EventObject(
+                    this.dHeight =  newHeight;
+
+                    const event: EventObject = EventFactory.create(
+                        EVENTS.HEIGHT_CHANGED,
                         newHeight,
                         this
                     );
 
                     this.$bus.$emit(
-                        EVENTS.APP.MAIN_CONTENT_SLOT.HEIGHT_CHANGED,
+                        COMPONENTS_EVENTS.APP.MAIN_CONTENT_SLOT.HEIGHT_CHANGED,
                         event
                     );
-
-                    this.dHeight =  newHeight;
 
                     /**
                      *  Doesn't change .MAIN-CONTENT-SLOT html element height.
@@ -130,13 +147,13 @@
         methods:{
             onWindowResize(e): void {
 
-                const rectangle: ClientRect    = this.$el.getBoundingClientRect();
-                const newHeight: Number|number = rectangle.bottom - rectangle.top;
+                const rectangle: ClientRect = this.$el.getBoundingClientRect();
+                const newHeight: number     = rectangle.bottom - rectangle.top;
 
                 this.height = new Height(newHeight, 'px');
             },
 
-            onAppTopNavbarSlotHeightChange(e: EventObject<Height>): void {
+            onAppTopNavbarSlotHeightChange(e: HeightChanged): void {
 
                 const height: Height = e.value;
 
@@ -145,7 +162,7 @@
                     this.height.value - height.value,
                     'px'
                 );
-            }
+            },
         },
 
         // --------------------------------------------------------------------
@@ -158,8 +175,8 @@
              * Set .MAIN-CONTENT-SLOT element actual height on 'mounted' event.
              */
             {
-                const rectangle: ClientRect      = this.$el.getBoundingClientRect();
-                const newHeight: Number | number = rectangle.bottom - rectangle.top;
+                const rectangle: ClientRect = this.$el.getBoundingClientRect();
+                const newHeight: number = rectangle.bottom - rectangle.top;
 
                 this.height = new Height(newHeight, 'px');
             }
@@ -175,10 +192,9 @@
              * changed programmatically.
              */
             this.$bus.$on(
-                EVENTS.APP.TOP_NAVBAR_SLOT.HEIGHT_CHANGED,
+                COMPONENTS_EVENTS.APP.TOP_NAVBAR_SLOT.HEIGHT_CHANGED,
                 this.onAppTopNavbarSlotHeightChange
             );
-
         },
 
         // --------------------------------------------------------------------
@@ -188,6 +204,7 @@
         components: {
             TopNavbarSlot,
             ContentSlot,
+            Scroll,
         }
     }
 

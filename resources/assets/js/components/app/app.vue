@@ -151,18 +151,14 @@
         float: right !important
 
     .TOGGLE
-        color       : #3d4b5f
+        color       : #66a0df
         display     : none
         line-height : 64px !important
         font-size   : 1.7em
         border      : none !important
         &:hover
             border  : none !important
-            color   : #6c8396
-        &:active
-            color   : #66a0df
-        &:visited
-            color   : #3d4b5f !important
+            color   : #66A0DF
 
         @media(max-width: 990px)
             display : inline-block
@@ -185,7 +181,7 @@
     .ORDER
         line-height : 63px !important
         border      : none !important
-        cursor      : default
+        cursor      : default !important
         @media(max-width: 564px)
             display: none
 

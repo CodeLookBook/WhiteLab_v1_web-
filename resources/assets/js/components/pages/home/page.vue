@@ -1,10 +1,9 @@
 <template lang="pug">
 
     .HOME-PAGE
-        .BLOCK.TABLE
-            h1 HOME PAGE
-        .BLOCK.TABLE
-            h1 HOME PAGE
+        .parallax-between(style="height:500px")
+        parallax(src="http://materializecss.com/images/parallax1.jpg" ref="p",:speed="speed")
+            .loading(slot="loading") loading...
 
 </template>
 <style lang="sass">
@@ -24,6 +23,8 @@
     // CHILD COMPONENTS IMPORT
     //*************************************************************************
 
+    import Parallax from "vue-parallax";
+
     //*************************************************************************
     // COMPONENT
     //*************************************************************************
@@ -40,6 +41,12 @@
         // DATA FIELDS
         //*********************************************************************
 
+        data(){
+            return {
+                speed: 0.8,
+                styles: {} ,
+            };
+        },
 
         //*********************************************************************
         // COMPUTED FIELDS
@@ -65,7 +72,9 @@
         // CHILD COMPONENTS
         //*********************************************************************
 
-
+        components:{
+            Parallax,
+        }
     };
 
 </script>

@@ -130,16 +130,18 @@
         float: right !important
 
     .TOGGLE
-        color       : #95caff
+        color       : #3d4b5f
         display     : none
         line-height : 64px !important
         font-size   : 1.7em
         border      : none !important
         &:hover
             border  : none !important
-            color   : #8cbdf1
+            color   : #6c8396
         &:active
-            color   : #7eaddf
+            color   : #66a0df
+        &:visited
+            color   : #3d4b5f !important
 
         @media(max-width: 990px)
             display : inline-block
@@ -217,6 +219,7 @@
     import {COMPONENTS_EVENTS} from "../../classes/enum/COMPONENTS_EVENTS";
     import {APP_LANGUAGES} from "../../classes/enum/APP_LANGUAGES";
     import {APP_BUTTONS_NAMES} from "../../classes/enum/APP_BUTTONS_NAMES";
+    import {Cookie} from "../../classes/facades/Cookie";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -245,7 +248,10 @@
                 EVENTS_ID       : COMPONENTS_EVENTS.APP.NAVIGATION,
                 LANGUAGES       : APP_LANGUAGES,
                 ITEMS_NAMES     : APP_BUTTONS_NAMES.APP_NAVIGATION,
-                language        : APP_LANGUAGES.RUSSIAN,
+                cookie          : Cookie.getInstance(),
+                language        : Cookie.getInstance().get('app.language') ?
+                                  Cookie.getInstance().get('app.language') :
+                                  APP_LANGUAGES.RUSSIAN,
                 topNavabr: {
                 }
             };
@@ -290,7 +296,6 @@
                         break;
 
                     case this.EVENTS_ID.PRICE_MENU_ITEM_CLICKED:
-                        console.log('event - 1')
                         this.$bus.$emit(this.EVENTS_ID.PRICE_MENU_ITEM_CLICKED);
                         this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
@@ -366,12 +371,15 @@
             },
             onRussianLanguageMenuItemClick  (): void {
                 this.language = this.LANGUAGES.RUSSIAN;
+                this.cookie.set('app.language', this.language);
             },
             onEnglishLanguageMenuItemClick  (): void {
                 this.language = this.LANGUAGES.ENGLISH;
+                this.cookie.set('app.language', this.language);
             },
             onSlovakLanguageMenuItemClick   (): void {
                 this.language = this.LANGUAGES.SLOVAK;
+                this.cookie.set('app.language', this.language);
             },
             onOrderButtonClick              (): void {
 

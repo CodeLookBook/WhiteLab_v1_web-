@@ -143,8 +143,6 @@
                 if (scrollTop.value > this.height.value) {
                     this.dClasses = {HIDDEN: true};
                 }
-
-                console.log('onScrollingDown')
             },
             onScrolledUp  (e: ScrolledUp   ): void{
 
@@ -214,16 +212,8 @@
                     const offsetWidth     : number = this.$el.offsetWidth;
                     const clientWidth     : number = this.$el.clientWidth;
 
-//                    console.log('getComputedScrollYWidth(): ');
-//                    console.log('leftBorderWidth: ' + leftBorderWidth.value);
-//                    console.log('rightBorderWidth: ' + rightBorderWidth.value);
-//                    console.log('offsetWidth: ' + offsetWidth);
-//                    console.log('clientWidth: ' + clientWidth);
-
                     scrollWidth = offsetWidth - clientWidth -
                         leftBorderWidth.value - rightBorderWidth.value;
-
-//                    console.log('RESULT - scrollWidth: ' + scrollWidth);
                 }
 
                 // REPLACE temporally STYLES values by original

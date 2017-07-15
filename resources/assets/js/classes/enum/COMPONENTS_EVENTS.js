@@ -10,7 +10,7 @@ function _id(): string{
 /**
  * Event names and id.
  */
-const COMPONENTS_EVENTS: {} = Object.freeze({
+const COMPONENTS_EVENTS = Object.freeze({
 
     APP: Object.freeze({
 
@@ -29,6 +29,8 @@ const COMPONENTS_EVENTS: {} = Object.freeze({
             ORDER_MENU_ITEM_CLICKED            : _id(),
             ORDER_MENU_BUTTON_CLICKED          : _id(),
             TOGGLE_MENU_ITEM_CLICKED           : _id(),
+
+            //ADDRESS_MENU_ITEM_CREATE_SCROLL_TO_EVENT: _id(),
 
             CLOSE_SIDEBAR_MENU_ITEM_CLICKED    : _id(),
         }),
@@ -52,6 +54,10 @@ const COMPONENTS_EVENTS: {} = Object.freeze({
         CONTENT_SLOT:       Object.freeze({
             HEIGHT_CHANGED: _id()
         }),
+
+        HOME_PAGE:          Object.freeze({
+            //SCROLL_TO_ADDRESS_PAGE_BLOCK: _id()
+        })
     }),
 });
 

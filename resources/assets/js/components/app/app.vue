@@ -1,4 +1,5 @@
 // @flow
+
 <template lang="pug">
 
     layout
@@ -10,32 +11,32 @@
                 class   = "SIDE-NAVBAR",
                 @select = "onMenuSelect",
                 theme   ="dark")
-            el-menu-item.H-CLOSE(:index="EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED")
-                | {{ITEMS_NAMES.CLOSE_SIDEBAR_MENU_ITEM[language]}} &nbsp &nbsp
+            el-menu-item.H-CLOSE(:index="APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED")
+                | {{APP_ITEMS_NAMES.CLOSE_SIDEBAR_MENU_ITEM[language]}} &nbsp &nbsp
                 i.el-icon-close
 
-            el-submenu.H-LANG(:index="EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED")
+            el-submenu.H-LANG(:index="APP_EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED")
                 template(slot="title")
-                    | {{ITEMS_NAMES.LANGUAGE_SUBMENU_ITEM[language]}}
-                el-menu-item(:index="EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED")
-                    | {{ITEMS_NAMES.RUSSIAN_LANGUAGE_MENU_ITEM[language]}}
-                el-menu-item(:index="EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED")
-                    | {{ITEMS_NAMES.ENGLISH_LANGUAGE_MENU_ITEM[language]}}
-                el-menu-item(:index="EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED" )
-                    | {{ITEMS_NAMES.SLOVAK_LANGUAGE_MENU_ITEM[language]}}
+                    | {{APP_ITEMS_NAMES.LANGUAGE_SUBMENU_ITEM[language]}}
+                el-menu-item(:index="APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED")
+                    | {{APP_ITEMS_NAMES.RUSSIAN_LANGUAGE_MENU_ITEM[language]}}
+                el-menu-item(:index="APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED")
+                    | {{APP_ITEMS_NAMES.ENGLISH_LANGUAGE_MENU_ITEM[language]}}
+                el-menu-item(:index="APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED" )
+                    | {{APP_ITEMS_NAMES.SLOVAK_LANGUAGE_MENU_ITEM[language]}}
 
-            el-menu-item.H-PRICE(:index="EVENTS_ID.PRICE_MENU_ITEM_CLICKED"    )
-                | {{ITEMS_NAMES.PRICE_MENU_ITEM[language]}}
-            el-menu-item.H-ADDRESS(:index="EVENTS_ID.ADDRESS_MENU_ITEM_CLICKED"  )
-                | {{ITEMS_NAMES.ADDRESS_MENU_ITEM[language]}}
-            el-menu-item.H-VACANCIES(:index="EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED")
-                | {{ITEMS_NAMES.VACANCIES_MENU_ITEM[language]}}
+            el-menu-item.H-PRICE(:index="APP_EVENTS_ID.PRICE_MENU_ITEM_CLICKED"    )
+                | {{APP_ITEMS_NAMES.PRICE_MENU_ITEM[language]}}
+            el-menu-item.H-ADDRESS(:index="APP_EVENTS_ID.ADDRESS_MENU_ITEM_CLICKED"  )
+                | {{APP_ITEMS_NAMES.ADDRESS_MENU_ITEM[language]}}
+            el-menu-item.H-VACANCIES(:index="APP_EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED")
+                | {{APP_ITEMS_NAMES.VACANCIES_MENU_ITEM[language]}}
 
-            el-menu-item.H-ORDER(:index="EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.H-BUTTON
-                | {{ITEMS_NAMES.ORDER_MENU_BUTTON[language]}}
-            el-menu-item.H-IN(:index="EVENTS_ID.IN_MENU_ITEM_CLICKED", class="H-ICON")
+            el-menu-item.H-ORDER(:index="APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.H-BUTTON
+                | {{APP_ITEMS_NAMES.ORDER_MENU_BUTTON[language]}}
+            el-menu-item.H-IN(:index="APP_EVENTS_ID.IN_MENU_ITEM_CLICKED", class="H-ICON")
                 img(src="/images/icons/in-white.png")
-            el-menu-item.H-FB(:index="EVENTS_ID.FB_MENU_ITEM_CLICKED", class="H-ICON")
+            el-menu-item.H-FB(:index="APP_EVENTS_ID.FB_MENU_ITEM_CLICKED", class="H-ICON")
                 img(src="/images/icons/fb-white.png")
 
         // TOP NAVBAR
@@ -47,32 +48,32 @@
                     @select     ="onMenuSelect",
                     menu-trigger="click"
                 )
-                el-menu-item.TOGGLE.ITEM(:index="EVENTS_ID.TOGGLE_MENU_ITEM_CLICKED")
+                el-menu-item.TOGGLE.ITEM(:index="APP_EVENTS_ID.TOGGLE_MENU_ITEM_CLICKED")
                     i.el-icon-menu
-                el-menu-item.LOGO(:index="EVENTS_ID.LOGO_ITEM_CLICKED", :route="{name: '/'}")
+                el-menu-item.LOGO(:index="APP_EVENTS_ID.LOGO_ITEM_CLICKED", :route="{name: '/'}")
                     img(src="/images/logos/logo_whitelab_without_border.png")
-                el-menu-item.ORDER.ITEM(:index="EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.BUTTON
-                    | {{ITEMS_NAMES.ORDER_MENU_BUTTON[language]}}
-                el-submenu.LANG.ITEM(:index="EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED")
+                el-menu-item.ORDER.ITEM(:index="APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.BUTTON
+                    | {{APP_ITEMS_NAMES.ORDER_MENU_BUTTON[language]}}
+                el-submenu.LANG.ITEM(:index="APP_EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED")
                     template(slot="title" class="LANG-ITEM")
-                        | {{ITEMS_NAMES.LANGUAGE_SUBMENU_ITEM[language]}}
-                    el-menu-item(:index="EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED", )
-                        | {{ITEMS_NAMES.RUSSIAN_LANGUAGE_MENU_ITEM[language]}}
-                    el-menu-item(:index="EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED", )
-                        | {{ITEMS_NAMES.ENGLISH_LANGUAGE_MENU_ITEM[language]}}
-                    el-menu-item(:index="EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED" , )
-                        | {{ITEMS_NAMES.SLOVAK_LANGUAGE_MENU_ITEM[language]}}
+                        | {{APP_ITEMS_NAMES.LANGUAGE_SUBMENU_ITEM[language]}}
+                    el-menu-item(:index="APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED", )
+                        | {{APP_ITEMS_NAMES.RUSSIAN_LANGUAGE_MENU_ITEM[language]}}
+                    el-menu-item(:index="APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED", )
+                        | {{APP_ITEMS_NAMES.ENGLISH_LANGUAGE_MENU_ITEM[language]}}
+                    el-menu-item(:index="APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED" , )
+                        | {{APP_ITEMS_NAMES.SLOVAK_LANGUAGE_MENU_ITEM[language]}}
 
-                el-menu-item.VACANCIES.ITEM(:index="EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED", :route="{name: 'vacancies'}")
-                    | {{ITEMS_NAMES.VACANCIES_MENU_ITEM[language]}}
-                el-menu-item.ADDRESS.ITEM(:index="EVENTS_ID.ADDRESS_MENU_ITEM_CLICKED")
-                    | {{ITEMS_NAMES.ADDRESS_MENU_ITEM[language]}}
-                el-menu-item.PRICE.ITEM(:index="EVENTS_ID.PRICE_MENU_ITEM_CLICKED", :route="{name: 'price'}")
-                    | {{ITEMS_NAMES.PRICE_MENU_ITEM[language]}}
-                el-menu-item.IN.ITEM(:index="EVENTS_ID.IN_MENU_ITEM_CLICKED")
+                el-menu-item.VACANCIES.ITEM(:index="APP_EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED", :route="{name: 'vacancies'}")
+                    | {{APP_ITEMS_NAMES.VACANCIES_MENU_ITEM[language]}}
+                el-menu-item.ADDRESS.ITEM(:index="APP_EVENTS_ID.ADDRESS_MENU_ITEM_CLICKED")
+                    | {{APP_ITEMS_NAMES.ADDRESS_MENU_ITEM[language]}}
+                el-menu-item.PRICE.ITEM(:index="APP_EVENTS_ID.PRICE_MENU_ITEM_CLICKED", :route="{name: 'price'}")
+                    | {{APP_ITEMS_NAMES.PRICE_MENU_ITEM[language]}}
+                el-menu-item.IN.ITEM(:index="APP_EVENTS_ID.IN_MENU_ITEM_CLICKED")
                     //a(href="https://www.instagram.com" target="_blank"):
                     img.ICON(src="/images/icons/in.png")
-                el-menu-item.FB.ITEM(:index="EVENTS_ID.FB_MENU_ITEM_CLICKED")
+                el-menu-item.FB.ITEM(:index="APP_EVENTS_ID.FB_MENU_ITEM_CLICKED")
                     img.ICON(src="/images/icons/fb.png")
 
         // ROUTER
@@ -231,12 +232,12 @@
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
-    import Layout    from "./layout.vue"
-    import TopNavbarSlider from "../shared/top-navbar-slider.vue"
-    import {COMPONENTS_EVENTS} from "../../classes/enum/COMPONENTS_EVENTS";
-    import {APP_LANGUAGES} from "../../classes/enum/APP_LANGUAGES";
-    import {APP_BUTTONS_NAMES} from "../../classes/enum/APP_BUTTONS_NAMES";
-    import {Cookie} from "../../classes/facades/Cookie";
+    import Layout                 from "./layout.vue"
+    import TopNavbarSlider        from "../shared/top-navbar-slider.vue"
+    import {COMPONENTS_EVENTS   } from "../../classes/enum/COMPONENTS_EVENTS";
+    import {APP_LANGUAGES       } from "../../classes/enum/APP_LANGUAGES";
+    import {APP_BUTTONS_NAMES   } from "../../classes/enum/APP_BUTTONS_NAMES";
+    import {Cookie              } from "../../classes/facades/Cookie";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -255,23 +256,24 @@
 
         data(){
             const data: {
-                EVENTS_ID       : object,
-                LANGUAGES       : object,
-                ITEMS_NAMES     : object,
+                APP_EVENTS_ID       : object,
+                APP_LANGUAGES       : object,
+                APP_ITEMS_NAMES     : object,
                 language        : string,
                 topNavabr  : {
                 }
             } = {
-                EVENTS_ID       : COMPONENTS_EVENTS.APP.NAVIGATION,
-                LANGUAGES       : APP_LANGUAGES,
-                ITEMS_NAMES     : APP_BUTTONS_NAMES.APP_NAVIGATION,
-                cookie          : Cookie.getInstance(),
-                language        : Cookie.getInstance().get('app.language') ?
-                                  Cookie.getInstance().get('app.language') :
-                                  APP_LANGUAGES.RUSSIAN,
+                APP_EVENTS_ID       : COMPONENTS_EVENTS.APP.NAVIGATION,
+                APP_LANGUAGES       : APP_LANGUAGES,
+                APP_ITEMS_NAMES     : APP_BUTTONS_NAMES.APP_NAVIGATION,
+                cookie              : Cookie.getInstance(),
+                language            : Cookie.getInstance().get('app.language') ?
+                                      Cookie.getInstance().get('app.language') :
+                                      APP_LANGUAGES.DEFAULT,
                 topNavabr: {
                 }
             };
+
             return data;
         },
 
@@ -297,73 +299,73 @@
             onMenuSelect(key, keyPath){
 
                 switch (key) {
-                    case this.EVENTS_ID.LOGO_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.LOGO_ITEM_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.LOGO_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.LOGO_ITEM_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.FB_MENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.FB_MENU_ITEM_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.FB_MENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.FB_MENU_ITEM_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.IN_MENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.IN_MENU_ITEM_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.IN_MENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.IN_MENU_ITEM_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.PRICE_MENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.PRICE_MENU_ITEM_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.PRICE_MENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.PRICE_MENU_ITEM_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.ORDER_MENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.ORDER_MENU_ITEM_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.ORDER_MENU_BUTTON_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.ORDER_MENU_BUTTON_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.ORDER_MENU_BUTTON_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.ORDER_MENU_BUTTON_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.TOGGLE_MENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.TOGGLE_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.TOGGLE_MENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.TOGGLE_MENU_ITEM_CLICKED);
                         /**Don't generate 'close sidebar' event.*/
                         break;
 
-                    case this.EVENTS_ID.ADDRESS_MENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.ADDRESS_MENU_ITEM_CLICKED);
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.ADDRESS_MENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.ADDRESS_MENU_ITEM_CLICKED);
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED:
-                        this.$bus.$emit(this.EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
+                    case this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED:
+                        this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
                     default:
@@ -383,19 +385,22 @@
             onPriceMenuItemClick            (): void {
                 this.$router.push({name: 'price'})
             },
+            onAddressMenuItemClick          (): void {
+                this.$router.push({name: 'contacts'});
+            },
             onVacanciesMenuItemClick        (): void {
                 this.$router.push({name: 'vacancies'});
             },
             onRussianLanguageMenuItemClick  (): void {
-                this.language = this.LANGUAGES.RUSSIAN;
+                this.language = this.APP_LANGUAGES.RUSSIAN;
                 this.cookie.set('app.language', this.language);
             },
             onEnglishLanguageMenuItemClick  (): void {
-                this.language = this.LANGUAGES.ENGLISH;
+                this.language = this.APP_LANGUAGES.ENGLISH;
                 this.cookie.set('app.language', this.language);
             },
             onSlovakLanguageMenuItemClick   (): void {
-                this.language = this.LANGUAGES.SLOVAK;
+                this.language = this.APP_LANGUAGES.SLOVAK;
                 this.cookie.set('app.language', this.language);
             },
             onOrderButtonClick              (): void {
@@ -415,49 +420,52 @@
             // SUBSCRIBE on navigation events
             {
                 this.$bus.$on(
-                    this.EVENTS_ID.LOGO_ITEM_CLICKED,
+                    this.APP_EVENTS_ID.LOGO_ITEM_CLICKED,
                     this.onLogoItemClick
                 );
                 this.$bus.$on(
-                    this.EVENTS_ID.FB_MENU_ITEM_CLICKED,
+                    this.APP_EVENTS_ID.FB_MENU_ITEM_CLICKED,
                     this.onFacebookItemClick
                 );
                 this.$bus.$on(
-                    this.EVENTS_ID.IN_MENU_ITEM_CLICKED,
+                    this.APP_EVENTS_ID.IN_MENU_ITEM_CLICKED,
                     this.onInstagramItemClick
                 );
                 this.$bus.$on(
-                    this.EVENTS_ID.PRICE_MENU_ITEM_CLICKED,
+                    this.APP_EVENTS_ID.PRICE_MENU_ITEM_CLICKED,
                     this.onPriceMenuItemClick
                 );
                 this.$bus.$on(
-                    this.EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED,
+                    this.APP_EVENTS_ID.ADDRESS_MENU_ITEM_CLICKED,
+                    this.onAddressMenuItemClick
+                );
+                this.$bus.$on(
+                    this.APP_EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED,
                     this.onVacanciesMenuItemClick
                 );
 
-                // this.$bus.$emit(this.EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED)
+                // this.$bus.$emit(this.APP_EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED)
                 // May be realazied if it will be need.
 
                 this.$bus.$on(
-                    this.EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
                     this.onRussianLanguageMenuItemClick
                 );
                 this.$bus.$on(
-                    this.EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
                     this.onEnglishLanguageMenuItemClick
                 );
                 this.$bus.$on(
-                    this.EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
                     this.onSlovakLanguageMenuItemClick
                 );
                 this.$bus.$on(
-                    this.EVENTS_ID.ORDER_MENU_BUTTON_CLICKED,
+                    this.APP_EVENTS_ID.ORDER_MENU_BUTTON_CLICKED,
                     this.onOrderButtonClick
                 );
             }
-//                this.$bus.$emit(this.EVENTS_ID.ORDER_MENU_ITEM_CLICKED)
+//                this.$bus.$emit(this.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED)
 
-//            this.$bus.$on(this.EVENTS_ID.TOGGLE_MENU_ITEM_CLICKED, this.onToggleItemClick);
         },
 
         // --------------------------------------------------------------------

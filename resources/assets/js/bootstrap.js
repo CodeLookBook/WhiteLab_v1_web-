@@ -30,13 +30,22 @@ window.Vue.use(VueRouter);
 import Vuex from 'vuex'
 window.Vue.use(Vuex);
 
-
+/**
+ * Element, a Vue 2.0 based component library for developers, designers
+ * and product managers.
+ */
 import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/ru-RU';
 import 'element-ui/lib/theme-default/index.css';
 window.Vue.use(ElementUI, { locale });
 
 
+/**
+ * A Vue.js component for sharing links to social networks, work with
+ * Vue.js 1.X or 2.X
+ */
+const SocialSharing = require('vue-social-sharing');
+window.Vue.use(SocialSharing);
 
 
 /**

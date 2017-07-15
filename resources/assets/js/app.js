@@ -17,6 +17,7 @@ require('./bootstrap');
 import App    from "./components/app/app.vue"
 import {router} from "./router/router"
 
+
 /**
  * Event bus object.
  */

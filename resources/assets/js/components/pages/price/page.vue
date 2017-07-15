@@ -1,6 +1,8 @@
 <template lang="pug">
 
-    h1 Price page.
+    .PRICE-PAGE
+        h1 Price page.
+
 
 </template>
 <style lang="scss">

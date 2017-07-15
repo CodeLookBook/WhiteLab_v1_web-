@@ -1,20 +1,17 @@
+// @flow
+
 <template lang="pug">
 
-    .HOME-PAGE
-        .parallax-between(style="height:500px")
-        parallax(src="http://materializecss.com/images/parallax1.jpg" ref="p",:speed="speed")
-            .loading(slot="loading") loading...
+    .HOME-PAGE.TABLE: .ROW: .CELL
+        PageBlockGreet
 
 </template>
 <style lang="sass">
 
     .HOME-PAGE
-        width: 100%
+        width : 100%
         height: 100%
 
-        .BLOCK
-            width: 100%
-            height: 100%
 
 </style>
 <script>
@@ -23,7 +20,8 @@
     // CHILD COMPONENTS IMPORT
     //*************************************************************************
 
-    import Parallax from "vue-parallax";
+    import PageBlockGreet from './page-block-greet'
+    import {COMPONENTS_EVENTS} from "../../../classes/enum/COMPONENTS_EVENTS";
 
     //*************************************************************************
     // COMPONENT
@@ -42,10 +40,13 @@
         //*********************************************************************
 
         data(){
-            return {
-                speed: 0.8,
-                styles: {} ,
+            const data: {
+                EVENTS: object,
+            } = {
+                EVENTS: COMPONENTS_EVENTS.APP.HOME_PAGE,
             };
+
+            return data;
         },
 
         //*********************************************************************
@@ -72,8 +73,8 @@
         // CHILD COMPONENTS
         //*********************************************************************
 
-        components:{
-            Parallax,
+        components: {
+            PageBlockGreet,
         }
     };
 

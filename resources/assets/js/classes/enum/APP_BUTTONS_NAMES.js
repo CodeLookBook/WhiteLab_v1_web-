@@ -51,6 +51,24 @@ const APP_BUTTONS_NAMES = Object.freeze({
             sl: 'Zavrieť',
         }),
     }),
+
+    HOME_PAGE: Object.freeze({
+
+        ORDER_BUTTON               : Object.freeze({
+            ru: 'Заказать',
+            en: 'Order',
+            sl: 'Objednať',
+        }),
+    }),
+
+    SHARED: Object.freeze({
+
+        FB_SHARE                  : Object.freeze({
+            ru: 'Поделиться в Facebook',
+            en: 'Share on Facebook',
+            sl: 'Zdielať na Facebook-u',
+        }),
+    }),
 });
 
 export {APP_BUTTONS_NAMES};

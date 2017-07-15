@@ -22,6 +22,7 @@ let EVENTS: {
     SCROLLED_DOWN   : string,
     SCROLL_STARTED  : string,
     SCROLL_STOPPED  : string,
+    SCROLL_TO       : string,
 
 } = Object.freeze({
 
@@ -36,6 +37,7 @@ let EVENTS: {
     SCROLLED_DOWN   : _id(),
     SCROLL_STARTED  : _id(),
     SCROLL_STOPPED  : _id(),
+    SCROLL_TO       : _id(),
 });
 
 export {EVENTS};

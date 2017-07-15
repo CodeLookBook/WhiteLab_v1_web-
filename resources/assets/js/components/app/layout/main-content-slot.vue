@@ -9,7 +9,9 @@
             :pScrollingDown = "dEventNames.SCROLLING_DOWN",
             :pScrolledDown  = "dEventNames.SCROLLED_DOWN" ,
             :pScrollStarted = "dEventNames.SCROLL_STARTED",
-            :pScrollStopped = "dEventNames.SCROLL_STOPPED", )
+            :pScrollStopped = "dEventNames.SCROLL_STOPPED",
+            :pScrollTo       = "dScrollTo"
+        )
 
             top-navbar-slot(ref="topNavbarSlot")
                 slot(name="TOP-NAVBAR-SLOT")
@@ -66,11 +68,13 @@
 
         data(){
             const data: {
-                dHeight: Height,
+                dHeight    : Height,
                 dEventNames: object,
+                dScrollTo  : Scroll | null,
             } =  {
-                dHeight: new Height(0, 'px'),
+                dHeight    : new Height(0, 'px'),
                 dEventNames: COMPONENTS_EVENTS.APP.MAIN_CONTENT_SLOT,
+                dScrollTo  : null
             };
             return data;
         },
@@ -152,7 +156,6 @@
 
                 this.height = new Height(newHeight, 'px');
             },
-
             onAppTopNavbarSlotHeightChange(e: HeightChanged): void {
 
                 const height: Height = e.value;

@@ -63,6 +63,9 @@
             pScrollStopped: {
                 type: String,
                 required: true,
+            },
+            pScrollTo:{
+                type: Object,
             }
         },
 
@@ -92,13 +95,27 @@
         // WATCHED FIELDS
         // --------------------------------------------------------------------
 
+        watch: {
+            pScrollTo(newValue, oldValue) {
+
+                if(newValue){
+                    this.$el.scrollTop = newValue.value;
+                } else {
+                    throw new TypeError(
+                        "'ScrollTo' event can't be handled by " +
+                        "'scroll' component. 'ScrollTo' property is equal to " +
+                        "'null' or 'undefined'. "
+                    );
+                }
+            },
+        },
 
         // --------------------------------------------------------------------
         // METHODS
         // --------------------------------------------------------------------
 
         methods: {
-            _onScroll(e){
+            onScroll(e){
 
                 let newPosition: number = 0;
                 let newState: Size;
@@ -230,7 +247,7 @@
         // --------------------------------------------------------------------
 
         mounted(){
-            this.$el.addEventListener('scroll', this._onScroll);
+            this.$el.addEventListener('scroll', this.onScroll);
         },
 
         beforeDestroy(){

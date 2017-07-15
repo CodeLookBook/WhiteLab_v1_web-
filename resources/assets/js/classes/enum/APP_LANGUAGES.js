@@ -9,6 +9,8 @@ function _id(): string{
 
 const APP_LANGUAGES = Object.freeze({
 
+    DEFAULT: 'en',
+
     RUSSIAN: 'ru',
     ENGLISH: 'en',
     SLOVAK : 'sl',

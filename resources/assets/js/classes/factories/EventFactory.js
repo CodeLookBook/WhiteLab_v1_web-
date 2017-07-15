@@ -13,6 +13,7 @@ import {ScrollStopped   } from "../events/ScrollStopped";
 import {Size            } from "../types/Size";
 import {Height          } from "../types/Height";
 import {Scroll          } from "../types/Scroll";
+import {ScrollTo        } from "../events/ScrollTo";
 
 let _instance: Factory | null = null;
 const _init = (): Factory => {
@@ -92,6 +93,11 @@ class Factory {
 
                 if(!(value instanceof Scroll)) throw new TypeError();
                 e = new ScrollStopped(value, target);
+                break;
+
+            case EVENTS.SCROLL_TO:
+                if(!(value instanceof Scroll)) throw new TypeError();
+                e = new ScrollTo(value, target);
                 break;
 
             default:

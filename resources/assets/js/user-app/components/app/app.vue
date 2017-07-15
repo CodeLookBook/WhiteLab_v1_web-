@@ -84,8 +84,8 @@
 </template>
 <style lang="sass" scoped>
 
-    @import ../../../sass/mixins
-    @import ../../../sass/variables
+    @import "../../../../sass/shared/_mixins"
+    @import "../../../../sass/user-app/_variables"
 
     .SIDE-NAVBAR
         min-height: 100%

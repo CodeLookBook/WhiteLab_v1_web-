@@ -47,7 +47,7 @@
 </template>
 <style lang="sass" scoped>
 
-    @import "../../../../sass/mixins"
+    @import "../../../../../sass/shared/_mixins"
 
     .PAGE-BLOCK
         background-color: black

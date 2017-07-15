@@ -22,8 +22,8 @@
 </template>
 <style lang="sass">
 
-    @import ../../../../sass/mixins
-    @import ../../../../sass/variables
+    @import "../../../../../sass/shared/_mixins"
+    @import "../../../../../sass/user-app/_variables"
 
     .MAIN-CONTENT-SLOT
         +position(a, $t:0, $l:0)

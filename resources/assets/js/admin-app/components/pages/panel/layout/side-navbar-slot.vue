@@ -1,30 +1,26 @@
 <template lang="pug">
 
-    .SIDE-NAVBAR-SLOT
-        slot
+    .SLOT
+        .SCROLL
+            slot
 
 </template>
-<style lang="sass">
+<style lang="sass" scoped>
 
-    @import ../../../../sass/mixins
-    @import ../../../../sass/variables
+    @import "../../../../../../sass/shared/_mixins"
 
-    .SIDE-NAVBAR-SLOT
-        position  : absolute
-        top       : 0
-        height    : 100%
-        overflow  : auto
-        z-index   : 60000
-
-        @media (min-width: 261px)
-            left  : -260px
-            width : 260px
-        @media (max-width: 260px)
-            left  : -100%
-            width : 100%
+    .SLOT
+        +position(absolut, 0, 0)
+        +size(100%, 260px)
+        +border(grey)
 
 </style>
 <script>
+
+    // ------------------------------------------------------------------------
+    // IMPORT CHILD COMPONENTS
+    // ------------------------------------------------------------------------
+
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -62,6 +58,11 @@
         // --------------------------------------------------------------------
 
 
-    }
+        // --------------------------------------------------------------------
+        // CHILD COMPONENTS
+        // --------------------------------------------------------------------
+
+
+    };
 
 </script>

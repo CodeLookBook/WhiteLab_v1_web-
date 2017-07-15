@@ -7,8 +7,8 @@
 </template>
 <style lang="sass" scoped>
 
-    @import "../../../../sass/_mixins"
-    @import "../../../../sass/_variables"
+    @import "../../../../../sass/shared/_mixins"
+    @import "../../../../../sass/user-app/_variables"
 
     .TOP-NAVBAR-SLOT
         +position(r, $t:0, $l:0)

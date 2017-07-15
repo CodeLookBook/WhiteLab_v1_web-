@@ -8,8 +8,8 @@
 </template>
 <style lang="sass">
 
-    @import "../../../sass/_mixins"
-    @import "../../../sass/_variables"
+    @import "../../../../sass/shared/_mixins"
+    @import "../../../../sass/user-app/_variables"
 
     .SCROLL
         height: 100%

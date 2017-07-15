@@ -163,6 +163,13 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        /**
+         * jwt-auth provides a simple means of authentication within Laravel
+         * using JSON Web Tokens
+         */
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+
+
         /*
          * Package Service Providers...
          */
@@ -226,6 +233,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
     ],
 
 ];

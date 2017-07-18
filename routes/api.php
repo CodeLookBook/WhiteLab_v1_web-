@@ -13,6 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+/**
+ * Routes available for all web users;
+ */
+Route::post('/admin/login'          , 'UserController@login'    );
+Route::get ('/admin/auth/validation', 'AuthController@isValid'  );

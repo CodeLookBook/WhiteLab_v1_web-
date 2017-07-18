@@ -3,6 +3,7 @@
 <template lang="pug">
 
     el-form.LOGIN-FORM(
+        v-if="!token.isLoaded && token.isExpired",
         :label-position="settings.labelPosition",
         :label-width="settings.labelWidth",
         :model="inputs",
@@ -14,7 +15,11 @@
         el-form-item(label="Password", prop="password")
             el-input(v-model="inputs.password", type="password")
         el-form-item
-            el-button.LOGIN-BUTTON(type="primary", @click="submitForm()") Войти
+            el-button.LOGIN-BUTTON(type="primary", @click="onFormSubmit()")
+                | Войти
+            el-row
+                el-col(xs="24", sm="24", md="24", lg="24")
+                    p(style="color: red; font-size: 0.85em;") {{loginErrorMessage}}
 
 </template>
 <style lang="sass" scoped>
@@ -36,8 +41,15 @@
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
-    import ElButton from "../../../../../../../node_modules/element-ui/packages/button/src/button";
-    import ElFormItem from "../../../../../../../node_modules/element-ui/packages/form/src/form-item";
+    import ElButton       from
+        "../../../../../../../node_modules/element-ui/packages/button/src/button";
+    import ElFormItem     from
+        "../../../../../../../node_modules/element-ui/packages/form/src/form-item";
+    import {Token       } from "../../../../shared-classes/facades/Token";
+    import {TOKEN_EVENTS} from "../../../../shared-classes/enums/TOKEN_EVENTS";
+    import {CallBack    } from "../../../../shared-classes/types/CallBack";
+    import ElRow from "element-ui/packages/row/src/row";
+    import ElCol from "element-ui/packages/col/src/col";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -74,7 +86,8 @@
                         {
                             min     : 1,
                             max     : 15,
-                            message : 'Длинна логина должна быть в пределах от 1 до 15 символов',
+                            message : 'Длинна логина должна быть в пределах от 1 ' +
+                                      'до 15 символов',
                             trigger : 'blur, change'
                         }
                     ],
@@ -87,11 +100,14 @@
                         {
                             min     : 1,
                             max     : 15,
-                            message : 'Длинна логина должна быть в пределах от 1 до 15 символов',
+                            message : 'Длинна логина должна быть в пределах от 1 ' +
+                                      'до 30 символов',
                             trigger : 'blur, change'
                         }
                     ],
-                }
+                },
+                loginErrorMessage: '',
+                token : Token.getInstance(),
             };
 
             return data;
@@ -112,28 +128,88 @@
         // --------------------------------------------------------------------
 
         methods: {
-            submitForm() {
+
+            // EVENT HANDLERS
+
+            onFormSubmit() {
                 this.$refs['adminLoginForm'].validate((valid) => {
+
                     if (valid) {
-                        alert('submit!');
-                    } else {
-                        console.log('error submit!!');
-                        return false;
+
+                        let login   : string | undefined = this.inputs.login;
+                        let password: string | undefined = this.inputs.password;
+
+                        //GET TOKEN from server
+                        this.token.load(login, password);
+
+                        //RESET CREDENTIALS values.
+                        login = password = undefined;
                     }
                 });
             },
+            onTokenLoaded (event: Object | null): void {
+                this.$router.push({name: 'panel'});
+                this.$bus.$emit(TOKEN_EVENTS.LOADED);
+            },
+            onTokenLoadError401 (event: Object | null): void {
+                this.loginErrorMessage = "Указан неверный логин или пароль " +
+                    "пользователя"
+            },
+            onTokenLoadError500 (event: Object | null): void {
+                this.loginErrorMessage = "Сбой в работе сервера. Повторите " +
+                    "попытку позже."
+            },
+
+            // HELPERS
+
+            resetFields() {
+                this.inputs.login    = '';
+                this.inputs.password = '';
+            }
         },
 
         // --------------------------------------------------------------------
         // LIFE HOOKS
         // --------------------------------------------------------------------
 
+        mounted(){
+
+            // if token is exists and valid then REDIRECT to 'panel' page.
+            {
+                if (this.token.isLoaded === true) {
+                    if (!this.token.isExpired()) {
+                        this.$router.push({name: 'panel'});
+                    } else {
+                        this.token.del();
+                    }
+                }
+            }
+
+
+            // SUBSCRIBE on token events:
+            {
+                this.token.on(
+                    TOKEN_EVENTS.LOADED,
+                    this.onTokenLoaded
+                );
+                this.token.on(
+                    TOKEN_EVENTS.LOAD_ERROR_401,
+                    this.onTokenLoadError401
+                );
+                this.token.on(
+                    TOKEN_EVENTS.LOAD_ERROR_500,
+                    this.onTokenLoadError500
+                );
+            }
+        },
 
         // --------------------------------------------------------------------
         // CHILD COMPONENTS
         // --------------------------------------------------------------------
 
         components: {
+            ElCol,
+            ElRow,
             ElFormItem,
             ElButton
         },

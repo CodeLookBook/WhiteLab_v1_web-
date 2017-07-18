@@ -237,7 +237,7 @@
     import {COMPONENTS_EVENTS   } from "../../classes/enum/COMPONENTS_EVENTS";
     import {APP_LANGUAGES       } from "../../classes/enum/APP_LANGUAGES";
     import {APP_BUTTONS_NAMES   } from "../../classes/enum/APP_BUTTONS_NAMES";
-    import {Cookie              } from "../../classes/facades/Cookie";
+    import {Cookie              } from "../../../shared-classes/facades/Cookie";
 
     // ------------------------------------------------------------------------
     // COMPONENT

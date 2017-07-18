@@ -3,17 +3,34 @@
  */
 window.Vue = require('vue');
 
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
-
 window.axios = require('axios');
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-Vue.prototype.$http = window.axios;
+/**
+ * 'axios' object settings.
+ */
+window.axios.defaults.headers.post['Content-Type'    ] = 'application/json';
+window.axios.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
+
+
+/**
+ * Set new resource object.
+ */
+window.Vue.prototype.$http = window.axios;
+
+// Init global Token class instance
+import {Token} from "../shared-classes/facades/Token";
+Token.getInstance().url   = "/api/admin/login";
+Token.getInstance().axios = window.Vue.prototype.$http;
+
+// token.url   = "/api/admin/login";
+// token.axios = window.Vue.prototype.$http;
 
 /**
  * Vue-router
@@ -21,13 +38,13 @@ Vue.prototype.$http = window.axios;
 import VueRouter from "vue-router";
 window.Vue.use(VueRouter);
 
+
 /**
  * Vuex is a state management pattern + library for Vue.js applications. It
  * serves as a centralized store for all the components in an application,
  * with rules ensuring that the state can only be mutated in a predictable
  * fashion.
  */
-
 import Vuex from 'vuex'
 window.Vue.use(Vuex);
 

@@ -1,3 +1,7 @@
-/**
- * Created by mirtg_000 on 17.07.2017.
- */
+// @flow
+
+import {Observable} from "./Observable";
+
+class TokenLoadError401 extends Observable { }
+
+export {TokenLoadError401};

@@ -1,6 +1,4 @@
-/**
- * Created by mirtg_000 on 17.07.2017.
- */
+// @flow
 
 /**
  * Generates events end menu items ID-s;
@@ -20,7 +18,7 @@ class Id {
      * Generate new id number in string format.
      * @return {string}
      */
-    get(): string {
+    generate(): string {
         return (++_counter).toString();
     };
 }

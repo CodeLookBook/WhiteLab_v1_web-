@@ -1,9 +1,9 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 
 require('./admin-bootstrap');
 
@@ -14,8 +14,9 @@ require('./admin-bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import AdminApp    from "./components/admin/admin.vue";
-import {router}    from "./router/router";
+import AdminApp   from "./components/admin/admin.vue";
+import {Token   } from "../shared-classes/facades/Token";
+import {router  } from "./router/router";
 
 /**
  * Event bus object.
@@ -39,5 +40,5 @@ new window.Vue({
     router,
     components: {
         AdminApp,
-    }
+    },
 });

@@ -25,7 +25,7 @@ class Cookie {
 
         const matches = document.cookie.match(new RegExp(
             "(?:^|; )" +
-            name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') +
+            name.trim().replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') +
             "=([^;]*)"
         ));
 
@@ -49,10 +49,10 @@ class Cookie {
         domain ?: string,
         secure ?: boolean): void {
 
-        document.cookie = name + "=" + encodeURIComponent(value) +
+        document.cookie = name.trim() + "=" + encodeURIComponent(value.trim()) +
             ((expires) ? "; expires=" + expires.toUTCString() : "") +
-            ((path   ) ? "; path=" + path                     : "") +
-            ((domain ) ? "; domain=" + domain                 : "") +
+            ((path   ) ? "; path=" + path.trim()              : "") +
+            ((domain ) ? "; domain=" + domain.trim()          : "") +
             ((secure ) ? "; secure"                           : "");
     }
 
@@ -61,7 +61,7 @@ class Cookie {
      * @param {string} name - Cookie name.
      */
     delete(name: string): void{
-        this.set(name, "", new Date(Date.now() - 24*60*60*1000));
+        this.set(name.trim(), "", new Date(Date.now() - 24*60*60*1000));
     }
 }
 

@@ -62,7 +62,7 @@ class UsersTableSeeder extends Seeder
             $admin->surname = $user['surname'];
             $admin->login = $user['login'];
             $admin->password = bcrypt($user['password']);
-            $role = Role::where('name', $user['role'])->firstOrFaile();
+            $role = Role::where('name', $user['role'])->firstOrFail();
             $admin->role()->associate($role);
             $admin->save();
         }

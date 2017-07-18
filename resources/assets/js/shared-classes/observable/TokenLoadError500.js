@@ -1,3 +1,5 @@
-/**
- * Created by mirtg_000 on 17.07.2017.
- */
+import {Observable} from "./Observable";
+
+class TokenLoadError500 extends Observable { }
+
+export {TokenLoadError500};

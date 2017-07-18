@@ -10,15 +10,15 @@ const { mix } = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-// mix.webpackConfig({
-//     plugins: [
-//         new webpack.NormalModuleReplacementPlugin(
-//             /element-ui[\/\\]lib[\/\\]locale[\/\\]lang[\/\\]ru-RU/,
-//             'element-ui/lib/locale/lang/ru-RU')
-//     ]
-// });
 
-mix.js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css')
+    //Web users app
+mix .js('resources/assets/js/user-app/app.js', 'public/js')
+    .sass('resources/assets/sass/user-app/app.scss', 'public/css')
+
+    //Admin app
+    .js('resources/assets/js/admin-app/admin.js', 'public/js')
+    .sass('resources/assets/sass/admin-app/admin.sass', 'public/css')
+
+    //Shared Parts
     .styles('resources/assets/css/normalize.css', 'public/css/normalize.css')
     .mix.browserSync({ proxy: 'www.whitelab_v1.dev' });

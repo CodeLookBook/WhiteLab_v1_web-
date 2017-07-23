@@ -24,6 +24,7 @@
     .ADMIN-APP
         +size(100%, 100%)
         +position(relative, 0, (-260px))
+        +transition(left, 0.2s)
 
         .SIDE-NAVBAR-SLOT.CELL
             +position(absolute, 0px, 0px)
@@ -60,13 +61,15 @@
 
     .SIDE-NAVBAR-IS-SHOWED
         +position(relative, 0, 0)
-        +transition(left, 0.2)
+        +transition(left, 0.2s)
 
 
 </style>
 <script>
 
     // ------------------------------------------------------------------------
+    import {SIDE_NAVBAR_TOGGLE_EVENTS} from "../../../../shared-classes/enums/SIDE_NAVBAR_TOGGLE_EVENTS";
+
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
@@ -91,7 +94,7 @@
                 classes: Object
             } = {
                 classes: {
-                    "SIDE-NAVBAR-IS-SHOWED": true
+                    "SIDE-NAVBAR-IS-SHOWED": false
                 }
             };
             return data;
@@ -113,19 +116,25 @@
 
         methods: {
             onToggleClosed(){
-                alert('OPENED')
-                this.classes['SIDE-NAVBAR-IS-SHOWED'] = true;
+                this.classes['SIDE-NAVBAR-IS-SHOWED'] = false;
             },
             onToggleOpened(){
-                alert('CLOSED')
-                this.classes['SIDE-NAVBAR-IS-SHOWED'] = false;
+                this.classes['SIDE-NAVBAR-IS-SHOWED'] = true;
             }
-        }
+        },
 
         // --------------------------------------------------------------------
         // LIFE HOOKS
         // --------------------------------------------------------------------
 
+        mounted(){
+
+            //SUBSCRIBE on events
+            {
+                this.$bus.$on(SIDE_NAVBAR_TOGGLE_EVENTS.OPENED, this.onToggleOpened);
+                this.$bus.$on(SIDE_NAVBAR_TOGGLE_EVENTS.CLOSED, this.onToggleClosed);
+            }
+        },
 
         // --------------------------------------------------------------------
         // CHILD COMPONENTS

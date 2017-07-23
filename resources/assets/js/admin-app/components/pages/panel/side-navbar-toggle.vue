@@ -1,10 +1,11 @@
 // @flow
+
 <template lang="pug">
 
     .TOGGLE-BUTTON-WRAPPER.TABLE
         .ROW
             .CELL
-                i.el-icon-menu.TOGGLE-BUTTON(@click="onClick")
+                i.el-icon-menu.TOGGLE-BUTTON(@click="onClick()")
 
 
 </template>
@@ -26,6 +27,8 @@
         font-size: 1.85em
         line-height: 2.2em
         color: #53bdff !important
+        &:hover
+            cursor: pointer
 
 </style>
 <script>
@@ -52,15 +55,10 @@
         // --------------------------------------------------------------------
 
         data(){
-            let data = {
-                EVENTS_NAMES: Object,
-                isClosed: boolean,
-            } = {
+            return {
                 EVENT_NAMES: SIDE_NAVBAR_TOGGLE_EVENTS,
                 isClosed: true,
             };
-
-            return data;
         },
 
         // --------------------------------------------------------------------
@@ -82,9 +80,13 @@
 
                 //Create event
                 if (this.isClosed === true) {
+
+                    // OPENED
                     this.isClosed = false;
                     this.$bus.$emit(this.EVENT_NAMES.OPENED);
                 } else if (this.isClosed === false) {
+
+                    // CLOSED
                     this.isClosed = true;
                     this.$bus.$emit(this.EVENT_NAMES.CLOSED);
                 }

@@ -5,7 +5,7 @@ import {TokenUnloaded} from "../observable/TokenUnloaded";
 import {Cookie} from "./Cookie";
 import {CallBack} from "../types/CallBack";
 import {TokenDeleted} from "../observable/TokenDeleted";
-import {TOKEN_EVENTS} from "../enums/TOKEN_EVENTS";
+import {TOKEN_EVENTS} from "../../admin-app/classes/enums/events-names/TOKEN_EVENTS";
 import {TokenLoadError401} from "../observable/TokenLoadError401";
 import {TokenLoadError500} from "../observable/TokenLoadError500";
 

@@ -46,7 +46,7 @@
     import ElFormItem     from
         "../../../../../../../node_modules/element-ui/packages/form/src/form-item";
     import {Token       } from "../../../../shared-classes/facades/Token";
-    import {TOKEN_EVENTS} from "../../../../shared-classes/enums/TOKEN_EVENTS";
+    import {TOKEN_EVENTS} from "../../../classes/enums/events-names/TOKEN_EVENTS";
     import {CallBack    } from "../../../../shared-classes/types/CallBack";
     import ElRow from "element-ui/packages/row/src/row";
     import ElCol from "element-ui/packages/col/src/col";

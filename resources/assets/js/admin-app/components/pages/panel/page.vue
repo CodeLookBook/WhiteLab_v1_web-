@@ -1,8 +1,8 @@
 <template lang="pug">
 
     layout
+        side-navbar(slot="SIDE-NAVBAR-SLOT")
         side-navbar-toggle(slot="SIDE-NAVBAR-TOGGLE-SLOT")
-
 
 </template>
 <style lang="sass" scoped>
@@ -14,8 +14,10 @@
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
-    import Layout from "./layout.vue"
+    import Layout           from "./layout.vue"
+    import SideNavbar       from "./side-navbar.vue"
     import SideNavbarToggle from "./side-navbar-toggle.vue"
+
     // ------------------------------------------------------------------------
     // COMPONENT
     // ------------------------------------------------------------------------
@@ -58,6 +60,7 @@
 
         components: {
             Layout,
+            SideNavbar,
             SideNavbarToggle,
         }
     };

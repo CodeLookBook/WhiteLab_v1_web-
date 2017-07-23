@@ -5,6 +5,7 @@
     .ADMIN-APP.TABLE(:class="classes")
         .ROW
             .SIDE-NAVBAR-SLOT.CELL
+
                 slot(name="SIDE-NAVBAR-SLOT")
             .GROUP-WRAPPER-SLOT.CELL
                 .GROUP-WRAPPER.TABLE
@@ -23,13 +24,14 @@
 
     .ADMIN-APP
         +size(100%, 100%)
-        +position(relative, 0, (-260px))
+        +position(relative, 0, (-$side-navbar-width))
         +transition(left, 0.2s)
 
         .SIDE-NAVBAR-SLOT.CELL
             +position(absolute, 0px, 0px)
             width: $side-navbar-width
             height: 100%
+            overflow: auto
             background-color: gray
             //+border(yellow)
 
@@ -68,7 +70,7 @@
 <script>
 
     // ------------------------------------------------------------------------
-    import {SIDE_NAVBAR_TOGGLE_EVENTS} from "../../../../shared-classes/enums/SIDE_NAVBAR_TOGGLE_EVENTS";
+    import {SIDE_NAVBAR_TOGGLE_EVENTS} from "../../../classes/enums/events-names/SIDE_NAVBAR_TOGGLE_EVENTS";
 
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------

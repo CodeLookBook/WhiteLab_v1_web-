@@ -37,7 +37,7 @@
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
-    import {SIDE_NAVBAR_TOGGLE_EVENTS} from "../../../../shared-classes/enums/SIDE_NAVBAR_TOGGLE_EVENTS"
+    import {SIDE_NAVBAR_TOGGLE_EVENTS} from "../../../classes/enums/events-names/SIDE_NAVBAR_TOGGLE_EVENTS"
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -56,7 +56,7 @@
 
         data(){
             return {
-                EVENT_NAMES: SIDE_NAVBAR_TOGGLE_EVENTS,
+                EVENTS: SIDE_NAVBAR_TOGGLE_EVENTS,
                 isClosed: true,
             };
         },
@@ -83,14 +83,25 @@
 
                     // OPENED
                     this.isClosed = false;
-                    this.$bus.$emit(this.EVENT_NAMES.OPENED);
+                    this.$bus.$emit(this.EVENTS.OPENED);
                 } else if (this.isClosed === false) {
 
                     // CLOSED
                     this.isClosed = true;
-                    this.$bus.$emit(this.EVENT_NAMES.CLOSED);
+                    this.$bus.$emit(this.EVENTS.CLOSED);
                 }
-            }
+            },
+
+            onClosedEvent(){
+
+                if (this.isClosed === false) {
+
+                    // CLOSED
+                    this.isClosed = true;
+
+                    // You Don't have to fire 'CLOSED' event here.
+                }
+            },
         },
 
         // --------------------------------------------------------------------
@@ -98,7 +109,14 @@
         // --------------------------------------------------------------------
 
         mounted(){
-            this.$bus.$emit(this.EVENT_NAMES.CLOSED);
+
+            // SUBSCRIBE on events
+            {
+                this.$bus.$emit(this.EVENTS.CLOSED);
+
+                // Events that are produced by side-navbar menu items.
+                this.$bus.$on(this.EVENTS.CLOSED, this.onClosedEvent);
+            }
         }
 
         // --------------------------------------------------------------------

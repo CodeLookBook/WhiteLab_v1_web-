@@ -1,6 +1,6 @@
 // @flow
 
-import {Id} from "../helpers/Id";
+import {Id} from "../../helpers/Id";
 
 const id: Id = Id.getInstance();
 

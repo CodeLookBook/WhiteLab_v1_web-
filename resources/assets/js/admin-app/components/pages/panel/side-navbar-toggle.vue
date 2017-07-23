@@ -1,18 +1,7 @@
 <template lang="pug">
 
-    .SLOT
-        .SCROLL
-            slot
-
 </template>
-<style lang="sass" scoped>
-
-    @import "../../../../../../sass/shared/_mixins"
-
-    .SLOT
-        +position(relative, 0, 0)
-        +size(100%, 100%)
-        +border(grey)
+<style lang="sass">
 
 </style>
 <script>

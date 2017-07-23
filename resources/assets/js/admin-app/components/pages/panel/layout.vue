@@ -1,6 +1,8 @@
+// @flow
+
 <template lang="pug">
 
-    .ADMIN-APP.TABLE
+    .ADMIN-APP.TABLE(:class="classes")
         .ROW
             .SIDE-NAVBAR-SLOT.CELL
                 slot(name="SIDE-NAVBAR-SLOT")
@@ -56,6 +58,11 @@
                         +border(black)
 
 
+    .SIDE-NAVBAR-IS-SHOWED
+        +position(relative, 0, 0)
+        +transition(left, 0.2)
+
+
 </style>
 <script>
 
@@ -79,6 +86,16 @@
         // DATA FIELDS
         // --------------------------------------------------------------------
 
+        data(){
+            const data: {
+                classes: Object
+            } = {
+                classes: {
+                    "SIDE-NAVBAR-IS-SHOWED": true
+                }
+            };
+            return data;
+        },
 
         // --------------------------------------------------------------------
         // COMPUTED FIELDS
@@ -94,6 +111,16 @@
         // METHODS
         // --------------------------------------------------------------------
 
+        methods: {
+            onToggleClosed(){
+                alert('OPENED')
+                this.classes['SIDE-NAVBAR-IS-SHOWED'] = true;
+            },
+            onToggleOpened(){
+                alert('CLOSED')
+                this.classes['SIDE-NAVBAR-IS-SHOWED'] = false;
+            }
+        }
 
         // --------------------------------------------------------------------
         // LIFE HOOKS

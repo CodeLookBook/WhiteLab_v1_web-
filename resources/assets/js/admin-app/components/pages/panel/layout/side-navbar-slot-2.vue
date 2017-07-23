@@ -15,7 +15,7 @@
 </template>
 <style lang="sass" scoped>
 
-    @import "../../../../../../sass/shared/_mixins"
+    @import "../../../../../../sass/shared/mixins"
 
     .SLOT
         +position(absolute, 0, 0)

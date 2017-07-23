@@ -1,6 +1,7 @@
 <template lang="pug">
 
     layout
+        side-navbar-toggle(slot="SIDE-NAVBAR-TOGGLE-SLOT")
 
 
 </template>
@@ -14,7 +15,7 @@
     // ------------------------------------------------------------------------
 
     import Layout from "./layout.vue"
-
+    import SideNavbarToggle from "./side-navbar-toggle.vue"
     // ------------------------------------------------------------------------
     // COMPONENT
     // ------------------------------------------------------------------------
@@ -57,6 +58,7 @@
 
         components: {
             Layout,
+            SideNavbarToggle,
         }
     };
 

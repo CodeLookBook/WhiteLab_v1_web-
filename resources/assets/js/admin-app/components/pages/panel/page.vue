@@ -3,7 +3,7 @@
     layout
         side-navbar(slot="SIDE-NAVBAR-SLOT")
         side-navbar-toggle(slot="SIDE-NAVBAR-TOGGLE-SLOT")
-
+        router-view(slot="CONTENT-SLOT")
 </template>
 <style lang="sass" scoped>
 

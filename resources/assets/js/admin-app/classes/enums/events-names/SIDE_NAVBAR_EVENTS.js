@@ -22,7 +22,6 @@ const SIDE_NAVBAR_EVENTS = Object.freeze({
 
     //Languges buttons
     LANGUAGE_SUBMENU_ITEM_CLICKED               : id.generate(),
-    ENGLISH_LANGUAGE_MENU_ITEM_CLICKED          : id.generate(),
     RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED          : id.generate(),
     SLOVAK_LANGUAGE_MENU_ITEM_CLICKED           : id.generate(),
 

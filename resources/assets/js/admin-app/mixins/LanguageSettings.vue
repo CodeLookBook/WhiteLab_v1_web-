@@ -23,9 +23,11 @@
 
         data(){
             const data: {
+                ADMIN_APP_LANGUAGES: Object,
                 cookies : Object,
                 language: string,
             } = {
+                ADMIN_APP_LANGUAGES: LANGUAGES,
                 cookies : Cookie.getInstance(),
                 language: Cookie.getInstance().get('admin-panel.language') ?
                           Cookie.getInstance().get('admin-panel.language') :

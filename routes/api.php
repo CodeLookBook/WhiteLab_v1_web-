@@ -24,3 +24,8 @@ Route::group(['middleware'=>['super-admin']], function () {
     Route::patch ('admin/panel/greet'          , 'HomePageController@updateGreet');
     Route::delete('admin/panel/greet'          , 'HomePageController@deleteGreet');
 });
+
+
+Route::group(['middleware'=>['super-admin']], function (){
+    Route::post  ('price'                      , 'PriceController@save'          );
+});

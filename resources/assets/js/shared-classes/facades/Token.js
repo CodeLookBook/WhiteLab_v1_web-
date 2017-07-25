@@ -20,6 +20,7 @@ class Token {
     _tokenLoadError401Observable: TokenLoadError401; // Publisher/observable
     _tokenLoadError500Observable: TokenLoadError500; // Publisher/observable
     _cookie                     : Cookie;            // Cookie manager (gets, sets, deletes...)
+    _userRole                   : string;            // User role name
 
     constructor() {
 
@@ -52,7 +53,7 @@ class Token {
                     // SETUP default global HEADERS
                     {
                         this._axios.defaults.headers.common['Authorization'] =
-                            'Bearer ' + this._token;
+                            'Bearer ' + this.token;
                         this._axios.defaults.headers.post['Content-Type'] =
                             'application/json';
                         this._axios.defaults.headers.post['X-Requested-With'] =
@@ -128,10 +129,10 @@ class Token {
      * @return {string|undefined}
      * @private
      */
-    get _token(): string {
+    get token(): string {
         return this._cookie.get('token');
     }
-    set _token(value: string): void {
+    set token(value: string): void {
 
         if (typeof this._expirationTime !== 'undefined') {
 
@@ -164,8 +165,15 @@ class Token {
         let date: Date | null = null;
 
         if (typeof milliseconds !== 'undefined') {
+
             if (milliseconds !== null) {
-                date = new Date(milliseconds);
+
+                if (milliseconds.trim() !== '') {
+
+                    if (Number(milliseconds) >= 0) {
+                        date = new Date(milliseconds);
+                    }
+                }
             }
         }
 
@@ -180,7 +188,7 @@ class Token {
         // with new expiration time.
         {
             if (this.userRole) this.userRole = this.userRole ;
-            if (this._token  ) this._token   = this._token   ;
+            if (this.token  ) this.token   = this.token   ;
             if (this.isLoaded) this.isLoaded = this.isLoaded ;
         }
     }
@@ -202,8 +210,12 @@ class Token {
 
                 // If 'difference' var is less then 120000 millisecond, then
                 // 'isExpired' = true.
-                isExpired = difference/*ms*/ < 120000/*ms*/;
+                isExpired = difference/*ms*/ < 120000/*ms, (=120s)*/;
+            } else {
+                isExpired = true;
             }
+        } else {
+            isExpired = true;
         }
 
         return isExpired;
@@ -281,7 +293,7 @@ class Token {
 
                 //SAVE token.
                 if (response.data.hasOwnProperty('token')) {
-                    this._token = response.data.token;
+                    this.token = response.data.token;
                 } else {
 
                     // DELETE TOKEN INFO saved in cookies.

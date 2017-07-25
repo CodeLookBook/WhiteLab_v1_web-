@@ -17,5 +17,10 @@ use Illuminate\Http\Request;
 /**
  * Routes available for all web users;
  */
-Route::post('/admin/login'          , 'UserController@login'    );
-Route::get ('/admin/auth/validation', 'AuthController@isValid'  );
+Route::post('/admin/login'         , 'UserController@login'          );
+Route::post('/admin/panel/greet'                , 'HomePageController@getGreet'   );
+
+Route::group(['middleware'=>['super-admin']], function () {
+    Route::patch ('admin/panel/greet'          , 'HomePageController@updateGreet');
+    Route::delete('admin/panel/greet'          , 'HomePageController@deleteGreet');
+});

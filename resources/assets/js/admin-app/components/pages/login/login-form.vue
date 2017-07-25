@@ -18,7 +18,7 @@
             el-button.LOGIN-BUTTON(type="primary", @click="onFormSubmit()")
                 | Войти
             el-row
-                el-col(xs="24", sm="24", md="24", lg="24")
+                el-col(:xs="24", :sm="24", :md="24", :lg="24")
                     p(style="color: red; font-size: 0.85em;") {{loginErrorMessage}}
 
 </template>

@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 
+import Vuex from "vuex";
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,6 +17,7 @@ require('./bootstrap');
 
 import App    from "./components/app/app.vue"
 import {router} from "./router/router"
+import store      from "../storage/Store";
 
 
 /**
@@ -37,6 +39,7 @@ Object.defineProperties( window.Vue.prototype, {
 new window.Vue({
     el: '#app',
     router: router,
+    store: new Vuex.Store(store),
     template: '<app></app>',
     components: {
         App,

@@ -7,6 +7,7 @@
 
 require('./admin-bootstrap');
 
+import Vuex from "vuex";
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +16,9 @@ require('./admin-bootstrap');
  */
 
 import AdminApp   from "./components/admin/admin.vue";
-import {Token   } from "../shared-classes/facades/Token";
 import {router  } from "./router/router";
+import store      from "../storage/Store";
+
 
 /**
  * Event bus object.
@@ -26,7 +28,7 @@ const EventBus: Vue =  new window.Vue();
 Object.defineProperties( window.Vue.prototype, {
     $bus: {
         get: function () {
-            return EventBus
+            return EventBus;
         }
     },
 });
@@ -38,6 +40,7 @@ new window.Vue({
     el: '#admin-app',
     template: '<admin-app></admin-app>',
     router,
+    store: new Vuex.Store(store),
     components: {
         AdminApp,
     },

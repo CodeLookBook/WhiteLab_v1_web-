@@ -19,11 +19,10 @@
                     .CONTENT.TABLE: .ROW: .CELL
                         div
                             img.BIG-LOGO(src="/images/logos/logo_whitelab_without_border_white.png")
-                            p
-                                | Городской формат центра красоты, где все
-                                | к чему привыкла самая взыскательная аудитория
-                                | делается быстро и с искренней доброжелательностью
-                                | гостеприимного дома
+                            p(v-if="language === APP_LANGUAGES.RUSSIAN") {{greetTextRu}}
+                            p(v-if="language === APP_LANGUAGES.ENGLISH") {{greetTextEn}}
+                            p(v-if="language === APP_LANGUAGES.SLOVAK ") {{greetTextSl}}
+
                             el-button.ORDER {{BUTTONS_NAMES.ORDER_BUTTON[language]}}
 
                             social-sharing.SOCIAL-SHARE(
@@ -132,6 +131,7 @@
     import {APP_BUTTONS_NAMES} from "../../../classes/enum/APP_BUTTONS_NAMES";
     import {COMPONENTS_EVENTS} from "../../../classes/enum/COMPONENTS_EVENTS";
     import {Cookie           } from "../../../../shared-classes/facades/Cookie";
+    import {mapActions, mapGetters} from "vuex";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -171,7 +171,16 @@
         // COMPUTED FIELDS
         // --------------------------------------------------------------------
 
+        computed: {
 
+            //STORAGE METHODS
+
+            ...mapGetters('HomePageGreet',[
+                'greetTextRu',
+                'greetTextEn',
+                'greetTextSl',
+            ]),
+        },
         // --------------------------------------------------------------------
         // WATCHED FIELDS
         // --------------------------------------------------------------------
@@ -182,6 +191,15 @@
         // --------------------------------------------------------------------
 
         methods: {
+
+            // STORAGE METHODS
+
+            ...mapActions('HomePageGreet', [
+                'downloadGreet' ,
+            ]),
+
+            // EVENT HANDLERS
+
             onAppLanguageChangedOnRussian(){
                 this.language = this.APP_LANGUAGES.RUSSIAN;
             },
@@ -212,6 +230,8 @@
                 this.onAppLanguageChangedOnSlovak
             );
 
+            //DOWNLOAD malty-language GREET texts from server
+            this.downloadGreet();
         }
 
         // --------------------------------------------------------------------

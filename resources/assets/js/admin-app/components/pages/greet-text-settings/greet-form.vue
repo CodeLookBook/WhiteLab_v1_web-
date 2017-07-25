@@ -5,24 +5,28 @@
     el-form(:model="inputs", :rules="rules", label-position="left", ref="greetForm")
 
         el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Введите текст для русскоязычной версии сайта", prop="greetTextRu")
-            el-input(type="textarea", v-model="inputs.greetTextRu")
+            el-input(type="textarea", v-model="inputs.greetRu")
         el-form-item(v-if="LANGUAGES.SLOVAK  === language" , label="Zadajte text pre ruských jazykovej verzii webu", prop="greetTextRu")
-            el-input(type="textarea", v-model="inputs.greetTextRu")
+            el-input(type="textarea", v-model="inputs.greetRu")
 
         el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Введите текст для англоязычной версии сайта", prop="greetTextEn")
-            el-input(type="textarea", v-model="inputs.greetTextEn")
+            el-input(type="textarea", v-model="inputs.greetEn")
         el-form-item(v-if="LANGUAGES.SLOVAK  === language" , label="Zadávanie text pre anglickú verziu webu", prop="greetTextEn")
-            el-input(type="textarea", v-model="inputs.greetTextEn")
+            el-input(type="textarea", v-model="inputs.greetEn")
 
         el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Введите текст для словакоязычной версии сайта", prop="greetTextSl")
-            el-input(type="textarea", v-model="inputs.greetTextSl")
+            el-input(type="textarea", v-model="inputs.greetSl")
         el-form-item(v-if="LANGUAGES.SLOVAK  === language" , label="Zadajte text, pre slovakoyazychnoy verziu webu", prop="greetTextSl")
-            el-input(type="textarea", v-model="inputs.greetTextSl")
+            el-input(type="textarea", v-model="inputs.greetSl")
 
         el-form-item(v-if="LANGUAGES.RUSSIAN === language", :xs="24", :sm="24", :md="2", :lg="2")
-            el-button(type="primary", @click="onFormSubmit") Сохранить
+            el-button(:type="buttons.save.type", @click="onSaveButtonClick") Сохранить
+            el-button(:type="buttons.save.type", @click="onDeleteButtonClick") Удалить
         el-form-item(v-if="LANGUAGES.SLOVAK  === language")
-            el-button(type="primary",  @click="onFormSubmit") Udržať
+            el-button(:type="buttons.save.type", @click="onSaveButtonClick") Udržať
+            el-button(:type="buttons.save.type", @click="onDeleteButtonClick") Vymazať
+
+
 
 </template>
 <style lang="sass">
@@ -35,10 +39,14 @@
     // ------------------------------------------------------------------------
 
     import {Cookie} from "../../../../shared-classes/facades/Cookie";
-    import LanguageSettings from "../../../mixins/LanguageSettings.vue"
+    import LanguageSettings  from "../../../mixins/LanguageSettings.vue"
+    import UserMessage from "../../../mixins/UserMessage.vue"
     import ElForm from "../../../../../../../node_modules/element-ui/packages/form/src/form";
     import {LANGUAGES} from "../../../classes/enums/LANGUAGES";
     import ElFormItem from "../../../../../../../node_modules/element-ui/packages/form/src/form-item";
+    import {mapActions, mapGetters, mapMutations} from "vuex";
+    import {Greet} from "../../../../shared-classes/entities/Greet";
+    import {Token} from "../../../../shared-classes/facades/Token";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -56,7 +64,8 @@
         // --------------------------------------------------------------------
 
         mixins: [
-            LanguageSettings
+            LanguageSettings,
+            UserMessage,
         ],
 
         // --------------------------------------------------------------------
@@ -67,35 +76,61 @@
             const data: {
                 LANGUAGES   : Object,
                 cookie      : Object,
+                token       : Token,
+                buttons     : Object,
                 inputs      : Object,
             } = {
                 LANGUAGES   : LANGUAGES,
                 cookie      : Cookie.getInstance(),
+                token       : Token.getInstance(),
+                buttons     : {
+                    save: {
+                        type: "primary",
+                    },
+                    del:  {
+                        type: "primary"
+                    }
+                },
                 inputs      : {
-                    greetTextRu: Cookie.getInstance().get('admin-panel.greet_ru') ?
-                                 Cookie.getInstance().get('admin-panel.greet_ru'):'',
-                    greetTextEn: Cookie.getInstance().get('admin-panel.greet_en') ?
-                                 Cookie.getInstance().get('admin-panel.greet_en'):'',
-                    greetTextSl: Cookie.getInstance().get('admin-panel.greet_sl') ?
-                                 Cookie.getInstance().get('admin-panel.greet_sl'):'',
+                    greetRu: '',
+                    greetEn: '',
+                    greetSl: '',
                 },
                 rules       : {
-                    greetTextRu: [
+                    greetRu: [
                         {
                             required: true,
                             trigger : 'blur, change',
                             message : ''
-                        }
-                    ],
-                    greetTextEn: [
+                        },
                         {
-                            required: true,
+                            min     : 1,
+                            max     : 1800,
+                            message : '',
                             trigger : 'blur, change'
                         }
                     ],
-                    greetTextSl: [
+                    greetEn: [
                         {
                             required: true,
+                            trigger : 'blur, change'
+                        },
+                        {
+                            min     : 1,
+                            max     : 1800,
+                            message : '',
+                            trigger : 'blur, change'
+                        }
+                    ],
+                    greetSl: [
+                        {
+                            required: true,
+                            trigger : 'blur, change'
+                        },
+                        {
+                            min     : 1,
+                            max     : 1800,
+                            message : '',
                             trigger : 'blur, change'
                         }
                     ]
@@ -109,55 +144,68 @@
         // COMPUTED FIELDS
         // --------------------------------------------------------------------
 
+        computed: {
+            ...mapGetters('HomePageGreet',[
+                'greetTextRu',
+                'greetTextEn',
+                'greetTextSl',
+            ]),
+        },
 
         // --------------------------------------------------------------------
         // WATCHED FIELDS
         // --------------------------------------------------------------------
 
         watch: {
+
+            greetTextRu(newText, oldText){
+                this.inputs.greetRu = newText;
+            },
+            greetTextEn(newText, oldText){
+                this.inputs.greetEn = newText;
+            },
+            greetTextSl(newText, oldText){
+                this.inputs.greetSl = newText;
+            },
+
             language: {
                 handler: function (newLang, oldLang) {
 
                     // Change language of error messages.
                     if (newLang === LANGUAGES.RUSSIAN) {
-                        this.rules.greetTextRu[0].message = "Обязательное поле.";
-                        this.rules.greetTextEn[0].message = "Обязательное поле.";
-                        this.rules.greetTextSl[0].message = "Обязательное поле.";
+
+                        // Change form errors messages.
+                        {
+                            this.rules.greetRu[0].message = "Обязательное поле.";
+                            this.rules.greetEn[0].message = "Обязательное поле.";
+                            this.rules.greetSl[0].message = "Обязательное поле.";
+
+                            this.rules.greetRu[1].message = "Масксимальное " +
+                                "количество символов не должно превышать 1800 знаков.";
+                            this.rules.greetEn[1].message = "Масксимальное " +
+                                "количество символов не должно превышать 1800 знаков.";
+                            this.rules.greetSl[1].message = "Масксимальное " +
+                                "количество символов не должно превышать 1800 знаков.";
+                        }
                     } else if (newLang === LANGUAGES.SLOVAK) {
-                        this.rules.greetTextRu[0].message = "Povinné pole.";
-                        this.rules.greetTextEn[0].message = "Povinné pole.";
-                        this.rules.greetTextSl[0].message = "Povinné pole.";
+
+                        // Change form errors messages.
+                        {
+                            this.rules.greetRu[0].message = "Povinné pole.";
+                            this.rules.greetEn[0].message = "Povinné pole.";
+                            this.rules.greetSl[0].message = "Povinné pole.";
+
+                            this.rules.greetRu[1].message = "Maximálny počet " +
+                                "znakov by nemal presiahnuť 1800 znakov.";
+                            this.rules.greetEn[1].message = "Maximálny počet " +
+                                "znakov by nemal presiahnuť 1800 znakov.";
+                            this.rules.greetSl[1].message = "Maximálny počet " +
+                                "znakov by nemal presiahnuť 1800 znakov.";
+                        }
                     }
                 },
                 immediate: true
             },
-
-            /**
-             * Save textarea text to cookies.
-             */
-            'inputs.greetTextRu': {
-                handler: function (newText: string, oldText: string) {
-                    this.cookie.set('admin-panel.greet_ru', newText);
-                }
-            },
-
-            /**
-             * Save textarea text to cookies.
-             */
-            'inputs.greetTextEn': {
-                handler: function (newText: string, oldText: string) {
-                    this.cookie.set('admin-panel.greet_en', newText);
-                }
-            },
-
-            /**
-             * Save textarea text to cookies.
-             */
-            'inputs.greetTextSl': {
-                handler: function (newText: string, oldText: string) {
-                    this.cookie.set('admin-panel.greet_sl', newText);
-                }
-            }
         },
 
         // --------------------------------------------------------------------
@@ -166,23 +214,73 @@
 
         methods: {
 
+            ...mapActions('HomePageGreet', [
+                'downloadGreet' ,
+                'uploadGreet'   ,
+                'deleteGreet'   ,
+            ]),
+
             // EVENT HANDLERS
 
-            onFormSubmit() {
+            onSaveButtonClick() {
                 this.$refs['greetForm'].validate((valid) => {
 
                     // IF inputs are VALID
                     if (valid) {
 
-                        // RESET COOKIES
-                        {
-                            this.cookie.del('admin-panel.greet_ru');
-                            this.cookie.del('admin-panel.greet_en');
-                            this.cookie.del('admin-panel.greet_sl');
-                        }
+                        const greet = new Greet(
+                            this.inputs.greetRu,
+                            this.inputs.greetEn,
+                            this.inputs.greetSl,
+                        );
+
+                        this.uploadGreet(greet).then(
+                            (success) => {
+                                this.showDataUploadSuccessMessage();
+                            },
+                            (error) => {
+
+                                if (this.token.isLoaded) {
+
+                                    if (this.token.isExpired()) {
+                                        this.token.del();
+                                        this.showTokenErrorAlert();
+                                    } else {
+                                        this.showDataLoadErrorAlert();
+                                    }
+                                } else {
+                                    this.showTokenErrorAlert();
+                                }
+                            }
+                        );
                     }
                 });
             },
+
+            onDeleteButtonClick() {
+                this.deleteGreet().then(
+                    (success) => {
+                        this.showDataUploadSuccessMessage();
+                        this.$refs['greetForm'].resetFields();
+                    },
+                    (error) => {
+
+                        if (this.token.isLoaded) {
+
+                            if (this.token.isExpired()) {
+                                this.token.del();
+                                this.showTokenErrorAlert();
+                            } else {
+                                this.showDataLoadErrorAlert();
+                            }
+                        } else {
+                            this.showTokenErrorAlert();
+                        }
+                    }
+                );
+
+
+            }
         },
 
         // --------------------------------------------------------------------
@@ -191,6 +289,38 @@
 
         mounted(){
 
+            //DOWNLOAD malty-language GREET texts from server
+            this.downloadGreet().then((success)=>{
+                /*this.$message({
+                    message: (function(component){
+
+                        let msg = '';
+
+                        if(component.language === component.LANGUAGES.RUSSIAN){
+                            msg = 'Данные успешно загруженны.';
+                        } else {
+                            msg = 'Dáta bola úspešne nahraný.';
+                        }
+
+                        return msg;
+                    }(this)),
+                    showClose: true,
+                    type: 'success'
+                });*/
+            },(error)=>{
+
+                if(this.token.isLoaded){
+
+                    if(this.token.isExpired()){
+                        this.token.del();
+                        this.showTokenErrorAlert();
+                    } else {
+                        this.showDataLoadErrorAlert();
+                    }
+                } else {
+                    this.showDataLoadErrorAlert();
+                }
+            });
         },
 
         // --------------------------------------------------------------------

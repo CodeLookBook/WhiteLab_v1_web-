@@ -26,11 +26,20 @@ window.Vue.prototype.$http = window.axios;
 
 // Init global Token class instance
 import {Token} from "../shared-classes/facades/Token";
+
+// !!!Don't setup user role to Token. It will be done, automatically.
+
+//api that creates token and sent to client.
 Token.getInstance().url   = "/api/admin/login";
 Token.getInstance().axios = window.Vue.prototype.$http;
 
-// token.url   = "/api/admin/login";
-// token.axios = window.Vue.prototype.$http;
+
+/**
+ * This is a polyfill of the ES6 Promise. The implementation is a
+ * subset of rsvp.js extracted by @jakearchibald, if you're wanting
+ * extra features and more debugging options, check out the full library.
+ */
+var Promise = require('es6-promise').Promise;
 
 /**
  * Vue-router

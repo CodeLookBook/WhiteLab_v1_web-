@@ -110,6 +110,8 @@
 
         methods:{
             onMenuSelect (key: string, keyPath) {
+
+                console.log()
                 switch (key){
 
                     // HOME PAGE SETTINGS
@@ -120,6 +122,7 @@
                     case this.EVENTS.CHANG_GREET_TEXT_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.CHANG_GREET_TEXT_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
+                        this.$router.push({name: 'homePageGreetTextSettings'});
                         break;
                     case this.EVENTS.CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM_CLICKED);
@@ -136,6 +139,7 @@
                     case this.EVENTS.EDIT_PRICE_LIST_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.EDIT_PRICE_LIST_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
+                        this.$router.push({name: 'editPrice'});
                         break;
 
                     // LANGUAGES

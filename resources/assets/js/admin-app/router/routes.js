@@ -9,7 +9,12 @@ export default [
         path: '/admin/panel', name: 'panel', component: PanelPage, children: [
             {
                 path: 'home-page-greet-text-settings',
-                /*name     : 'homePageGreetTextSettings',*/
+                name     : 'homePageGreetTextSettings',
+                component: HomePageGreetTextSettings,
+            },
+            {
+                path: 'edit-price',
+                name     : 'editPrice',
                 component: HomePageGreetTextSettings,
             }
         ],

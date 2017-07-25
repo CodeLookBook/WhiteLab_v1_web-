@@ -17,8 +17,10 @@ use Illuminate\Http\Request;
 /**
  * Routes available for all web users;
  */
-Route::post('/admin/login'         , 'UserController@login'          );
-Route::post('/admin/panel/greet'                , 'HomePageController@getGreet'   );
+Route::post('/admin/login'                     , 'UserController@login'            );
+Route::post('/admin/panel/greet'               , 'HomePageController@getGreet'     );
+Route::get ('/admin/panel/price'               , 'PriceController@download'        );
+
 
 Route::group(['middleware'=>['super-admin']], function () {
     Route::patch ('admin/panel/greet'          , 'HomePageController@updateGreet');
@@ -27,5 +29,5 @@ Route::group(['middleware'=>['super-admin']], function () {
 
 
 Route::group(['middleware'=>['super-admin']], function (){
-    Route::post  ('price'                      , 'PriceController@save'          );
+    Route::post  ('admin/panel/price'           , 'PriceController@upload'       );
 });

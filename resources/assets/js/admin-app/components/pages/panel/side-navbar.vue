@@ -142,6 +142,14 @@
                         this.$router.push({name: 'editPrice'});
                         break;
 
+                    //ADDRESS MAP
+                    case this.EVENTS.EDIT_ADDRESS_ITEM_CLICKED:
+                        this.$bus.$emit(this.EVENTS.EDIT_ADDRESS_ITEM_CLICKED);
+                        this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
+                        this.$router.push({name: 'editAddress'});
+                        break;
+
+
                     // LANGUAGES
                     case this.EVENTS.LANGUAGE_SUBMENU_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.LANGUAGE_SUBMENU_ITEM_CLICKED);

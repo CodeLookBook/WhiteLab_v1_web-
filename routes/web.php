@@ -15,6 +15,6 @@ Route::get('/{section?}', function () {
     return view('partials/app-partial');
 })->where('section','[(?:(?<!api).)*(?<!api) | (?:(?<!admin).)*(?<!admin)]');
 
-Route::get('/admin/{section_1?}/{section_2?}', function () {
+Route::get('/admin/{section_1?}/{section_2?}/{section_3?}', function () {
     return view('partials/admin-partial');
 });

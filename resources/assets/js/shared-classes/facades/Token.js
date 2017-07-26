@@ -162,17 +162,14 @@ class Token {
     get _expirationTime(): Date | null {
 
         const milliseconds: string = this._cookie.get('token.expirationTime');
-        let date: Date | null = null;
+        let   date: Date | null    = null;
 
         if (typeof milliseconds !== 'undefined') {
 
             if (milliseconds !== null) {
 
                 if (milliseconds.trim() !== '') {
-
-                    if (Number(milliseconds) >= 0) {
-                        date = new Date(milliseconds);
-                    }
+                    date = new Date(milliseconds);
                 }
             }
         }

@@ -181,6 +181,61 @@
                     type: 'success',
                 });
             },
+            showPDFFileTypeErrorAlert() {
+
+                let title       : string = ''
+                let errorMessage: string = '';
+
+                switch (this.language){
+                    case this.LANGUAGES.RUSSIAN:
+                        title        = 'Уведомление';
+                        errorMessage = 'Файл должен иметь PDF формат.';
+                        break;
+                    case this.LANGUAGES.SLOVAK:
+                        title        = 'Oznámenie';
+                        errorMessage = "Súbor musí byť vo formáte PDF.";
+                        break;
+                    default:
+                        title        = 'Уведомление';
+                        errorMessage = 'Файл должен иметь PDF формат.';
+                }
+
+                this.$alert(errorMessage, title, {
+                    confirmButtonText: 'OK',
+                    callback: action => {
+                    },
+                    customClass: "CUSTOM-ALERT-WINDOW-CLASS",
+                });
+            },
+            showFileSizeErrorAlert   () {
+
+                let title       : string = '';
+                let errorMessage: string = '';
+
+                switch (this.language){
+                    case this.LANGUAGES.RUSSIAN:
+                        title        = 'Уведомление';
+                        errorMessage = 'Превышен установленный лимит размера файла.' +
+                                       'Выберите файл меньшего размера.';
+                        break;
+                    case this.LANGUAGES.SLOVAK:
+                        title        = 'Oznámenie';
+                        errorMessage = "Prekročí limit veľkosti súboru." +
+                                       "Vyberte menšiu veľkosť súboru.";
+                        break;
+                    default:
+                        title        = 'Уведомление';
+                        errorMessage = 'Превышен установленный лимит размера файла.' +
+                                       'Выберите файл меньшего размера.';
+                }
+
+                this.$alert(errorMessage, title, {
+                    confirmButtonText: 'OK',
+                    callback: action => {
+                    },
+                    customClass: "CUSTOM-ALERT-WINDOW-CLASS",
+                });
+            },
         },
 
         // --------------------------------------------------------------------

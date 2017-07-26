@@ -246,7 +246,7 @@
                                         this.token.del();
                                         this.showTokenErrorAlert();
                                     } else {
-                                        this.showDataLoadErrorAlert();
+                                        this.showDataUploadErrorAlert();
                                     }
                                 } else {
                                     this.showTokenErrorAlert();
@@ -271,7 +271,7 @@
                                 this.token.del();
                                 this.showTokenErrorAlert();
                             } else {
-                                this.showDataLoadErrorAlert();
+                                this.showDataUploadErrorAlert();
                             }
                         } else {
                             this.showTokenErrorAlert();
@@ -318,7 +318,7 @@
                         this.showDataLoadErrorAlert();
                     }
                 } else {
-                    this.showDataLoadErrorAlert();
+                    this.showTokenErrorAlert();
                 }
             });
         },

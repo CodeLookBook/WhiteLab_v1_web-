@@ -9,6 +9,10 @@ const SIDE_NAVBAR_BUTTONS = Object.freeze({
         ru: "Настройки домашней страницы",
         sl: "Nastavenie Hlavná stránka",
     }),
+    CHANGE_GREET_BLOCK_FON_ITEM_CLICKED: Object.freeze({
+        ru: "Фон стартовой страницы",
+        sl: "Pozadie začiatok stránky",
+    }),
     CHANG_GREET_TEXT_ITEM: Object.freeze({
         ru: 'Tекст приветствия',
         sl: 'Textové pozdravy',

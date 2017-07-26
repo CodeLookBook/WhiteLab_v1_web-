@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Greet;
 use App\Http\Requests\CreateGreet;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class HomePageController extends Controller
 {
@@ -25,7 +28,6 @@ class HomePageController extends Controller
 
         return response()->json(compact('greet'));
     }
-
     function updateGreet(CreateGreet $request){
 
         // The 'Greets' table will always contain 1 record(row).
@@ -84,5 +86,24 @@ class HomePageController extends Controller
             $greet->save();
         }
     }
+    function uploadGreetBlockFon(Request $request){
 
+        $file = $request->file('home-page_greet-block-fon');
+
+        if($file){
+
+            $extension = $file->extension();
+            $clientOriginalExtension = $file->getClientOriginalExtension();
+            $isJPEG = mb_strtolower($extension) == 'jpeg';
+            $isJPG  = mb_strtolower($clientOriginalExtension) == 'jpg';
+
+            if( $isJPEG && $isJPG){
+                Storage::disk('fons')->put('home-page_greet-block-fon.'.mb_strtolower($clientOriginalExtension), File::get($file));
+            } else {
+                return response()->json(['wrong_file_extension'], 415);
+            }
+        } else {
+            response('wrong_file_type', 422);
+        }
+    }
 }

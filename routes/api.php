@@ -20,12 +20,12 @@ use Illuminate\Http\Request;
 Route::post('/admin/login'                     , 'UserController@login'          );
 Route::post('/admin/panel/greet'               , 'HomePageController@getGreet'   );
 Route::get ('/admin/panel/price'               , 'PriceController@download'      );
-Route::get ('/admin/panel/address_map'         , 'AddressController@download'    );
 
 
 Route::group(['middleware'=>['super-admin']], function () {
     Route::patch ('admin/panel/greet'          , 'HomePageController@updateGreet');
     Route::delete('admin/panel/greet'          , 'HomePageController@deleteGreet');
+    Route::post  ('admin/panel/home-page_greet-block-fon', 'HomePageController@uploadGreetBlockFon');
 });
 
 

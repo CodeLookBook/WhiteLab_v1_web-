@@ -52,10 +52,13 @@
         background-color: black
 
         .DIV-IMG
-            width:  100%
+            width: 100%
             height: 100%
             background-size: cover
-            background: #b6b6b6 url("/images/GREET-SLIDE-FON_BLACK.jpg") center center
+            background-repeat: no-repeat
+            background-color: #b6b6b6
+            background-position: center center
+            background-image:  url(/home-page_greet-block-fon.jpg)
 
             .CONTENT
                 position: relative

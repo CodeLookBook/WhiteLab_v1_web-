@@ -18,7 +18,6 @@ class AddressController extends Controller
             $clientOriginalExtension = $file->getClientOriginalExtension();
             $isJPEG = mb_strtolower($extension) == 'jpeg';
             $isJPG  = mb_strtolower($clientOriginalExtension) == 'jpg';
-            //return response()->json(['extension'=>$file->getClientOriginalExtension()]);
 
             if( $isJPEG && $isJPG){
                 Storage::disk('address')->put('address_map.'.mb_strtolower($clientOriginalExtension), File::get($file));
@@ -27,17 +26,6 @@ class AddressController extends Controller
             }
         } else {
             response('wrong_file_type', 422);
-        }
-    }
-
-    public function download(){
-
-        return response()->json(['url' => Storage::url('address/address_map.jpg')]);
-
-        if(Storage::disk('address')->exists('address_map.jpg')){
-            return \response()->make(Storage::disk('address')->get('address_map.jpg'), 200);
-        } else {
-            response('file_not_found', 500);
         }
     }
 }

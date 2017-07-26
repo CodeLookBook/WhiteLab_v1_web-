@@ -15,6 +15,8 @@
                 |{{BUTTONS.CHANG_GREET_TEXT_ITEM[language]}}
             el-menu-item(:index="EVENTS.CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM_CLICKED")
                 |{{BUTTONS.CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM[language]}}
+            el-menu-item(:index="EVENTS.CHANGE_GREET_BLOCK_FON_ITEM_CLICKED")
+                |{{BUTTONS.CHANGE_GREET_BLOCK_FON_ITEM_CLICKED[language]}}
 
         //VACANCES PAGE SETTINGS
         el-menu-item(:index="EVENTS.EDIT_VACANCIES_LIST_ITEM_CLICKED")
@@ -128,21 +130,26 @@
                         this.$bus.$emit(this.EVENTS.CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
                         break;
+                    case this.EVENTS.CHANGE_GREET_BLOCK_FON_ITEM_CLICKED:
+                        this.$bus.$emit(this.EVENTS.CHANGE_GREET_BLOCK_FON_ITEM_CLICKED);
+                        this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
+                        this.$router.push({name: 'editHomePageGreeBlockFon'});
+                        break;
 
-                    // VACANCIES
+                    // VACANCIES SETTINGS
                     case this.EVENTS.EDIT_VACANCIES_LIST_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.EDIT_VACANCIES_LIST_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
                         break;
 
-                    // PRICE
+                    // PRICE SETTINGS
                     case this.EVENTS.EDIT_PRICE_LIST_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.EDIT_PRICE_LIST_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
                         this.$router.push({name: 'editPrice'});
                         break;
 
-                    //ADDRESS MAP
+                    //ADDRESS MAP SETTINGS
                     case this.EVENTS.EDIT_ADDRESS_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.EDIT_ADDRESS_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
@@ -150,7 +157,7 @@
                         break;
 
 
-                    // LANGUAGES
+                    // LANGUAGES SETTINGS
                     case this.EVENTS.LANGUAGE_SUBMENU_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.LANGUAGE_SUBMENU_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);

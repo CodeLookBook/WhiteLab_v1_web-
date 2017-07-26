@@ -24,9 +24,7 @@ Route::get('/{section_1?}/{section_2?}/{section_3?}/{section_4?}', function ($se
 
         return view('partials/admin-partial');
 
-    }
-    else if(preg_match('/address_map.jpg*/', $section_1)) {
-    //else if(preg_match('/'.preg_quote('storage/').'*/', $section_1)) {
+    } else if(preg_match('/address_map.jpg*/', $section_1)) {
 
         $path = storage_path('app/public/address/address_map.jpg');
 
@@ -41,6 +39,22 @@ Route::get('/{section_1?}/{section_2?}/{section_3?}/{section_4?}', function ($se
             $response->header("Content-Type", $type);
 
             return $response;
+
+    } else if(preg_match('/home-page_greet-block-fon.jpg*/', $section_1)) {
+
+        $path = storage_path('app/public/fons/home-page_greet-block-fon.jpg');
+
+        if (!File::exists($path)) {
+            abort(404);
+        }
+
+        $file = File::get($path);
+        $type = File::mimeType($path);
+
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+
+        return $response;
 
     }
     else {

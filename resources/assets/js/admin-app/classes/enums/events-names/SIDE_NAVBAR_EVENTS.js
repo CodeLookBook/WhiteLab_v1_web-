@@ -17,6 +17,7 @@ const SIDE_NAVBAR_EVENTS = Object.freeze({
 
     // Buttons that manages some elements on HOME PAGE
     HOME_PAGE_SETTINGS_ITEM_CLICKED             : id.generate(),
+    CHANGE_GREET_BLOCK_FON_ITEM_CLICKED         : id.generate(),
     CHANG_GREET_TEXT_ITEM_CLICKED               : id.generate(),
     CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM_CLICKED : id.generate(),
 

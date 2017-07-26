@@ -383,7 +383,8 @@
                 window.location.href = 'https://www.instagram.com';
             },
             onPriceMenuItemClick            (): void {
-                this.$router.push({name: 'price'})
+                window.open("/api/admin/panel/price",'_blank');
+
             },
             onAddressMenuItemClick          (): void {
                 this.$router.push({name: 'contacts'});

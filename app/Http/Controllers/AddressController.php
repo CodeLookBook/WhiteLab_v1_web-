@@ -31,11 +31,11 @@ class AddressController extends Controller
     }
 
     public function download(){
+
+        return response()->json(['url' => Storage::url('address/address_map.jpg')]);
+
         if(Storage::disk('address')->exists('address_map.jpg')){
-            return \response()->make(Storage::disk('address')->get('address_map.jpg'), 200, [
-                'Content-Type' => 'image/jpeg',
-                'Content-Disposition' => 'inline; filename="address_map.jpg"'
-            ]);
+            return \response()->make(Storage::disk('address')->get('address_map.jpg'), 200);
         } else {
             response('file_not_found', 500);
         }

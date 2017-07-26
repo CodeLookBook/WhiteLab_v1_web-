@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 Route::post('/admin/login'                     , 'UserController@login'          );
 Route::post('/admin/panel/greet'               , 'HomePageController@getGreet'   );
 Route::get ('/admin/panel/price'               , 'PriceController@download'      );
+Route::get ('/admin/panel/address_map'         , 'AddressController@download'    );
 
 
 Route::group(['middleware'=>['super-admin']], function () {
@@ -30,4 +31,8 @@ Route::group(['middleware'=>['super-admin']], function () {
 
 Route::group(['middleware'=>['super-admin']], function (){
     Route::post  ('admin/panel/price'           , 'PriceController@upload'       );
+});
+
+Route::group(['middleware'=>['super-admin']], function (){
+    Route::post  ('admin/panel/address_map'     , 'AddressController@upload'     );
 });

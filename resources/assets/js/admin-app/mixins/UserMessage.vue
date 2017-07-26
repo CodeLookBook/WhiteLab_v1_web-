@@ -207,6 +207,33 @@
                     customClass: "CUSTOM-ALERT-WINDOW-CLASS",
                 });
             },
+            showJPGFileTypeErrorAlert() {
+
+                let title       : string = ''
+                let errorMessage: string = '';
+
+                switch (this.language){
+                    case this.LANGUAGES.RUSSIAN:
+                        title        = 'Уведомление';
+                        errorMessage = 'Файл должен иметь JPG формат.';
+                        break;
+                    case this.LANGUAGES.SLOVAK:
+                        title        = 'Oznámenie';
+                        errorMessage = "Súbor musí byť vo formáte JPG.";
+                        break;
+                    default:
+                        title        = 'Уведомление';
+                        errorMessage = 'Файл должен иметь JPG формат.';
+                }
+
+                this.$alert(errorMessage, title, {
+                    confirmButtonText: 'OK',
+                    callback: action => {
+                    },
+                    customClass: "CUSTOM-ALERT-WINDOW-CLASS",
+                });
+            },
+
             showFileSizeErrorAlert   () {
 
                 let title       : string = '';

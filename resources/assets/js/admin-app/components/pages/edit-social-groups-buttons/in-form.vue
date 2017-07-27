@@ -114,8 +114,11 @@
         // --------------------------------------------------------------------
 
         watch: {
-            instagramGroupReference(newReference, oldReference) {
+            instagramGroupReference: {
+                handler: function (newReference, oldReference) {
                     this.inputs.reference = newReference;
+                },
+                immediate: true,
             },
             language:{
                 handler: function (newLanguage, oldLanguage) {

@@ -61,6 +61,9 @@ export default {
                 }).then(
                     (response) => {
 
+                        console.log('response =>')
+                        console.log(response)
+
                         // SAVE LOADED STATE
                         context.commit(
                             'setFacebookShareButtonSettings',

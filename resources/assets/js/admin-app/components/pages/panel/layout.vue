@@ -33,32 +33,26 @@
             height: 100%
             overflow: auto
             background-color: gray
-            //+border(yellow)
 
         .GROUP-WRAPPER-SLOT.CELL
             +position(absolute, 0px, $side-navbar-width)
             +size(100%, 100%)
-            +border(red)
             overflow: hidden
 
             .GROUP-WRAPPER.TABLE
                 table-layout: fixed
                 +size(100%, 100%)
-                +border(blue)
 
                 .SIDE-NAVBAR-TOGGLE-SLOT.CELL
                     width: 40px
                     height: 100%
                     vertical-align: top
-                    +border(#0ce12d)
 
                 .CONTENT-SLOT.CELL
                     height: 100%
                     width: 100%
-                    +border(red)
 
                     .SCROLL
-                        +border(black)
 
 
     .SIDE-NAVBAR-IS-SHOWED

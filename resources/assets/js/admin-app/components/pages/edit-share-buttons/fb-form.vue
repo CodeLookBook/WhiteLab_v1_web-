@@ -190,6 +190,7 @@
                     }
 
                 },
+                immediate: true,
             },
             language:{
                 handler: function (newLanguage, oldLanguage) {
@@ -312,7 +313,7 @@
         mounted(){
 
 
-            this.loadFacebookShareButtonSettings(this.inputs.location).then(
+            this.loadFacebookShareButtonSettings('Home-page').then(
                 (success) => {
                     //...
                 }, (error) => {

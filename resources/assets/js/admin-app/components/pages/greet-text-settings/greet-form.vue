@@ -158,14 +158,23 @@
 
         watch: {
 
-            greetTextRu(newText, oldText){
-                this.inputs.greetRu = newText;
+            greetTextRu: {
+                handler: function (newText, oldText) {
+                    this.inputs.greetRu = newText;
+                },
+                immediate: true,
             },
-            greetTextEn(newText, oldText){
-                this.inputs.greetEn = newText;
+            greetTextEn: {
+                handler: function (newText, oldText) {
+                    this.inputs.greetEn = newText;
+                },
+                immediate: true,
             },
-            greetTextSl(newText, oldText){
-                this.inputs.greetSl = newText;
+            greetTextSl: {
+                handler: function (newText, oldText) {
+                    this.inputs.greetSl = newText;
+                },
+                immediate: true,
             },
 
             language: {

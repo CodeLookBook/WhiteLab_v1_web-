@@ -16,6 +16,9 @@
     .TOGGLE-BUTTON-WRAPPER
         height: 100%
         width: 100%
+        border-right: 1px solid #48576A
+        border-left: 1px solid #48576A
+        //+border(#48576A)
 
         &>.ROW>.CELL
             +size(100%, 100%)

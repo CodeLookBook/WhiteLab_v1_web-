@@ -15,6 +15,9 @@ const SIDE_NAVBAR_EVENTS = Object.freeze({
     // Button that helps to download new image with map on server
     EDIT_ADDRESS_ITEM_CLICKED                   : id.generate(),
 
+    // Button that helps to download new image with map on server
+    EDIT_SOCIAL_GROUPS_REFS_ITEM_CLICKED        : id.generate(),
+
     // Buttons that manages some elements on HOME PAGE
     HOME_PAGE_SETTINGS_ITEM_CLICKED             : id.generate(),
     CHANGE_GREET_BLOCK_FON_ITEM_CLICKED         : id.generate(),

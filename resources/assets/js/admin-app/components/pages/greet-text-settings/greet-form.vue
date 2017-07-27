@@ -4,19 +4,19 @@
 
     el-form(:model="inputs", :rules="rules", label-position="left", ref="greetForm")
 
-        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Введите текст для русскоязычной версии сайта", prop="greetTextRu")
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Введите текст для русскоязычной версии сайта", prop="greetRu")
             el-input(type="textarea", v-model="inputs.greetRu")
-        el-form-item(v-if="LANGUAGES.SLOVAK  === language" , label="Zadajte text pre ruských jazykovej verzii webu", prop="greetTextRu")
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language" , label="Zadajte text pre ruských jazykovej verzii webu", prop="greetRu")
             el-input(type="textarea", v-model="inputs.greetRu")
 
-        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Введите текст для англоязычной версии сайта", prop="greetTextEn")
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Введите текст для англоязычной версии сайта", prop="greetEn")
             el-input(type="textarea", v-model="inputs.greetEn")
-        el-form-item(v-if="LANGUAGES.SLOVAK  === language" , label="Zadávanie text pre anglickú verziu webu", prop="greetTextEn")
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language" , label="Zadávanie text pre anglickú verziu webu", prop="greetEn")
             el-input(type="textarea", v-model="inputs.greetEn")
 
-        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Введите текст для словакоязычной версии сайта", prop="greetTextSl")
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Введите текст для словакоязычной версии сайта", prop="greetSl")
             el-input(type="textarea", v-model="inputs.greetSl")
-        el-form-item(v-if="LANGUAGES.SLOVAK  === language" , label="Zadajte text, pre slovakoyazychnoy verziu webu", prop="greetTextSl")
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language" , label="Zadajte text, pre slovakoyazychnoy verziu webu", prop="greetSl")
             el-input(type="textarea", v-model="inputs.greetSl")
 
         el-form-item(v-if="LANGUAGES.RUSSIAN === language", :xs="24", :sm="24", :md="2", :lg="2")

@@ -16,17 +16,21 @@
             el-menu-item(:index="EVENTS.CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM_CLICKED")
                 |{{BUTTONS.CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM[language]}}
             el-menu-item(:index="EVENTS.CHANGE_GREET_BLOCK_FON_ITEM_CLICKED")
-                |{{BUTTONS.CHANGE_GREET_BLOCK_FON_ITEM_CLICKED[language]}}
+                |{{BUTTONS.CHANGE_GREET_BLOCK_FON_ITEM[language]}}
 
-        //VACANCES PAGE SETTINGS
+        // SOCIAL GROUPS REFERENCES
+        el-menu-item(:index="EVENTS.EDIT_SOCIAL_GROUPS_REFS_ITEM_CLICKED")
+            |{{BUTTONS.EDIT_SOCIAL_GROUPS_REFS_ITEM[language]}}
+
+        // VACANCES PAGE SETTINGS
         el-menu-item(:index="EVENTS.EDIT_VACANCIES_LIST_ITEM_CLICKED")
             |{{BUTTONS.EDIT_VACANCIES_LIST_ITEM[language]}}
 
-        //DOWNLOADS PRICE ON SERVER
+        // DOWNLOADS PRICE ON SERVER
         el-menu-item(:index="EVENTS.EDIT_PRICE_LIST_ITEM_CLICKED")
             |{{BUTTONS.EDIT_PRICE_LIST_ITEM[language]}}
 
-        //DOWNLOADS IMAGE WITH MAP ON SERVER
+        // DOWNLOADS IMAGE WITH MAP ON SERVER
         el-menu-item(:index="EVENTS.EDIT_ADDRESS_ITEM_CLICKED")
             |{{BUTTONS.EDIT_ADDRESS_ITEM[language]}}
 
@@ -134,6 +138,13 @@
                         this.$bus.$emit(this.EVENTS.CHANGE_GREET_BLOCK_FON_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
                         this.$router.push({name: 'editHomePageGreeBlockFon'});
+                        break;
+
+                    // SOCIAL GROUPS SETTINGS
+                    case this.EVENTS.EDIT_SOCIAL_GROUPS_REFS_ITEM_CLICKED:
+                        this.$bus.$emit(this.EVENTS.EDIT_SOCIAL_GROUPS_REFS_ITEM_CLICKED);
+                        this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
+                        this.$router.push({name: 'editSocialGroupsPage'});
                         break;
 
                     // VACANCIES SETTINGS

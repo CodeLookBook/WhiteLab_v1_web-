@@ -20,7 +20,8 @@ use Illuminate\Http\Request;
 Route::post('/admin/login'                     , 'UserController@login'          );
 Route::post('/admin/panel/greet'               , 'HomePageController@getGreet'   );
 Route::get ('/admin/panel/price'               , 'PriceController@download'      );
-
+Route::get ('admin/panel/facebook-group'     , 'SocialGroupController@getFacebookGroupReference' );
+Route::get ('admin/panel/instagram-group'    , 'SocialGroupController@getInstagramGroupReference');
 
 Route::group(['middleware'=>['super-admin']], function () {
     Route::patch ('admin/panel/greet'          , 'HomePageController@updateGreet');
@@ -35,4 +36,11 @@ Route::group(['middleware'=>['super-admin']], function (){
 
 Route::group(['middleware'=>['super-admin']], function (){
     Route::post  ('admin/panel/address_map'     , 'AddressController@upload'     );
+});
+
+Route::group(['middleware'=>['super-admin']], function (){
+    Route::post  ('admin/panel/facebook-group'     , 'SocialGroupController@updateFacebookGroupReference');
+    Route::delete('admin/panel/facebook-group'     , 'SocialGroupController@deleteFacebookGroupReference');
+    Route::post  ('admin/panel/instagram-group'    , 'SocialGroupController@updateInstagramGroupReference');
+    Route::delete('admin/panel/instagram-group'    , 'SocialGroupController@deleteInstagramGroupReference');
 });

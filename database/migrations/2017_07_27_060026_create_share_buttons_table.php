@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSocialGroupsTable extends Migration
+class CreateShareButtonsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateSocialGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('social_groups', function (Blueprint $table) {
+        Schema::create('share_buttons', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('network_name', 20);
-            $table->string('reference', 200);
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateSocialGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social_groups');
+        Schema::dropIfExists('share_buttons');
     }
 }

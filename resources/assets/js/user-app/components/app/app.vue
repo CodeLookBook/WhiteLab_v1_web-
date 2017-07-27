@@ -238,6 +238,7 @@
     import {APP_LANGUAGES       } from "../../classes/enum/APP_LANGUAGES";
     import {APP_BUTTONS_NAMES   } from "../../classes/enum/APP_BUTTONS_NAMES";
     import {Cookie              } from "../../../shared-classes/facades/Cookie";
+    import {mapActions, mapGetters} from "vuex";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -259,7 +260,7 @@
                 APP_EVENTS_ID       : object,
                 APP_LANGUAGES       : object,
                 APP_ITEMS_NAMES     : object,
-                language        : string,
+                language            : string,
                 topNavabr  : {
                 }
             } = {
@@ -282,6 +283,10 @@
         // --------------------------------------------------------------------
 
         computed:{
+            ...mapGetters('SocialGroups', [
+                'facebookGroupReference',
+                'instagramGroupReference',
+            ]),
         },
 
         // --------------------------------------------------------------------
@@ -294,6 +299,10 @@
         // --------------------------------------------------------------------
 
         methods: {
+            ...mapActions('SocialGroups',[
+                'loadFacebookGroupReference' ,
+                'loadInstagramGroupReference',
+            ]),
 
             // Event HANDLERS
             onMenuSelect(key, keyPath){
@@ -377,10 +386,10 @@
                 this.$router.push({name:'app'})
             },
             onFacebookItemClick             (): void {
-                window.location.href = 'https://www.facebook.com';
+                window.location.href = this.facebookGroupReference;
             },
             onInstagramItemClick            (): void {
-                window.location.href = 'https://www.instagram.com';
+                window.location.href = this.instagramGroupReference;
             },
             onPriceMenuItemClick            (): void {
                 window.open("/api/admin/panel/price",'_blank');
@@ -417,6 +426,12 @@
         // --------------------------------------------------------------------
 
         mounted() {
+
+            // LOAD DATA from server
+            {
+                this.loadFacebookGroupReference ();
+                this.loadInstagramGroupReference();
+            }
 
             // SUBSCRIBE on navigation events
             {

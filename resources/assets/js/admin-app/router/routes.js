@@ -4,6 +4,7 @@ import HomePageGreetTextSettings from "../components/pages/greet-text-settings/p
 import EditPricePage             from "../components/pages/edit-price/page.vue"
 import EditAddressPage           from "../components/pages/edit-address/page.vue"
 import EditGreetBlockFonPage     from "../components/pages/edit-greet-block-fon/page.vue"
+import EditSocialGroupsPage      from "../components/pages/edit-social-groups-buttons/page.vue"
 
 export default [
     { path: '/admin',       name: 'app'  , component: LoginPage   },
@@ -29,7 +30,12 @@ export default [
                 path: 'edit-address',
                 name     : 'editAddress',
                 component: EditAddressPage,
-            }
+            },
+            {
+                path: 'edit-social-groups-buttons',
+                name     : 'editSocialGroupsPage',
+                component: EditSocialGroupsPage,
+            },
         ],
     },
 ];

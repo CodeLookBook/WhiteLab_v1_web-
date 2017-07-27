@@ -26,13 +26,11 @@
                             el-button.ORDER {{BUTTONS_NAMES.ORDER_BUTTON[language]}}
 
                             social-sharing.SOCIAL-SHARE(
-                                title             = 'БЕЛЫЙ САД - городской формат центра красоты.',
-                                description       = "Здесь вы найдете все к чему привыкла самая взыскательная аудитория, " +
-                                                    "здесь все делается быстро и с искренней доброжелательностью " +
-                                                    "гостеприимного дома.",
-                                quote             = "БЕЛЫЙ САД - центр красоты.",
-                                hashtags          = "БелыйСад, ЦентрКрасоты",
-                                fbButtonName     = "GGG",
+                                :url               = "facebookShareButtonSettings.url",
+                                :title             = "facebookShareButtonSettings.title",
+                                :description       = "facebookShareButtonSettings.description",
+                                :quote             = "facebookShareButtonSettings.quote",
+                                :hashtags          = "facebookShareButtonSettings.hashtags",
                                 v-cloak,
                                 inline-template
                             )
@@ -183,6 +181,10 @@
                 'greetTextEn',
                 'greetTextSl',
             ]),
+
+            ...mapGetters('FacebookShareButtonSettings', [
+                'facebookShareButtonSettings'
+            ])
         },
         // --------------------------------------------------------------------
         // WATCHED FIELDS
@@ -199,6 +201,10 @@
 
             ...mapActions('HomePageGreet', [
                 'downloadGreet' ,
+            ]),
+
+            ...mapActions('FacebookShareButtonSettings', [
+                'loadFacebookShareButtonSettings'
             ]),
 
             // EVENT HANDLERS
@@ -233,8 +239,13 @@
                 this.onAppLanguageChangedOnSlovak
             );
 
-            //DOWNLOAD malty-language GREET texts from server
+            //DOWNLOAD FROM DB
+
+            // malty-language GREET texts from server
             this.downloadGreet();
+
+            // share button settings
+            this.loadFacebookShareButtonSettings('Home-page'/*location*/);
         }
 
         // --------------------------------------------------------------------

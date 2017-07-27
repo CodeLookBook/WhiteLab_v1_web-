@@ -58,45 +58,45 @@
         // --------------------------------------------------------------------
 
         data(){
-          const data: {
-              token  : Token,
-              inputs : {
-                  reference: string,
-              },
-              buttons: Object,
-              rules  : Object,
-          } = {
-              token  : Token.getInstance(),
-              inputs : {
-                  reference: '',
-                  placeholder: 'Example: https://www.facebook.com'
-              },
-              buttons: {
-                  save: {
-                      type: "primary",
-                  },
-                  del: {
-                      type: "primary"
-                  },
-              },
-              rules: {
-                  reference: [
-                      {
-                          required: true,
-                          trigger : 'blur, change',
-                          message : ''
-                      },
-                      {
-                          min     : 1,
-                          max     : 200,
-                          message : '',
-                          trigger : 'blur, change'
-                      }
-                  ]
-              }
-          };
+            const data: {
+                token  : Token,
+                inputs : {
+                    reference: string,
+                },
+                buttons: Object,
+                rules  : Object,
+            } = {
+                token  : Token.getInstance(),
+                inputs : {
+                    reference: '',
+                    placeholder: 'Example: https://www.facebook.com'
+                },
+                buttons: {
+                    save: {
+                        type: "primary",
+                    },
+                    del: {
+                        type: "primary"
+                    },
+                },
+                rules: {
+                    reference: [
+                        {
+                            required: true,
+                            trigger : 'blur, change',
+                            message : ''
+                        },
+                        {
+                            min     : 1,
+                            max     : 200,
+                            message : '',
+                            trigger : 'blur, change'
+                        }
+                    ]
+                }
+            };
 
-          return data;
+            return data;
         },
 
         // --------------------------------------------------------------------
@@ -115,7 +115,7 @@
 
         watch: {
             facebookGroupReference(newReference, oldReference) {
-                    this.inputs.reference = newReference;
+                this.inputs.reference = newReference;
             },
             language:{
                 handler: function (newLanguage, oldLanguage) {
@@ -125,30 +125,30 @@
                         case this.ADMIN_APP_LANGUAGES.RUSSIAN:
 
                             // FORM russian errors MESSAGES.
-                            {
-                                this.rules.reference[0].message = "Обязательное поле.";
-                                this.rules.reference[1].message = "Масксимальное " +
-                                    "количество символов не должно превышать 200 знаков.";
-                            }
+                        {
+                            this.rules.reference[0].message = "Обязательное поле.";
+                            this.rules.reference[1].message = "Масксимальное " +
+                                "количество символов не должно превышать 200 знаков.";
+                        }
                             break;
 
                         case this.ADMIN_APP_LANGUAGES.SLOVAK:
 
                             // FORM russian errors MESSAGES.
-                            {
-                                this.rules.reference[0].message = "Povinné pole.";
-                                this.rules.reference[1].message = "Maximálny počet " +
-                                    "znakov by nemal presiahnuť 200 znakov.";
-                            }
+                        {
+                            this.rules.reference[0].message = "Povinné pole.";
+                            this.rules.reference[1].message = "Maximálny počet " +
+                                "znakov by nemal presiahnuť 200 znakov.";
+                        }
                             break;
 
                         default:
                             // FORM russian errors MESSAGES.
-                            {
-                                this.rules.reference[0].message = "Обязательное поле.";
-                                this.rules.reference[1].message = "Масксимальное " +
-                                    "количество символов не должно превышать 200 знаков.";
-                            }
+                        {
+                            this.rules.reference[0].message = "Обязательное поле.";
+                            this.rules.reference[1].message = "Масксимальное " +
+                                "количество символов не должно превышать 200 знаков.";
+                        }
                     }
                 },
                 immediate: true,
@@ -226,22 +226,22 @@
 
         mounted() {
 
-              this.loadFacebookGroupReference().then((success)=>{
-                  //...
-              },(error)=>{
+            this.loadFacebookGroupReference().then((success)=>{
+                //...
+            },(error)=>{
 
-                  if(this.token.isLoaded){
+                if(this.token.isLoaded){
 
-                      if(this.token.isExpired()){
-                          this.token.del();
-                          this.showTokenErrorAlert();
-                      } else {
-                          this.showDataLoadErrorAlert();
-                      }
-                  } else {
-                      this.showTokenErrorAlert();
-                  }
-              });
+                    if(this.token.isExpired()){
+                        this.token.del();
+                        this.showTokenErrorAlert();
+                    } else {
+                        this.showDataLoadErrorAlert();
+                    }
+                } else {
+                    this.showTokenErrorAlert();
+                }
+            });
         },
 
         // --------------------------------------------------------------------

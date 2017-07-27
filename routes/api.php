@@ -20,8 +20,9 @@ use Illuminate\Http\Request;
 Route::post('/admin/login'                     , 'UserController@login'          );
 Route::post('/admin/panel/greet'               , 'HomePageController@getGreet'   );
 Route::get ('/admin/panel/price'               , 'PriceController@download'      );
-Route::get ('admin/panel/facebook-group'     , 'SocialGroupController@getFacebookGroupReference' );
-Route::get ('admin/panel/instagram-group'    , 'SocialGroupController@getInstagramGroupReference');
+Route::get ('/admin/panel/facebook-group'      , 'SocialGroupController@getFacebookGroupReference' );
+Route::get ('/admin/panel/instagram-group'     , 'SocialGroupController@getInstagramGroupReference');
+Route::post('/admin/panel/share-button'        , 'ShareButtonController@retrieve');
 
 Route::group(['middleware'=>['super-admin']], function () {
     Route::patch ('admin/panel/greet'          , 'HomePageController@updateGreet');
@@ -43,4 +44,9 @@ Route::group(['middleware'=>['super-admin']], function (){
     Route::delete('admin/panel/facebook-group'     , 'SocialGroupController@deleteFacebookGroupReference');
     Route::post  ('admin/panel/instagram-group'    , 'SocialGroupController@updateInstagramGroupReference');
     Route::delete('admin/panel/instagram-group'    , 'SocialGroupController@deleteInstagramGroupReference');
+});
+
+Route::group(['middleware'=>['super-admin']], function (){
+    Route::patch ('/admin/panel/share-button'    , 'ShareButtonController@update');
+    Route::delete('/admin/panel/share-button/{location}'    , 'ShareButtonController@delete');
 });

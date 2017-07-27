@@ -133,6 +133,7 @@
                     case this.EVENTS.CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
+                        this.$router.push({name: 'editShareButtons'});
                         break;
                     case this.EVENTS.CHANGE_GREET_BLOCK_FON_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.CHANGE_GREET_BLOCK_FON_ITEM_CLICKED);

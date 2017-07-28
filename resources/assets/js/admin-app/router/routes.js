@@ -6,6 +6,7 @@ import EditAddressPage           from "../components/pages/edit-address/page.vue
 import EditGreetBlockFonPage     from "../components/pages/edit-greet-block-fon/page.vue"
 import EditSocialGroupsPage      from "../components/pages/edit-social-groups-buttons/page.vue"
 import EditShareButtons          from "../components/pages/edit-share-buttons/page.vue"
+import EditOrderButton           from "../components/pages/edit-order-button/page.vue"
 
 export default [
     { path: '/admin',       name: 'app'  , component: LoginPage   },
@@ -41,6 +42,11 @@ export default [
                 path: 'edit-share-buttons',
                 name: 'editShareButtons',
                 component: EditShareButtons,
+            },
+            {
+                path: 'edit-order-button',
+                name: 'editOrderButton',
+                component: EditOrderButton,
             },
         ],
     },

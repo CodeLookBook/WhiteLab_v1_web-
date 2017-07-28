@@ -13,6 +13,10 @@ const SIDE_NAVBAR_BUTTONS = Object.freeze({
         ru: "Фон стартовой страницы",
         sl: "Pozadie začiatok stránky",
     }),
+    ORDER_BUTTON_SETTINGS_ITEM: Object.freeze({
+        ru: "Настроить кнопку 'Заказать'",
+        sl: "Prispôsobiť tlačidlo 'Оbjednávka '",
+    }),
     EDIT_SOCIAL_GROUPS_REFS_ITEM: Object.freeze({
         ru: "Редактировать ссылки на группы",
         sl: "Skupiny upraviť odkaz",

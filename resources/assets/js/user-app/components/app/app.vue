@@ -32,7 +32,7 @@
             el-menu-item.H-VACANCIES(:index="APP_EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED")
                 | {{APP_ITEMS_NAMES.VACANCIES_MENU_ITEM[language]}}
 
-            el-menu-item.H-ORDER(:index="APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.H-BUTTON
+            el-menu-item.H-ORDER(:index="APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.H-BUTTON.ms_booking
                 | {{APP_ITEMS_NAMES.ORDER_MENU_BUTTON[language]}}
             el-menu-item.H-IN(:index="APP_EVENTS_ID.IN_MENU_ITEM_CLICKED", class="H-ICON")
                 img(src="/images/icons/in-white.png")
@@ -52,8 +52,15 @@
                     i.el-icon-menu
                 el-menu-item.LOGO(:index="APP_EVENTS_ID.LOGO_ITEM_CLICKED", :route="{name: '/'}")
                     img(src="/images/logos/logo_whitelab_without_border.png")
-                el-menu-item.ORDER.ITEM(:index="APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.BUTTON
+
+                el-menu-item.ORDER.ITEM(:index="APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.BUTTON.ms_booking
                     | {{APP_ITEMS_NAMES.ORDER_MENU_BUTTON[language]}}
+
+
+                    //a(href="#", class="ms_booking", style="z-index: 1000000; position: absolute; top:0; left: 0; height:100%; width:100%; display: inline-block; line-height: 1; border: 1px solid black;")
+
+
+
                 el-submenu.LANG.ITEM(:index="APP_EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED")
                     template(slot="title" class="LANG-ITEM")
                         | {{APP_ITEMS_NAMES.LANGUAGE_SUBMENU_ITEM[language]}}
@@ -71,7 +78,6 @@
                 el-menu-item.PRICE.ITEM(:index="APP_EVENTS_ID.PRICE_MENU_ITEM_CLICKED", :route="{name: 'price'}")
                     | {{APP_ITEMS_NAMES.PRICE_MENU_ITEM[language]}}
                 el-menu-item.IN.ITEM(:index="APP_EVENTS_ID.IN_MENU_ITEM_CLICKED")
-                    //a(href="https://www.instagram.com" target="_blank"):
                     img.ICON(src="/images/icons/in.png")
                 el-menu-item.FB.ITEM(:index="APP_EVENTS_ID.FB_MENU_ITEM_CLICKED")
                     img.ICON(src="/images/icons/fb.png")
@@ -239,6 +245,7 @@
     import {APP_BUTTONS_NAMES   } from "../../classes/enum/APP_BUTTONS_NAMES";
     import {Cookie              } from "../../../shared-classes/facades/Cookie";
     import {mapActions, mapGetters} from "vuex";
+    import Yclients                 from "../../mixins/Yclients.vue";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -249,6 +256,15 @@
         // --------------------------------------------------------------------
         // PROPERTIES
         // --------------------------------------------------------------------
+
+
+        //---------------------------------------------------------------------
+        // MIXINS
+        //---------------------------------------------------------------------
+
+        mixins: [
+            Yclients,
+        ],
 
 
         // --------------------------------------------------------------------
@@ -358,10 +374,10 @@
                         this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
-                    case this.APP_EVENTS_ID.ORDER_MENU_BUTTON_CLICKED:
+/*                    case this.APP_EVENTS_ID.ORDER_MENU_BUTTON_CLICKED:
                         this.$bus.$emit(this.APP_EVENTS_ID.ORDER_MENU_BUTTON_CLICKED);
                         this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
-                        break;
+                        break;*/
 
                     case this.APP_EVENTS_ID.TOGGLE_MENU_ITEM_CLICKED:
                         this.$bus.$emit(this.APP_EVENTS_ID.TOGGLE_MENU_ITEM_CLICKED);
@@ -414,10 +430,7 @@
                 this.cookie.set('app.language', this.language);
             },
             onOrderButtonClick              (): void {
-
-                //TODO: реализовать перереход к систуме он лайн заказа
-                throw new Error("Method 'onOrderButtonClick()' can't be invoke " +
-                    "it's not implemented.");
+                //...
             },
         },
 
@@ -426,6 +439,11 @@
         // --------------------------------------------------------------------
 
         mounted() {
+
+            // LOAD WIDGETS
+            {
+                this.loadYclientWidget(this.$el);
+            }
 
             // LOAD DATA from server
             {
@@ -476,7 +494,7 @@
                     this.onSlovakLanguageMenuItemClick
                 );
                 this.$bus.$on(
-                    this.APP_EVENTS_ID.ORDER_MENU_BUTTON_CLICKED,
+                    this.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED,
                     this.onOrderButtonClick
                 );
             }

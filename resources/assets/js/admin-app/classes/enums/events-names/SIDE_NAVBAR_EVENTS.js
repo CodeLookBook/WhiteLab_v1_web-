@@ -23,6 +23,8 @@ const SIDE_NAVBAR_EVENTS = Object.freeze({
     CHANGE_GREET_BLOCK_FON_ITEM_CLICKED         : id.generate(),
     CHANG_GREET_TEXT_ITEM_CLICKED               : id.generate(),
     CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM_CLICKED : id.generate(),
+    ORDER_BUTTON_SETTINGS_ITEM_CLICKED          : id.generate(),
+
 
     //Languges buttons
     LANGUAGE_SUBMENU_ITEM_CLICKED               : id.generate(),

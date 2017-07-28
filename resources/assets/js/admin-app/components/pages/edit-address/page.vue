@@ -63,6 +63,7 @@
 
     import LanguageSettings from "../../../mixins/LanguageSettings.vue"
     import UserMessage      from "../../../mixins/UserMessage.vue"
+    import TokenGuard       from "../../../mixins/TokenGuard.vue"
     import {Token} from "../../../../shared-classes/facades/Token";
 
     // ------------------------------------------------------------------------
@@ -82,6 +83,7 @@
         mixins:[
             LanguageSettings,
             UserMessage,
+            TokenGuard,
         ],
 
         // --------------------------------------------------------------------
@@ -90,7 +92,6 @@
 
         data(){
             return {
-                token: Token.getInstance(),
                 fileList: [],
                 headers: {
                     'Authorization': 'Bearer ' + Token.getInstance().token,

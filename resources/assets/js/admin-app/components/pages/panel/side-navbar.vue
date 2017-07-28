@@ -17,6 +17,8 @@
                 |{{BUTTONS.CHANG_FB_SHARE_BUTTON_SETTINGS_ITEM[language]}}
             el-menu-item(:index="EVENTS.CHANGE_GREET_BLOCK_FON_ITEM_CLICKED")
                 |{{BUTTONS.CHANGE_GREET_BLOCK_FON_ITEM[language]}}
+            el-menu-item(:index="EVENTS.ORDER_BUTTON_SETTINGS_ITEM_CLICKED")
+                |{{BUTTONS.ORDER_BUTTON_SETTINGS_ITEM[language]}}
 
         // SOCIAL GROUPS REFERENCES
         el-menu-item(:index="EVENTS.EDIT_SOCIAL_GROUPS_REFS_ITEM_CLICKED")
@@ -139,6 +141,11 @@
                         this.$bus.$emit(this.EVENTS.CHANGE_GREET_BLOCK_FON_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
                         this.$router.push({name: 'editHomePageGreeBlockFon'});
+                        break;
+                    case this.EVENTS.ORDER_BUTTON_SETTINGS_ITEM_CLICKED:
+                        this.$bus.$emit(this.EVENTS.ORDER_BUTTON_SETTINGS_ITEM_CLICKED);
+                        this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
+                        this.$router.push({name: 'editOrderButton'});
                         break;
 
                     // SOCIAL GROUPS SETTINGS

@@ -4,6 +4,7 @@
         side-navbar(slot="SIDE-NAVBAR-SLOT")
         side-navbar-toggle(slot="SIDE-NAVBAR-TOGGLE-SLOT")
         router-view(slot="CONTENT-SLOT")
+
 </template>
 <style lang="sass" scoped>
 
@@ -17,6 +18,7 @@
     import Layout           from "./layout.vue"
     import SideNavbar       from "./side-navbar.vue"
     import SideNavbarToggle from "./side-navbar-toggle.vue"
+    import TokenGuard       from "../../../mixins/TokenGuard.vue"
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -28,6 +30,14 @@
         // PROPERTIES
         // --------------------------------------------------------------------
 
+
+        // --------------------------------------------------------------------
+        // MIXINS
+        // --------------------------------------------------------------------
+
+        mixins: [
+            TokenGuard,
+        ],
 
         // --------------------------------------------------------------------
         // DATA FIELDS

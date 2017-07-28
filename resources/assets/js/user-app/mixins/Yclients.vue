@@ -1,23 +1,5 @@
 <template lang="pug">
 
-    el-row
-        el-col(
-        :xs="{span:22, offset: 1}",
-        :sm="{span:22, offset: 1}",
-        :md="{span:14, offset: 1}",
-        :lg="{span:12, offset: 1}",
-        )
-            h3(v-if="ADMIN_APP_LANGUAGES.RUSSIAN   === language") РЕДАКТИРОВАНИЕ FACEBOOK-КНОПКИ "ПОДЕЛИТЬСЯ" РАСПОЛОЖЕННОЙ НА СТАРТОВОЙ СТРАНИЦЕ
-            h3(v-else="ADMIN_APP_LANGUAGES.SLOVAK  === language") ÚPRAVY FACEBOOK-BUTTON "SHARE", KTORÝ SA NACHÁDZA NA DOMOVSKEJ STRÁNKE
-
-            h6(v-if="ADMIN_APP_LANGUAGES.RUSSIAN   === language") Отредактируйте настройки кнопки и выберите одно из доступных действий: 'Сохранить', 'Удалить'.
-            h6(v-else="ADMIN_APP_LANGUAGES.SLOVAK  === language") Tlačidlo Upraviť nastavenia a vyberte jednu z dostupných akcií: "Save", "Delete".
-
-            fb-form(
-                pLocation='Home-page',
-                :pHasQuote="true"
-            )
-
 </template>
 <style lang="sass">
 
@@ -28,9 +10,6 @@
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
-    import FbForm           from "./fb-form.vue"
-    import LanguageSettings from "../../../mixins/LanguageSettings.vue"
-    import TokenGuard       from "../../../mixins/TokenGuard.vue"
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -42,16 +21,6 @@
         // PROPERTIES
         // --------------------------------------------------------------------
 
-
-
-        // --------------------------------------------------------------------
-        // MIXINS
-        // --------------------------------------------------------------------
-
-        mixins: [
-            LanguageSettings,
-            TokenGuard,
-        ],
 
         // --------------------------------------------------------------------
         // DATA FIELDS
@@ -72,6 +41,14 @@
         // METHODS
         // --------------------------------------------------------------------
 
+        methods: {
+            loadYclientWidget(el){
+                const widget = window.document.createElement('script');
+                widget.type = 'text/javascript';
+                widget.src = '//w53795.yclients.com/widgetJS';
+                el.appendChild(widget);
+            },
+        },
 
         // --------------------------------------------------------------------
         // LIFE HOOKS
@@ -82,9 +59,7 @@
         // CHILD COMPONENTS
         // --------------------------------------------------------------------
 
-        components:{
-            FbForm,
-        }
+
     };
 
 </script>

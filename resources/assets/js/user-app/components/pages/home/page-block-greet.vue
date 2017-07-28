@@ -23,7 +23,7 @@
                             p(v-if="language === APP_LANGUAGES.ENGLISH") {{greetTextEn}}
                             p(v-if="language === APP_LANGUAGES.SLOVAK ") {{greetTextSl}}
 
-                            el-button.ORDER {{BUTTONS_NAMES.ORDER_BUTTON[language]}}
+                            el-button.ORDER.ms_booking {{BUTTONS_NAMES.ORDER_BUTTON[language]}}
 
                             social-sharing.SOCIAL-SHARE(
                                 :url               = "facebookShareButtonSettings.url",

@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GreetsTableSeeder::class);
         $this->call(SocialGroupsSeeder::class);
         $this->call(ShareButtonsSeeder::class);
+        $this->call(RedirectButtonsSettingsSeeder::class);
     }
 }

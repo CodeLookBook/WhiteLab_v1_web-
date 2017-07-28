@@ -93,6 +93,7 @@
         // --------------------------------------------------------------------
 
         methods: {
+
             onTopNavbarToggleItemClick(){
                 this.dClasses['SHOW-SIDE-NAVBAR'] = true;
             },

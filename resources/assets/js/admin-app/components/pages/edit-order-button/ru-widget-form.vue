@@ -1,24 +1,19 @@
 <template lang="pug">
 
-    el-row
-        el-col(
-            :xs="{span:22, offset: 1}",
-            :sm="{span:22, offset: 1}",
-            :md="{span:14, offset: 1}",
-            :lg="{span:12, offset: 1}",
-        )
-            h3(v-if="ADMIN_APP_LANGUAGES.RUSSIAN   === language") РЕДАКТИРОВАНИЕ ССЫЛОК НА ГРУППЫ В СОЦИАЛЬНЫХ СЕТЯХ
-            h3(v-else="ADMIN_APP_LANGUAGES.SLOVAK  === language") ÚPRAVY ODKAZ NA STRANE V SOCIÁLNYCH SIEŤACH
 
-            h6(v-if="ADMIN_APP_LANGUAGES.RUSSIAN   === language") Отредактируйте ссылку на необходимую группу и выберите одно из доступных действий: 'Cохранить', 'Удалить'.
-            h6(v-else="ADMIN_APP_LANGUAGES.SLOVAK  === language") Upraviť odkaz na požadovanú skupinu a zvoľte jednu z dostupných akcií: "Save", "Delete".
+    el-form(:model="inputs", :rules="rules", label-position="left", ref="form")
 
-            h6(v-if="ADMIN_APP_LANGUAGES.RUSSIAN   === language") ВНИМАНИЕ: При создании ссылки на группу обязательно указывать полный адресс домена. Пример правильной записи домена: https://www.facebook.com/group/YourGroupName. Пример неправильной записи домена: a) https: facebook.com/group/YourGroupName, b) facebook.com/group/YourGroupName. Другими словами: "https://www" обязательная часть.
-            h6(v-else="ADMIN_APP_LANGUAGES.SLOVAK  === language") POZNÁMKA: Pri vytváraní skupiny odkazov je nutné zadať úplnú adresu domény. Príklad domény správny záznam: https://www.facebook.com/group/YourGroupName. Príklad domény nesprávne záznamu: a) https:facebook.com/group/YourGroupName, b) facebook.com/group/YourGroupName. Inými slovami: "https://www" povinnou súčasťou.
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Ссылка на русскоязычный виджет для он-лайн заказ:", prop="url")
+            el-input(v-model="inputs.url", v-cloak)
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Odkaz na rusky hovoriace widget pre on-line objednávky:", prop="url")
+            el-input(v-model="inputs.url", v-cloak)
 
-            fb-form
-            in-form
-
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", :xs="24", :sm="24", :md="2", :lg="2")
+            el-button(:type="buttons.save.type", @click="onSaveButtonClick") Сохранить
+            el-button(:type="buttons.save.type", @click="onDeleteButtonClick") Удалить
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language")
+            el-button(:type="buttons.save.type", @click="onSaveButtonClick") Udržať
+            el-button(:type="buttons.save.type", @click="onDeleteButtonClick") Vymazať
 
 </template>
 <style lang="sass">
@@ -32,9 +27,6 @@
 
     import LanguageSettings from "../../../mixins/LanguageSettings.vue"
     import UserMessage      from "../../../mixins/UserMessage.vue"
-    import FbForm           from "./fb-form.vue"
-    import InForm           from "./in-form.vue"
-    import TokenGuard       from "../../../mixins/TokenGuard.vue"
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -54,13 +46,26 @@
         mixins: [
             LanguageSettings,
             UserMessage,
-            TokenGuard,
         ],
 
         // --------------------------------------------------------------------
         // DATA FIELDS
         // --------------------------------------------------------------------
 
+        data(){
+            const data: {
+                inputs: {
+                    srcToRussianLanguageWidget  : string,
+                }
+            } = {
+                inputs: {
+                    srcToRussianLanguageWidget  : '',
+                },
+                rules: {
+
+                }
+            }
+        }
 
         // --------------------------------------------------------------------
         // COMPUTED FIELDS
@@ -86,10 +91,6 @@
         // CHILD COMPONENTS
         // --------------------------------------------------------------------
 
-        components: {
-            FbForm,
-            InForm,
-        }
 
     };
 

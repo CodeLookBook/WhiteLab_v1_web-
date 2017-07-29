@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SocialGroupsSeeder::class);
         $this->call(ShareButtonsSeeder::class);
         $this->call(OrderWidgetsTable::class);
+        $this->call(VacanciesSeeder::class);
     }
 }

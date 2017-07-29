@@ -71,6 +71,11 @@ const SIDE_NAVBAR_BUTTONS = Object.freeze({
         sl: 'Slovenský',
     }),
 
+    EXIT_MENU_ITEM: Object.freeze({
+        ru: 'Выйти',
+        sl: 'Výjazd',
+    }),
+
 });
 
 export {SIDE_NAVBAR_BUTTONS};

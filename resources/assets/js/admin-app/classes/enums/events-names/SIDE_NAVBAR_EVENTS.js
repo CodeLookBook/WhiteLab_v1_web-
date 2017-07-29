@@ -31,6 +31,8 @@ const SIDE_NAVBAR_EVENTS = Object.freeze({
     RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED          : id.generate(),
     SLOVAK_LANGUAGE_MENU_ITEM_CLICKED           : id.generate(),
 
+    //Exit
+    EXIT_ITEM_CLICKED                           : id.generate(),
 });
 
 export {SIDE_NAVBAR_EVENTS};

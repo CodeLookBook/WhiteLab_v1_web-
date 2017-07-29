@@ -45,6 +45,9 @@
             el-menu-item(:index="EVENTS.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED" )
                 | {{BUTTONS.SLOVAK_LANGUAGE_MENU_ITEM[language]}}
 
+        //Exit buttom
+        el-menu-item(:index="EVENTS.EXIT_ITEM_CLICKED")
+            |{{BUTTONS.EXIT_MENU_ITEM[language]}}
 
 </template>
 <style lang="sass" scoped>
@@ -64,6 +67,7 @@
     import {SIDE_NAVBAR_BUTTONS      } from "../../../classes/enums/buttons-names/SIDE_NAVBAR_BUTTONS";
     import {Cookie} from "../../../../shared-classes/facades/Cookie";
     import {LANGUAGES} from "../../../classes/enums/LANGUAGES";
+    import {Token} from "../../../../shared-classes/facades/Token";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -86,6 +90,7 @@
                 TOGGLE_EVENTS   : Object,
                 BUTTONS         : Object,
                 LANGUAGES       : Object,
+                token           : Object,
                 cookie          : Object,
                 language        : string,
             } = {
@@ -93,6 +98,7 @@
                 TOGGLE_EVENTS   : SIDE_NAVBAR_TOGGLE_EVENTS,
                 BUTTONS         : SIDE_NAVBAR_BUTTONS,
                 LANGUAGES       : LANGUAGES,
+                token           : Token.getInstance(),
                 cookie          : Cookie.getInstance(),
                 language        : Cookie.getInstance().get('admin-panel.language') ?
                                   Cookie.getInstance().get('admin-panel.language') :
@@ -188,6 +194,13 @@
                     case this.EVENTS.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
+                        break;
+
+                    case this.EVENTS.EXIT_ITEM_CLICKED:
+                        this.$bus.$emit(this.EVENTS.EXIT_ITEM_CLICKED);
+                        this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
+                        this.token.del();
+                        this.$router.push({name: 'login'});
                         break;
 
                     // ERROR MESSAGE

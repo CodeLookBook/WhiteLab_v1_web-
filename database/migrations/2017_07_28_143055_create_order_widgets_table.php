@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRedirectButtonsSettingsTable extends Migration
+class CreateOrderWidgetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateRedirectButtonsSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('redirect_buttons_settings', function (Blueprint $table) {
+        Schema::create('order_widgets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->default('');
-            $table->string('redirects_to')->default('');
+            $table->string('language')->default('');
+            $table->string('src')->default('');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateRedirectButtonsSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('redirect_buttons_settings');
+        Schema::dropIfExists('order_widgets');
     }
 }

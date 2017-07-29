@@ -4,9 +4,9 @@
 
     el-form(:model="inputs", :rules="rules", label-position="left", ref="form")
 
-        el-form-item(v-if="ADMIN_APP_LANGUAGES.RUSSIAN === language", label="Ссылка на русскоязычный виджет для он-лайн заказа:", prop="src")
+        el-form-item(v-if="ADMIN_APP_LANGUAGES.RUSSIAN === language", label="Ссылка на англоязычный виджет для он-лайн заказа:", prop="src")
             el-input(v-model="inputs.src",  placeholder="src", v-cloak)
-        el-form-item(v-if="ADMIN_APP_LANGUAGES.SLOVAK  === language", label="Odkaz na rusky hovoriace widget pre on-line objednanie:", prop="src")
+        el-form-item(v-if="ADMIN_APP_LANGUAGES.SLOVAK  === language", label="Odkaz na anglickej jazykovej widget pre on-line objednávky:", prop="src")
             el-input(v-model="inputs.src", placeholder="src", v-cloak)
 
         el-form-item(v-if="ADMIN_APP_LANGUAGES.RUSSIAN === language", :xs="24", :sm="24", :md="2", :lg="2")
@@ -93,7 +93,7 @@
 
         computed: {
             ...mapGetters('OrderWidget', [
-               'russianOrderWidget',
+               'englishOrderWidget',
             ]),
         },
 
@@ -102,12 +102,8 @@
         // --------------------------------------------------------------------
 
         watch: {
-            russianOrderWidget: {
+            englishOrderWidget: {
                 handler: function (newWidget, oldWidget) {
-
-                    console.log('russianOrderWidget()');
-                    console.log(newWidget);
-
                     this.inputs.src = newWidget.src;
                 },
                 immediate: true,
@@ -119,7 +115,7 @@
 
                         case this.ADMIN_APP_LANGUAGES.RUSSIAN:
 
-                            // FORM russian errors MESSAGES.
+                            // FORM english errors MESSAGES.
                             {
                                 this.rules.src[0].message = "Обязательное поле.";
                             }
@@ -127,7 +123,7 @@
 
                         case this.ADMIN_APP_LANGUAGES.SLOVAK:
 
-                            // FORM russian errors MESSAGES.
+                            // FORM english errors MESSAGES.
                             {
                                 this.rules.src[0].message = "Povinné pole.";
                             }
@@ -135,7 +131,7 @@
 
                         default:
 
-                            // FORM russian errors MESSAGES.
+                            // FORM english errors MESSAGES.
                             {
                                 this.rules.src[0].message = "Обязательное поле.";
                             }
@@ -152,9 +148,9 @@
         methods: {
 
             ...mapActions('OrderWidget', [
-                'loadRussianOrderWidget',
-                'updateRussianOrderWidget',
-                'deleteRussianOrderWidget',
+                'loadEnglishOrderWidget',
+                'updateEnglishOrderWidget',
+                'deleteEnglishOrderWidget',
             ]),
 
             onSaveButtonClick(){
@@ -163,7 +159,7 @@
                     // IF inputs are VALID
                     if (valid) {
 
-                        this.updateRussianOrderWidget(this.inputs.src,).then(
+                        this.updateEnglishOrderWidget(this.inputs.src,).then(
                             (success) => {
                                 this.showDataUploadSuccessMessage();
                             },
@@ -187,7 +183,7 @@
             },
             onDeleteButtonClick(){
 
-                this.deleteRussianOrderWidget().then(
+                this.deleteEnglishOrderWidget().then(
                     (success) => {
                         this.showDataUploadSuccessMessage();
                         this.$refs['form'].resetFields();
@@ -216,7 +212,7 @@
 
         mounted() {
 
-            this.loadRussianOrderWidget().then(
+            this.loadEnglishOrderWidget().then(
                 (success) => {
                 }, (error) => {
 

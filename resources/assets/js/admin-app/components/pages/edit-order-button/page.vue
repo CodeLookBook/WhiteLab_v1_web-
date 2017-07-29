@@ -1,3 +1,5 @@
+// @flow
+
 <template lang="pug">
 
     el-row
@@ -13,7 +15,9 @@
             h6(v-if="ADMIN_APP_LANGUAGES.RUSSIAN   === language") Отредактируйте настройки кнопки и выберите одно из доступных действий: 'Сохранить', 'Удалить'.
             h6(v-else="ADMIN_APP_LANGUAGES.SLOVAK  === language") Tlačidlo Upraviť nastavenia a vyberte jednu z dostupných akcií: "Save", "Delete".
 
-
+            ru-widget-form
+            en-widget-form
+            sl-widget-form
 
 </template>
 <style lang="sass">
@@ -25,8 +29,12 @@
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
-    import LanguageSettings  from "../../../mixins/LanguageSettings.vue"
-    import TokenGuard  from "../../../mixins/TokenGuard.vue"
+    import LanguageSettings from "../../../mixins/LanguageSettings.vue"
+    import TokenGuard       from "../../../mixins/TokenGuard.vue"
+    import RuWidgetForm     from "./ru-widget-form.vue"
+    import EnWidgetForm     from "./en-widget-form.vue"
+    import SlWidgetForm     from "./sl-widget-form.vue"
+    import {mapActions}     from "vuex";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -77,6 +85,11 @@
         // CHILD COMPONENTS
         // --------------------------------------------------------------------
 
+        components: {
+            RuWidgetForm,
+            EnWidgetForm,
+            SlWidgetForm,
+        }
 
     };
 

@@ -23,7 +23,7 @@
                             p(v-if="language === APP_LANGUAGES.ENGLISH") {{greetTextEn}}
                             p(v-if="language === APP_LANGUAGES.SLOVAK ") {{greetTextSl}}
 
-                            el-button.ORDER.ms_booking {{BUTTONS_NAMES.ORDER_BUTTON[language]}}
+                            el-button.ORDER.ms_booking(v-if="isOrderWidgetExists") {{BUTTONS_NAMES.ORDER_BUTTON[language]}}
 
                             social-sharing.SOCIAL-SHARE(
                                 :url               = "facebookShareButtonSettings.url",
@@ -133,6 +133,7 @@
     import {COMPONENTS_EVENTS} from "../../../classes/enum/COMPONENTS_EVENTS";
     import {Cookie           } from "../../../../shared-classes/facades/Cookie";
     import {mapActions, mapGetters} from "vuex";
+    import Yclients            from "../../../mixins/Yclients.vue";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -144,6 +145,15 @@
         // PROPERTIES
         // --------------------------------------------------------------------
 
+
+
+        // --------------------------------------------------------------------
+        // MIXINS
+        // --------------------------------------------------------------------
+
+        mixins: [
+            Yclients,
+        ],
 
         // --------------------------------------------------------------------
         // DATA FIELDS
@@ -211,12 +221,15 @@
 
             onAppLanguageChangedOnRussian(){
                 this.language = this.APP_LANGUAGES.RUSSIAN;
+                this.loadYclientWidget(this.$el, this.language);
             },
             onAppLanguageChangedOnEnglish(){
                 this.language = this.APP_LANGUAGES.ENGLISH;
+                this.loadYclientWidget(this.$el, this.language);
             },
             onAppLanguageChangedOnSlovak(){
                 this.language = this.APP_LANGUAGES.SLOVAK;
+                this.loadYclientWidget(this.$el, this.language);
             }
         },
 
@@ -226,19 +239,26 @@
 
         mounted(){
 
-            this.$bus.$on(
-                COMPONENTS_EVENTS.APP.NAVIGATION.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
-                this.onAppLanguageChangedOnRussian
-            );
-            this.$bus.$on(
-                COMPONENTS_EVENTS.APP.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
-                this.onAppLanguageChangedOnEnglish
-            );
-            this.$bus.$on(
-                COMPONENTS_EVENTS.APP.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
-                this.onAppLanguageChangedOnSlovak
-            );
+            // LOAD WIDGETS
+            {
+                this.loadYclientWidget(this.$el, this.language);
+            }
 
+            // SUBSCRIBE ON EVENTS
+            {
+                this.$bus.$on(
+                    COMPONENTS_EVENTS.APP.NAVIGATION.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onAppLanguageChangedOnRussian
+                );
+                this.$bus.$on(
+                    COMPONENTS_EVENTS.APP.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onAppLanguageChangedOnEnglish
+                );
+                this.$bus.$on(
+                    COMPONENTS_EVENTS.APP.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onAppLanguageChangedOnSlovak
+                );
+            }
             //DOWNLOAD FROM DB
 
             // malty-language GREET texts from server

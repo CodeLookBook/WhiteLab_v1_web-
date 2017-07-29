@@ -23,6 +23,7 @@ Route::get ('/admin/panel/price'               , 'PriceController@download'     
 Route::get ('/admin/panel/facebook-group'      , 'SocialGroupController@getFacebookGroupReference' );
 Route::get ('/admin/panel/instagram-group'     , 'SocialGroupController@getInstagramGroupReference');
 Route::post('/admin/panel/share-button'        , 'ShareButtonController@retrieve');
+Route::post('/admin/panel/order-widget'        , 'OrderWidgetController@retrieve');
 
 Route::group(['middleware'=>['super-admin']], function () {
     Route::patch ('admin/panel/greet'          , 'HomePageController@updateGreet');
@@ -47,6 +48,13 @@ Route::group(['middleware'=>['super-admin']], function (){
 });
 
 Route::group(['middleware'=>['super-admin']], function (){
-    Route::patch ('/admin/panel/share-button'    , 'ShareButtonController@update');
-    Route::delete('/admin/panel/share-button/{location}'    , 'ShareButtonController@delete');
+    Route::patch ('/admin/panel/share-button'            , 'ShareButtonController@update');
+    Route::delete('/admin/panel/share-button/{location}' , 'ShareButtonController@delete');
+});
+
+Route::group(['middleware'=>['super-admin']], function (){
+    Route::patch ('/admin/panel/order-widget' , 'OrderWidgetController@update');
+    Route::delete('/admin/panel/order-widget/{name}/{language}' , 'OrderWidgetController@delete')
+        ->where('name','Yclients')
+        ->where('language', '(Russian|English|Slovak|russian|english|slovak)');
 });

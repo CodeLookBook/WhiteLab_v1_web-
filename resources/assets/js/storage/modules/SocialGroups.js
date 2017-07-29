@@ -7,10 +7,10 @@ export default {
         instagramGroup: '',
     },
     getters: {
-        facebookGroupReference(state): string {
+        facebookGroupReference(state) {
             return state.facebookGroup;
         },
-        instagramGroupReference(state): string {
+        instagramGroupReference(state) {
             return state.instagramGroup;
         },
     },
@@ -26,7 +26,7 @@ export default {
         loadFacebookGroupReference   (context) {
 
             return new Promise((resolve, reject) => {
-                window.axios.get('/api/admin/panel/facebook-group').then(
+                window.axios.post('/api/admin/panel/facebook-group').then(
                     (response) => {
                         context.commit('setFacebookGroupReference',
                             response.data.reference

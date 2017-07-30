@@ -30,9 +30,9 @@
         // DATA FIELDS
         // --------------------------------------------------------------------
 
-        data(){
+        data() {
 
-            const  data: {
+            const data: {
                 isOrderWidgetExists: boolean,
             } = {
                 isOrderWidgetExists: false,
@@ -49,19 +49,19 @@
             ...mapGetters('OrderWidget', [
                 'russianOrderWidget',
                 'englishOrderWidget',
-                'slovakOrderWidget' ,
+                'slovakOrderWidget',
             ]),
         },
 
         // --------------------------------------------------------------------
         // WATCHED FIELDS
         // --------------------------------------------------------------------
-/*
-        window.document.createElement('script')
-        this.setupYclientOrderWidgetScriptProps(newWidgetSettings);
-        this.mountYclientOrderWidget();
-        this.isYclientsOrderWidgetMounted = false;
-*/
+        /*
+                window.document.createElement('script')
+                this.setupYclientOrderWidgetScriptProps(newWidgetSettings);
+                this.mountYclientOrderWidget();
+                this.isYclientsOrderWidgetMounted = false;
+        */
 
         // --------------------------------------------------------------------
         // METHODS
@@ -75,14 +75,14 @@
                 'loadSlovakOrderWidget',
             ]),
 
-            mountYlientWidget(el: HTMLElement, appLanguage: string){
+            mountYlientWidget(el: HTMLElement, appLanguage: string) {
 
                 let widgetSrc: string = '';
 
                 switch (appLanguage) {
                     case APP_LANGUAGES.RUSSIAN:
 
-                        if(this.russianOrderWidget.src.trim()){
+                        if (this.russianOrderWidget.src.trim()) {
                             widgetSrc = this.russianOrderWidget.src.trim();
                             this.isOrderWidgetExists = true;
                         } else if (this.englishOrderWidget.src.trim()) {
@@ -98,7 +98,7 @@
 
                     case APP_LANGUAGES.ENGLISH:
 
-                        if(this.englishOrderWidget.src.trim()){
+                        if (this.englishOrderWidget.src.trim()) {
                             widgetSrc = this.englishOrderWidget.src.trim();
                             this.isOrderWidgetExists = true;
                         } else if (this.russianOrderWidget.src.trim()) {
@@ -114,7 +114,7 @@
 
                     case APP_LANGUAGES.SLOVAK:
 
-                        if(this.slovakOrderWidget.src.trim()){
+                        if (this.slovakOrderWidget.src.trim()) {
                             widgetSrc = this.slovakOrderWidget.src.trim();
                             this.isOrderWidgetExists = true;
                         } else if (this.russianOrderWidget.src.trim()) {
@@ -140,7 +140,7 @@
             },
 
             //------------------------------------------------------
-            loadYclientWidget(el: HTMLElement, appLanguage: string){
+            loadYclientWidget(el: HTMLElement, appLanguage: string) {
 
                 // DELETE EXISTING SCRIPT
                 {
@@ -154,19 +154,35 @@
 
                 // LOAD WIDGETS SETTINGS for all kind of languages
                 {
-                    this.loadRussianOrderWidget().then(
-                        (response) => {
-                            this.loadEnglishOrderWidget().then(
-                                (response) => {
-                                    this.loadSlovakOrderWidget().then(
-                                        (response) => {
-                                            this.mountYlientWidget(el, appLanguage);
-                                        }
-                                    );
-                                }
-                            );
-                        }
-                    );
+                    // IF REFS on widgets WASN't LOADED yet
+                    if( !this.russianOrderWidget.src ||
+                        !this.englishOrderWidget.src ||
+                        !this.slovakOrderWidget.src
+                    ){
+
+                        // DOWNLOAD
+                        this.loadRussianOrderWidget().then(
+                            (response) => {
+                                this.loadEnglishOrderWidget().then(
+                                    (response) => {
+                                        this.loadSlovakOrderWidget().then(
+                                            (response) => {
+
+                                                //MOUNT SCRIPT
+                                                this.mountYlientWidget(el, appLanguage);
+                                            }
+                                        );
+                                    }
+                                );
+                            }
+                        );
+
+                        // IF refs LOADED already
+                    } else {
+
+                        //MOUNT SCRIPT
+                        this.mountYlientWidget(el, appLanguage);
+                    }
                 }
             },
         },
@@ -174,7 +190,6 @@
         // --------------------------------------------------------------------
         // LIFE HOOKS
         // --------------------------------------------------------------------
-
 
 
         // --------------------------------------------------------------------

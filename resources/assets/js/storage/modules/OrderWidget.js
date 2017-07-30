@@ -52,12 +52,12 @@ export default {
                     language: 'Russian',
                 }).then((response) => {
 
-                    console.log('response => loadRussianOrderWidget()');
-                    console.log(response);
+                    console.log('response => LOAD_RUSSIA_WIDGET()');
+                    console.log(response.data.widget.src);
 
                     context.commit('setRussianOrderWidget', new Widget(
-                        '',
-                        '',
+                        'Yclients',
+                        'Russian',
                         response.data.widget.src,
                     ));
                     resolve(response);
@@ -76,9 +76,13 @@ export default {
                     name    : 'Yclients',
                     language: 'English',
                 }).then((response) => {
+
+                    console.log('response => LOAD_ENGLISH_WIDGET()');
+                    console.log(response.data.widget.src);
+
                     context.commit('setEnglishOrderWidget', new Widget(
-                        '',
-                        '',
+                        'Yclients',
+                        'English',
                         response.data.widget.src,
                     ));
                     resolve(response);
@@ -95,11 +99,17 @@ export default {
                     language: 'Slovak',
                 }).then((response) => {
 
-                    context.commit('setSlovakOrderWidget', new Widget(
-                        '',
-                        '',
-                        response.data.widget.src,
-                    ));
+                    console.log('response => LOAD_SLOVAK_WIDGET()');
+                    console.log(response.data.widget.src);
+
+                    context.commit(
+                        'setSlovakOrderWidget',
+                        new Widget(
+                            'Yclients',
+                            'Slovak',
+                            response.data.widget.src,
+                        )
+                    );
                     resolve(response);
                 }).catch((error) => {
                     reject(error);

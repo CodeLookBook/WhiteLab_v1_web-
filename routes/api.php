@@ -24,7 +24,7 @@ Route::get ('/admin/panel/facebook-group'      , 'SocialGroupController@getFaceb
 Route::get ('/admin/panel/instagram-group'     , 'SocialGroupController@getInstagramGroupReference');
 Route::post('/admin/panel/share-button'        , 'ShareButtonController@retrieve');
 Route::post('/admin/panel/order-widget'        , 'OrderWidgetController@retrieve');
-Route::get   ('/admin/panel/vacancies'         , 'OrderWidgetController@list'    );
+Route::get ('/admin/panel/vacancies'         , 'OrderWidgetController@list'    );
 
 Route::group(['middleware'=>['super-admin']], function () {
     Route::patch ('admin/panel/greet'          , 'HomePageController@updateGreet');

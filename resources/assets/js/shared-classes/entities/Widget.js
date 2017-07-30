@@ -1,13 +1,13 @@
 class Widget {
 
-    _name: string;
-    _language: string;
-    _src: string;
+    _name       : string;
+    _language   : string;
+    _src        : string;
 
     constructor(name: string, language: string, src?: string) {
-        this._name = name;
-        this._language = language;
-        this.src = src;
+        this._name      = name;
+        this._language  = language;
+        this.src        = src;
     }
 
     get name    (             ): string {

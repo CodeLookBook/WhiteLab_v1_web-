@@ -4,27 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateVacancy;
 use App\Http\Requests\UpdateVacancy;
-use App\Vacansy;
+use App\Vacancy;
 use Illuminate\Http\Request;
 
 class VacancyController extends Controller
 {
     function list(){
-        $vacancies = Vacansy::all();
+        $vacancies = Vacancy::all();
         return response()->json(compact('vacancies'));
     }
 
     function create(CreateVacancy $request){
-
-        $vacancy = new Vacansy();
-        $vacancy->name = $
+        $vacancy = new Vacancy();
+        $vacancy->name        = $request->name;
+        $vacancy->contacts    = $request->contacts;
+        $vacancy->description = $request->description;
+        $vacancy->save();
     }
 
-    function update(UpdateVacancy $request, Vacansy $vacancy){
-
+    function update(UpdateVacancy $request, Vacancy $vacancy){
+        $vacancy->name        = $request->name;
+        $vacancy->contacts    = $request->contacts;
+        $vacancy->description = $request->description;
+        $vacancy->save();
     }
 
-    function delete(Vacansy $vacancy){
+    function delete(Vacancy $vacancy){
         $vacancy->delete();
     }
 }

@@ -7,6 +7,7 @@ import EditGreetBlockFonPage     from "../components/pages/edit-greet-block-fon/
 import EditSocialGroupsPage      from "../components/pages/edit-social-groups-buttons/page.vue"
 import EditShareButtons          from "../components/pages/edit-share-buttons/page.vue"
 import EditOrderButton           from "../components/pages/edit-order-button/page.vue"
+import EditVacancies             from "../components/pages/edit-vacancies/page.vue"
 
 export default [
     { path: '/admin',       name: 'app'  , component: LoginPage   },
@@ -48,6 +49,11 @@ export default [
                 name: 'editOrderButton',
                 component: EditOrderButton,
             },
+/*            {
+                path: 'edit-vacancies',
+                name: 'editVacancies',
+                component: EditVacancies,
+            }*/
         ],
     },
 ];

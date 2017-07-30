@@ -26,7 +26,7 @@ export default {
         loadFacebookGroupReference   (context) {
 
             return new Promise((resolve, reject) => {
-                window.axios.post('/api/admin/panel/facebook-group').then(
+                window.axios.get('/api/admin/panel/facebook-group').then(
                     (response) => {
                         context.commit('setFacebookGroupReference',
                             response.data.reference

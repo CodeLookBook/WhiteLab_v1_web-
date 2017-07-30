@@ -13,7 +13,7 @@ class UpdateVacancy extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateVacancy extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'        => "required|string|max:255",
+            'contacts'    => "required|string|max:255",
+            'description' => "required|string|max:65535",
         ];
     }
 }

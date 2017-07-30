@@ -41,6 +41,7 @@ Route::group(['middleware'=>['super-admin']], function (){
     Route::post  ('admin/panel/address_map'     , 'AddressController@upload'     );
 });
 
+//Social groups refs.
 Route::group(['middleware'=>['super-admin']], function (){
     Route::post  ('admin/panel/facebook-group'     , 'SocialGroupController@updateFacebookGroupReference');
     Route::delete('admin/panel/facebook-group'     , 'SocialGroupController@deleteFacebookGroupReference');

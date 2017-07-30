@@ -165,6 +165,7 @@
                     case this.EVENTS.EDIT_VACANCIES_LIST_ITEM_CLICKED:
                         this.$bus.$emit(this.EVENTS.EDIT_VACANCIES_LIST_ITEM_CLICKED);
                         this.$bus.$emit(this.TOGGLE_EVENTS.CLOSED);
+                        //this.$router.push({name: 'editVacancies'})
                         break;
 
                     // PRICE SETTINGS

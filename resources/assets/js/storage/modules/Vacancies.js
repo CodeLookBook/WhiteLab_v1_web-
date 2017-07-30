@@ -1,7 +1,6 @@
 // @flow
 
 import {Vacancy} from "../../shared-classes/entities/Vacancy";
-/*
 
 export default {
     namespaced: true,
@@ -159,4 +158,4 @@ export default {
             });
         },
     }
-}*/
+}

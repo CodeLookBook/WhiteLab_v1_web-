@@ -10,6 +10,6 @@ export default{
         SocialGroups,
         FacebookShareButtonSettings,
         OrderWidget,
-        // Vacancies,
+        Vacancies,
     }
 };

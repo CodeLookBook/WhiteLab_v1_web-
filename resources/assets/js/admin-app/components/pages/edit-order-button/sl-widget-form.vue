@@ -104,10 +104,6 @@
         watch: {
             slovakOrderWidget: {
                 handler: function (newWidget, oldWidget) {
-
-                    console.log('slovakOrderWidget()');
-                    console.log(newWidget);
-
                     this.inputs.src = newWidget.src;
                 },
                 immediate: true,

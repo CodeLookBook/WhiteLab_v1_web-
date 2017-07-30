@@ -49,11 +49,11 @@ export default [
                 name: 'editOrderButton',
                 component: EditOrderButton,
             },
-/*            {
+            {
                 path: 'edit-vacancies',
                 name: 'editVacancies',
                 component: EditVacancies,
-            }*/
+            }
         ],
     },
 ];

@@ -51,10 +51,6 @@ export default {
                     name    : 'Yclients',
                     language: 'Russian',
                 }).then((response) => {
-
-                    console.log('response => LOAD_RUSSIA_WIDGET()');
-                    console.log(response.data.widget.src);
-
                     context.commit('setRussianOrderWidget', new Widget(
                         'Yclients',
                         'Russian',
@@ -62,9 +58,6 @@ export default {
                     ));
                     resolve(response);
                 }).catch((error) => {
-
-                    console.log('error => loadRussianOrderWidget()');
-                    console.log(error);
                     reject(error);
                 });
             });
@@ -76,10 +69,6 @@ export default {
                     name    : 'Yclients',
                     language: 'English',
                 }).then((response) => {
-
-                    console.log('response => LOAD_ENGLISH_WIDGET()');
-                    console.log(response.data.widget.src);
-
                     context.commit('setEnglishOrderWidget', new Widget(
                         'Yclients',
                         'English',
@@ -98,10 +87,6 @@ export default {
                     name    : 'Yclients',
                     language: 'Slovak',
                 }).then((response) => {
-
-                    console.log('response => LOAD_SLOVAK_WIDGET()');
-                    console.log(response.data.widget.src);
-
                     context.commit(
                         'setSlovakOrderWidget',
                         new Widget(

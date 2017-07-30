@@ -398,7 +398,6 @@
                 this.$router.push({name:'app'})
             },
             onFacebookItemClick             (): void {
-                console.log('FACEBOOK REF: ' + this.facebookGroupReference);
                 window.location.href = this.facebookGroupReference;
             },
             onInstagramItemClick            (): void {

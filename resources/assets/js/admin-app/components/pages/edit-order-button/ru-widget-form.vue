@@ -104,10 +104,6 @@
         watch: {
             russianOrderWidget: {
                 handler: function (newWidget, oldWidget) {
-
-                    console.log('russianOrderWidget()');
-                    console.log(newWidget);
-
                     this.inputs.src = newWidget.src;
                 },
                 immediate: true,

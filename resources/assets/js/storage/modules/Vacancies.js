@@ -16,13 +16,13 @@ export default {
     },
 
     mutations:{
-        updateVacancies(state, vacancies: Vacancy[] | null){
+        updateVacancies (state, vacancies: Vacancy[]){
              state.vacancies = vacancies.map(vacancy => vacancy.clone());
         },
-        createVacancy(state, vacancy: Vacancy){
+        createVacancy   (state, vacancy  : Vacancy  ){
             state.vacancies.push(vacancy.clone());
         },
-        updateVacancy(state, data: Vacancy){
+        updateVacancy   (state, data     : Vacancy  ){
 
             const vacancy: Vacancy | undefined = state.vacancies.find(i => {
                 return parseInt(i.id) === data.id;
@@ -46,7 +46,7 @@ export default {
                     "'vuex' storage list. It has wrong id.");
             }
         },
-        deleteVacancy(state, vacancy: Vacancy){
+        deleteVacancy   (state, vacancy  : Vacancy  ){
 
             if (state.vacancies.length !== 0) {
 
@@ -78,7 +78,9 @@ export default {
                                 parseInt(i.id),
                                 i.name,
                                 i.contacts,
-                                i.description,
+                                i.description_ru,
+                                i.description_en,
+                                i.description_sl,
                                 new Date(Date.parse(i.opened_at)), //UTC Date string format to Date
                             )
                         });
@@ -98,10 +100,12 @@ export default {
             return new Promise((resolve, reject) => {
                 window.axios.post(
                     '/api/admin/panel/vacancy', {
-                        name        : vacancy.name,
-                        contacts    : vacancy.contacts,
-                        description : vacancy.description,
-                        openedAt    : vacancy.openedAt.toUTCString(),
+                        name          : vacancy.name,
+                        contacts      : vacancy.contacts,
+                        descriptionRu : vacancy.descriptionRu,
+                        descriptionEn : vacancy.descriptionEn,
+                        descriptionSl : vacancy.descriptionSl,
+                        openedAt      : vacancy.openedAt.toUTCString(),
                     }
                 ).then(
                     response => {
@@ -122,9 +126,11 @@ export default {
             return new Promise((resolve, reject) => {
                 window.axios.patch(
                     '/api/admin/panel/vacancy/' + vacancy.id, {
-                        name        : vacancy.name,
-                        contacts    : vacancy.contacts,
-                        description : vacancy.description,
+                        name          : vacancy.name,
+                        contacts      : vacancy.contacts,
+                        descriptionRu : vacancy.descriptionRu,
+                        descriptionEn : vacancy.descriptionEn,
+                        descriptionSl : vacancy.descriptionSl,
                     }
                 ).then(
                     (response) => {

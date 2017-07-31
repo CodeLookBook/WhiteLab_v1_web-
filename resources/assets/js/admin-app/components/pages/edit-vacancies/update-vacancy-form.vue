@@ -34,10 +34,20 @@
                 el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="kontakty:", v-model="inputs.contacts", prop="contacts" )
                     el-input(v-model="inputs.contacts", v-cloak)
 
-        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Требования/описание:", prop="description" )
-            el-input(v-model="inputs.description", type="textarea", :autosize="{ minRows: 4, maxRows: 8}", v-cloak)
-        el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Požiadavky/opis:", v-model="inputs.description", prop="description" )
-            el-input(v-model="inputs.description", type="textarea", :autosize="{ minRows: 4, maxRows: 8}",  v-cloak)
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Требования/описание для русскоязычной версии сайта:", prop="description" )
+            el-input(v-model="inputs.descriptionRu", type="textarea", :autosize="{ minRows: 4, maxRows: 8}", v-cloak)
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Požiadavky / popis pre ruské jazykovej verzii webu:", v-model="inputs.description", prop="description" )
+            el-input(v-model="inputs.descriptionRu", type="textarea", :autosize="{ minRows: 4, maxRows: 8}",  v-cloak)
+
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Требования/описание для англоязычной версии сайта:", prop="description" )
+            el-input(v-model="inputs.descriptionEn", type="textarea", :autosize="{ minRows: 4, maxRows: 8}", v-cloak)
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Požiadavky / popis pre anglické jazykové verzie stránok:", v-model="inputs.description", prop="description" )
+            el-input(v-model="inputs.descriptionEn", type="textarea", :autosize="{ minRows: 4, maxRows: 8}",  v-cloak)
+
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Требования/описание для словакоязычной версии сайта:", prop="description" )
+            el-input(v-model="inputs.descriptionSl", type="textarea", :autosize="{ minRows: 4, maxRows: 8}", v-cloak)
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Požiadavky / opis slovakoyazychnoy verzie stránok:", v-model="inputs.description", prop="description" )
+            el-input(v-model="inputs.descriptionSl", type="textarea", :autosize="{ minRows: 4, maxRows: 8}",  v-cloak)
 
         el-form-item(v-if="LANGUAGES.RUSSIAN === language")
             el-button(:type="buttons.save.type", @click="onUpdateButtonClick") Сохранить
@@ -46,6 +56,7 @@
         el-form-item(v-if="LANGUAGES.SLOVAK  === language")
             el-button(:type="buttons.save.type", @click="onSaveButtonClick") Udržať
             el-button(:type="buttons.save.type", @click="onDeleteButtonClick",) Vymazať
+
         hr.RULER
 
 </template>
@@ -66,8 +77,8 @@
     import LanguageSettings from "../../../mixins/LanguageSettings.vue"
     import UserMessage      from "../../../mixins/UserMessage.vue"
     import {Token}          from "../../../../shared-classes/facades/Token";
-    import {mapActions} from "vuex";
-    import ElCol from "element-ui/packages/col/src/col";
+    import {mapActions}     from "vuex";
+    import ElCol            from "element-ui/packages/col/src/col";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -93,7 +104,15 @@
                 type: String,
                 required: true,
             },
-            pDescription:{
+            pDescriptionRu:{
+                type: String,
+                required: true,
+            },
+            pDescriptionEn:{
+                type: String,
+                required: true,
+            },
+            pDescriptionSl:{
                 type: String,
                 required: true,
             },
@@ -121,22 +140,26 @@
             const data: {
                 token   : Token,
                 inputs  : {
-                    id          : number,
-                    name        : string,
-                    contacts    : string,
-                    description : string,
-                    openedAt    : Date,
+                    id            : number,
+                    name          : string,
+                    contacts      : string,
+                    descriptionRu : string,
+                    descriptionEn : string,
+                    descriptionSl : string,
+                    openedAt      : Date,
                 },
                 buttons : Object,
                 rules   : Object,
             } = {
                 token : Token.getInstance(),
                 inputs: {
-                    id          : this.pId,
-                    name        : this.pName,
-                    contacts    : this.pContacts,
-                    description : this.pDescription,
-                    openedAt    : this.pOpenedAt,
+                    id            : this.pId,
+                    name          : this.pName,
+                    contacts      : this.pContacts,
+                    descriptionRu : this.pDescriptionRu,
+                    descriptionEn : this.pDescriptionEn,
+                    descriptionSl : this.pDescriptionSl,
+                    openedAt      : this.pOpenedAt,
                 },
                 buttons: {
                     save: {
@@ -262,7 +285,9 @@
                                 this.inputs.id,
                                 this.inputs.name,
                                 this.inputs.contacts,
-                                this.inputs.description,
+                                this.inputs.descriptionRu,
+                                this.inputs.descriptionEn,
+                                this.inputs.descriptionSl,
                                 this.inputs.openedAt,
                             )
                         ).then(
@@ -293,7 +318,9 @@
                         this.inputs.id,
                         this.inputs.name,
                         this.inputs.contacts,
-                        this.inputs.description,
+                        this.inputs.descriptionRu,
+                        this.inputs.descriptionEn,
+                        this.inputs.descriptionSl,
                         this.inputs.openedAt,
                     )
                 ).then(
@@ -329,7 +356,8 @@
 
         components: {
             ElCol,
-            ElForm}
+            ElForm
+        }
 
     };
 

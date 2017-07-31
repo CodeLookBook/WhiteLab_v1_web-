@@ -33,17 +33,27 @@
                 el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="kontakty:", v-model="inputs.contacts", prop="contacts" )
                     el-input(v-model="inputs.contacts", v-cloak)
 
-        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Требования/описание:", prop="description" )
-            el-input(v-model="inputs.description", type="textarea", :autosize="{ minRows: 4, maxRows: 8}", v-cloak)
-        el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Požiadavky/opis:", v-model="inputs.description", prop="description" )
-            el-input(v-model="inputs.description", type="textarea", :autosize="{ minRows: 4, maxRows: 8}",  v-cloak)
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Требования/описание для русскоязычной версии сайта:", prop="descriptionRu" )
+            el-input(v-model="inputs.descriptionRu", type="textarea", :autosize="{ minRows: 4, maxRows: 8}", v-cloak)
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Požiadavky / popis pre ruské jazykovej verzii webu:",prop="descriptionRu" )
+            el-input(v-model="inputs.descriptionRu", type="textarea", :autosize="{ minRows: 4, maxRows: 8}",  v-cloak)
+
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Требования/описание для англоязычной версии сайта:", prop="descriptionEn" )
+            el-input(v-model="inputs.descriptionEn", type="textarea", :autosize="{ minRows: 4, maxRows: 8}", v-cloak)
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Požiadavky / popis pre anglické jazykové verzie stránok:", prop="descriptionEn" )
+            el-input(v-model="inputs.descriptionEn", type="textarea", :autosize="{ minRows: 4, maxRows: 8}",  v-cloak)
+
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Требования/описание для словакоязычной версии сайта:", prop="descriptionSl" )
+            el-input(v-model="inputs.descriptionSl", type="textarea", :autosize="{ minRows: 4, maxRows: 8}", v-cloak)
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Požiadavky / opis slovakoyazychnoy verzie stránok:", prop="descriptionSl" )
+            el-input(v-model="inputs.descriptionSl", type="textarea", :autosize="{ minRows: 4, maxRows: 8}",  v-cloak)
 
         el-form-item(v-if="LANGUAGES.RUSSIAN === language")
-            el-button(:type="buttons.save.type", @click="onSaveButtonClick") Добавить
+            el-button(:type="buttons.save.type", @click="onSaveButtonClick" ) Добавить
             el-button(:type="buttons.save.type", @click="onResetButtonClick") Отчистить
 
         el-form-item(v-if="LANGUAGES.SLOVAK  === language")
-            el-button(:type="buttons.save.type", @click="onSaveButtonClick") Pridať
+            el-button(:type="buttons.save.type", @click="onSaveButtonClick" ) Pridať
             el-button(:type="buttons.save.type", @click="onResetButtonClick") Jasná
 
 </template>
@@ -92,20 +102,24 @@
             const data: {
                 token   : Token,
                 inputs  : {
-                    id          : number,
-                    name        : string,
-                    contacts    : string,
-                    description : string,
+                    id              : number,
+                    name            : string,
+                    contacts        : string,
+                    descriptionRu   : string,
+                    descriptionEn   : string,
+                    descriptionSl   : string,
                 },
                 buttons : Object,
                 rules   : Object,
             } = {
                 token : Token.getInstance(),
                 inputs: {
-                    id          : 0,
-                    name        : '',
-                    contacts    : '',
-                    description : '',
+                    id              : 0,
+                    name            : '',
+                    contacts        : '',
+                    descriptionRu   : '',
+                    descriptionEn   : '',
+                    descriptionSl   : '',
                 },
                 buttons: {
                     save: {
@@ -140,7 +154,19 @@
                             message: '',
                         }
                     ],
-                    description:[
+                    descriptionRu:[
+                        {
+                            max: 65535,
+                            message: '',
+                        }
+                    ],
+                    descriptionEn:[
+                        {
+                            max: 65535,
+                            message: '',
+                        }
+                    ],
+                    descriptionSl:[
                         {
                             max: 65535,
                             message: '',
@@ -176,7 +202,9 @@
 
                             this.rules.contacts[0].message     = "Обязательное поле.";
                             this.rules.contacts[1].message     = "Максимальное количество символов - 255.";
-                            this.rules.description[0].message  = "Максимальное количество символов - 65535.";
+                            this.rules.descriptionRu[0].message  = "Максимальное количество символов - 65535.";
+                            this.rules.descriptionEn[0].message  = "Максимальное количество символов - 65535.";
+                            this.rules.descriptionSl[0].message  = "Максимальное количество символов - 65535.";
                         }
                             break;
 
@@ -189,7 +217,9 @@
 
                             this.rules.contacts[0].message     = "Povinné pole.";
                             this.rules.contacts[1].message     = "Maximálny počet znakov - 255";
-                            this.rules.description[0].message  = "Maximálny počet znakov - 65535.";
+                            this.rules.descriptionRu[0].message  = "Maximálny počet znakov - 65535.";
+                            this.rules.descriptionEn[0].message  = "Maximálny počet znakov - 65535.";
+                            this.rules.descriptionSl[0].message  = "Maximálny počet znakov - 65535.";
                         }
                             break;
 
@@ -201,7 +231,9 @@
 
                             this.rules.contacts[0].message     = "Обязательное поле.";
                             this.rules.contacts[1].message     = "Максимальное количество символов - 255.";
-                            this.rules.description[0].message  = "Максимальное количество символов - 65535.";
+                            this.rules.descriptionRu[0].message  = "Максимальное количество символов - 65535.";
+                            this.rules.descriptionEn[0].message  = "Максимальное количество символов - 65535.";
+                            this.rules.descriptionSl[0].message  = "Максимальное количество символов - 65535.";
                         }
                     }
                 },
@@ -232,7 +264,9 @@
                                 this.inputs.id,
                                 this.inputs.name,
                                 this.inputs.contacts,
-                                this.inputs.description,
+                                this.inputs.descriptionRu,
+                                this.inputs.descriptionEn,
+                                this.inputs.descriptionSl,
                                 new Date(),
                             )
                         ).then(

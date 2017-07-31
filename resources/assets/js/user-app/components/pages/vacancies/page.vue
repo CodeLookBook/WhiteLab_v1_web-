@@ -1,37 +1,28 @@
+// @flow
+
 <template lang="pug">
 
     .VACANCIES-PAGE.TABLE: .ROW: .CELL
-        h1 ABOUT COMPANY:
-        p
-            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
-            | cum ea eligendi est et fugiat optio porro sit soluta, tenetur! Ab
-            | adipisci dolores earum nostrum praesentium? Aliquid excepturi illo
-            | incidunt itaque labore magni nesciunt reprehenderit, similique totam
-            | vitae. Fuga, quibusdam, suscipit. Aliquam at culpa dolorum error
-            | facere fugit harum, itaque iusto labore natus, nemo nobis, quis
-            | quisquam quod rem reprehenderit repudiandae sequi suscipit! Ad animi
-            | aspernatur deserunt facere, facilis, magni molestiae molestias odit
-            | officiis pariatur provident quas quasi reprehenderit voluptate
-            | voluptates? Accusamus assumenda, at consequuntur corporis dolor ea
-            | est ex harum, ipsa magni numquam quaerat quis quos similique totam
-            | voluptates!
-        h1 VACANCIES:
 
-        el-table(
-        :data="null",
-        style="width: 100%;"
+        el-table.VACANCIES-TABLE(
+            :data="list",
+            :fit="true",
+            style="",
         )
             el-table-column(type="expand")
-                template (scope="")
-                    | тестовый текст таблицы
+                template(scope="props")
+                    | {{ props.row.descriptionRu }}
             el-table-column(
-            label="Date"
+                label="Date",
+                prop="openedAt"
             )
             el-table-column(
-            label="Vacancy"
+                label="Vacancy",
+                prop="name"
             )
             el-table-column(
-            label="Contacts"
+                label="Contacts",
+                prop="contacts"
             )
 
 </template>
@@ -45,6 +36,10 @@
         h1
             font-size: 1em
 
+    .VACANCIES-TABLE
+        margin-top: 2em
+        min-width: 30em
+
 </style>
 <script>
 
@@ -52,6 +47,8 @@
     // CHILD COMPONENTS IMPORT
     //*************************************************************************
 
+    import {mapActions, mapGetters} from "vuex";
+    import {Vacancy} from "../../../../shared-classes/entities/Vacancy";
 
     //*************************************************************************
     // COMPONENT
@@ -68,26 +65,82 @@
         // DATA FIELDS
         //*********************************************************************
 
+        data(){
+            const data: {
+                list: [],
+                isDateVisible: boolean,
+            } = {
+                list: [],
+                isDateVisible: true,
+            };
+
+            return data;
+        },
 
         //*********************************************************************
         // COMPUTED FIELDS
         //*********************************************************************
 
+        computed:{
+            ...mapGetters('Vacancies', [
+                'vacancies',
+            ])
+        },
 
         //*********************************************************************
         // WATCHED FIELDS
         //*********************************************************************
 
+        watch:{
+            vacancies:{
+                handler:function(newList, oldList){
+                    this.list = newList.map((vacancy) => {
+                        return {
+                            id              : vacancy.id,
+                            name            : vacancy.name,
+                            contacts        : vacancy.contacts,
+                            descriptionRu   : vacancy.descriptionRu,
+                            descriptionEn   : vacancy.descriptionEn,
+                            descriptionSl   : vacancy.descriptionSl,
+                            openedAt        : vacancy.openedAt.toISOString().
+                                              slice(0,10).replace(/-/g,"-"),
+                        }
+                    });
+                },
+                immediate: true,
+            }
+        },
 
         //*********************************************************************
         // METHODS
         //*********************************************************************
 
+        methods: {
+            ...mapActions('Vacancies', [
+                'loadVacancies',
+            ]),
+        },
 
         //*********************************************************************
         // LIFE HOOKS
         //*********************************************************************
 
+        mounted(){
+
+            if(this.vacancies !== null){
+                if(typeof this.vacancies !== "undefined"){
+                    if(this.vacancies.length === 0){
+                        this.loadVacancies();
+                    }
+                }
+            }
+
+/*            window.addEventListener('resize', function(){
+                const width = document.documentElement.clientWidth
+                    || document.body.clientWidth;
+                if(width < 350 ) this.isDateVisible = false;
+            });*/
+        },
 
         //*********************************************************************
         // CHILD COMPONENTS

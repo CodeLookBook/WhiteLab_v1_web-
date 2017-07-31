@@ -1,23 +1,29 @@
 class Vacancy {
 
-    _id          : number;
-    _name        : string;
-    _contacts    : string;
-    _description : string;
-    _openedAt    : Date  ;
+    _id             : number;
+    _name           : string;
+    _contacts       : string;
+    _descriptionRu  : string;
+    _descriptionEn  : string;
+    _descriptionSl  : string;
+    _openedAt       : Date  ;
 
     constructor(
-        id          : number,
-        name        : string,
-        contacts    : string,
-        description : string,
-        openedAt    : Date  ,
+        id              : number,
+        name            : string,
+        contacts        : string,
+        descriptionRu  : string,
+        descriptionEn  : string,
+        descriptionSl  : string,
+        openedAt        : Date  ,
     ) {
-        this._id          = id;
-        this._name        = name;
-        this._contacts    = contacts;
-        this._description = description;
-        this._openedAt    = openedAt;
+        this._id            = id;
+        this._name          = name;
+        this._contacts      = contacts;
+        this._descriptionRu = descriptionRu;
+        this._descriptionEn = descriptionEn;
+        this._descriptionSl = descriptionSl;
+        this._openedAt      = openedAt;
     }
 
     get id (): number {
@@ -38,11 +44,23 @@ class Vacancy {
     set contacts(value: string) {
         this._contacts = value;
     }
-    get description (): string {
-        return this._description;
+    get descriptionRu (): string {
+        return this._descriptionRu;
     }
-    set description(value: string) {
-        this._description = value;
+    set descriptionRu (value: string) {
+        this._descriptionRu = value;
+    }
+    get descriptionEn (): string {
+        return this._descriptionEn;
+    }
+    set descriptionEn(value: string) {
+        this._descriptionEn = value;
+    }
+    get descriptionSl(): string {
+        return this._descriptionSl;
+    }
+    set descriptionSl(value: string) {
+        this._descriptionSl = value;
     }
     get openedAt (): Date {
         return this._openedAt;
@@ -56,7 +74,9 @@ class Vacancy {
             this.id,
             this.name,
             this.contacts,
-            this.description,
+            this.descriptionRu,
+            this.descriptionEn,
+            this.descriptionSl,
             this.openedAt,
         )
     }

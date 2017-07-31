@@ -18,10 +18,12 @@ class VacancyController extends Controller
     function create(CreateVacancy $request){
 
         $vacancy = new Vacancy();
-        $vacancy->name        = $request->input('name');
-        $vacancy->contacts    = $request->input('contacts');
-        $vacancy->description = $request->input('description');
-        $vacancy->opened_at   = $request->input('openedAt');
+        $vacancy->name           = $request->input('name');
+        $vacancy->contacts       = $request->input('contacts');
+        $vacancy->description_ru = $request->input('descriptionRu');
+        $vacancy->description_en = $request->input('descriptionEn');
+        $vacancy->description_sl = $request->input('descriptionSl');
+        $vacancy->opened_at      = $request->input('openedAt');
         $vacancy->save();
 
         //Send ID to client
@@ -32,7 +34,9 @@ class VacancyController extends Controller
     function update(UpdateVacancy $request, Vacancy $vacancy){
         $vacancy->name        = $request->input('name');
         $vacancy->contacts    = $request->input('contacts');
-        $vacancy->description = $request->input('description');
+        $vacancy->description_ru = $request->input('descriptionRu');
+        $vacancy->description_en = $request->input('descriptionEn');
+        $vacancy->description_sl = $request->input('descriptionSl');
         $vacancy->save();
     }
 

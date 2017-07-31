@@ -24,10 +24,12 @@ class CreateVacancy extends FormRequest
     public function rules()
     {
         return [
-            'name'        => "required|string|max:255",
-            'contacts'    => "required|string|max:255",
-            'description' => "required|string|max:65535",
-            'openedAt'    => "required|string|max:255",
+            'name'          => "required|string|max:255",
+            'contacts'      => "required|string|max:255",
+            'descriptionRu' => "required|string|max:65535",
+            'descriptionEn' => "required|string|max:65535",
+            'descriptionSl' => "required|string|max:65535",
+            'openedAt'      => "required|string|max:255",
         ];
     }
 }

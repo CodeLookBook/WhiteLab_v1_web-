@@ -26,7 +26,7 @@ class UpdateVacancy extends FormRequest
         return [
             'name'        => "required|string|max:255",
             'contacts'    => "required|string|max:255",
-            'description' => "required|string|max:65535",
+            'description' => "required|max:65535",
         ];
     }
 }

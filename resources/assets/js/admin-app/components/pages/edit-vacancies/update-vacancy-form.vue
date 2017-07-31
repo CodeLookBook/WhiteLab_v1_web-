@@ -1,0 +1,336 @@
+// @flow
+
+<template lang="pug">
+
+
+    el-form(:model="inputs", :rules="rules", label-position="left", ref="form")
+        el-form-item
+            el-col(
+            :xs="{span:24}",
+            :sm="{span:11}",
+            :md="{span:11}",
+            :lg="{span:11}",
+            )
+                el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Должность:", prop="name" )
+                    el-input(v-model="inputs.name", v-cloak)
+                el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Kancelária:", prop="name" )
+                    el-input(v-model="inputs.name", v-cloak)
+
+            el-col(
+            :xs="{span:0}",
+            :sm="{span:2}",
+            :md="{span:2}",
+            :lg="{span:2}",
+            ) &nbsp;
+
+            el-col(
+            :xs="{span:24}",
+            :sm="{span:11}",
+            :md="{span:11}",
+            :lg="{span:11}",
+            )
+                el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Котакты:", prop="contacts" )
+                    el-input(v-model="inputs.contacts", v-cloak)
+                el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="kontakty:", v-model="inputs.contacts", prop="contacts" )
+                    el-input(v-model="inputs.contacts", v-cloak)
+
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Требования/описание:", prop="description" )
+            el-input(v-model="inputs.description", type="textarea", :autosize="{ minRows: 4, maxRows: 8}", v-cloak)
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Požiadavky/opis:", v-model="inputs.description", prop="description" )
+            el-input(v-model="inputs.description", type="textarea", :autosize="{ minRows: 4, maxRows: 8}",  v-cloak)
+
+        el-form-item(v-if="LANGUAGES.RUSSIAN === language")
+            el-button(:type="buttons.save.type", @click="onUpdateButtonClick") Сохранить
+            el-button(:type="buttons.save.type", @click="onDeleteButtonClick") Удалить
+
+        el-form-item(v-if="LANGUAGES.SLOVAK  === language")
+            el-button(:type="buttons.save.type", @click="onSaveButtonClick") Udržať
+            el-button(:type="buttons.save.type", @click="onDeleteButtonClick",) Vymazať
+        hr.RULER
+
+</template>
+<style lang="sass" scoped>
+
+    .RULER
+        background-color: #f3f3f3
+
+</style>
+<script>
+
+    // ------------------------------------------------------------------------
+    // IMPORT CHILD COMPONENTS
+    // ------------------------------------------------------------------------
+
+    import ElForm           from "../../../../../../../node_modules/element-ui/packages/form/src/form.vue";
+    import {Vacancy}        from "../../../../shared-classes/entities/Vacancy";
+    import LanguageSettings from "../../../mixins/LanguageSettings.vue"
+    import UserMessage      from "../../../mixins/UserMessage.vue"
+    import {Token}          from "../../../../shared-classes/facades/Token";
+    import {mapActions} from "vuex";
+    import ElCol from "element-ui/packages/col/src/col";
+
+    // ------------------------------------------------------------------------
+    // COMPONENT
+    // ------------------------------------------------------------------------
+
+
+    export default {
+
+        // --------------------------------------------------------------------
+        // PROPERTIES
+        // --------------------------------------------------------------------
+
+        props:{
+            pId:{
+                type: Number,
+                required: true,
+            },
+            pName:{
+                type: String,
+                required: true,
+            },
+            pContacts:{
+                type: String,
+                required: true,
+            },
+            pDescription:{
+                type: String,
+                required: true,
+            },
+            pOpenedAt: {
+                type: Date,
+                required: true,
+            }
+        },
+
+
+        // --------------------------------------------------------------------
+        // MIXINS
+        // --------------------------------------------------------------------
+
+        mixins: [
+            LanguageSettings,
+            UserMessage,
+        ],
+
+        // --------------------------------------------------------------------
+        // DATA FIELDS
+        // --------------------------------------------------------------------
+
+        data(){
+            const data: {
+                token   : Token,
+                inputs  : {
+                    id          : number,
+                    name        : string,
+                    contacts    : string,
+                    description : string,
+                    openedAt    : Date,
+                },
+                buttons : Object,
+                rules   : Object,
+            } = {
+                token : Token.getInstance(),
+                inputs: {
+                    id          : this.pId,
+                    name        : this.pName,
+                    contacts    : this.pContacts,
+                    description : this.pDescription,
+                    openedAt    : this.pOpenedAt,
+                },
+                buttons: {
+                    save: {
+                        type: "primary",
+                        disabled: true,
+                    },
+                    del: {
+                        type: "primary",
+                        disabled: true,
+                    },
+                },
+                rules: {
+                    name:[
+                        {
+                            required: true,
+                            trigger : 'blur, change',
+                            message : ''
+                        },
+                        {
+                            max: 255,
+                            message: '',
+                        }
+                    ],
+                    contacts:[
+                        {
+                            required: true,
+                            trigger : 'blur, change',
+                            message : ''
+                        },
+                        {
+                            max: 255,
+                            message: '',
+                        }
+                    ],
+                    description:[
+                        {
+                            max: 65535,
+                            message: '',
+                        }
+                    ],
+                },
+            };
+
+            return data;
+        },
+
+        // --------------------------------------------------------------------
+        // COMPUTED FIELDS
+        // --------------------------------------------------------------------
+
+
+        // --------------------------------------------------------------------
+        // WATCHED FIELDS
+        // --------------------------------------------------------------------
+
+        watch:{
+            language:{
+                handler: function (newLanguage, oldLanguage) {
+
+                    switch (newLanguage) {
+
+                        case this.ADMIN_APP_LANGUAGES.RUSSIAN:
+
+                            // FORM russian errors MESSAGES.
+                        {
+                            this.rules.name[0].message         = "Обязательное поле.";
+                            this.rules.name[1].message         = "Максимальное количество символов - 255.";
+
+                            this.rules.contacts[0].message     = "Обязательное поле.";
+                            this.rules.contacts[1].message     = "Максимальное количество символов - 255.";
+                            this.rules.description[0].message  = "Максимальное количество символов - 65535.";
+                        }
+                            break;
+
+                        case this.ADMIN_APP_LANGUAGES.SLOVAK:
+
+                            // FORM russian errors MESSAGES.
+                        {
+                            this.rules.name[0].message         = "Povinné pole.";
+                            this.rules.name[1].message         = "Maximálny počet znakov - 255.";
+
+                            this.rules.contacts[0].message     = "Povinné pole.";
+                            this.rules.contacts[1].message     = "Maximálny počet znakov - 255";
+                            this.rules.description[0].message  = "Maximálny počet znakov - 65535.";
+                        }
+                            break;
+
+                        default:
+                            // FORM russian errors MESSAGES.
+                        {
+                            this.rules.name[0].message         = "Обязательное поле.";
+                            this.rules.name[1].message         = "Максимальное количество символов - 255.";
+
+                            this.rules.contacts[0].message     = "Обязательное поле.";
+                            this.rules.contacts[1].message     = "Максимальное количество символов - 255.";
+                            this.rules.description[0].message  = "Максимальное количество символов - 65535.";
+                        }
+                    }
+                },
+                immediate: true,
+            }
+        },
+
+        // --------------------------------------------------------------------
+        // METHODS
+        // --------------------------------------------------------------------
+
+        methods: {
+
+            ...mapActions('Vacancies', [
+                'updateVacancy',
+                'deleteVacancy',
+            ]),
+
+            onUpdateButtonClick(){
+                this.$refs['form'].validate((valid) => {
+
+                    // IF inputs are VALID
+                    if (valid) {
+
+                        this.updateVacancy(
+                            new Vacancy(
+                                this.inputs.id,
+                                this.inputs.name,
+                                this.inputs.contacts,
+                                this.inputs.description,
+                                this.inputs.openedAt,
+                            )
+                        ).then(
+                            (success) => {
+                                this.showDataUploadSuccessMessage();
+                            },
+                            (error) => {
+
+                                if (this.token.isLoaded) {
+
+                                    if (this.token.isExpired()) {
+                                        this.token.del();
+                                        this.showTokenErrorAlert();
+                                    } else {
+                                        this.showDataUploadErrorAlert();
+                                    }
+                                } else {
+                                    this.showTokenErrorAlert();
+                                }
+                            }
+                        );
+                    }
+                });
+            },
+            onDeleteButtonClick(){
+                this.deleteVacancy(
+                    new Vacancy(
+                        this.inputs.id,
+                        this.inputs.name,
+                        this.inputs.contacts,
+                        this.inputs.description,
+                        this.inputs.openedAt,
+                    )
+                ).then(
+                    (success) => {
+                        this.showDataUploadSuccessMessage();
+                    },
+                    (error) => {
+
+                        if (this.token.isLoaded) {
+
+                            if (this.token.isExpired()) {
+                                this.token.del();
+                                this.showTokenErrorAlert();
+                            } else {
+                                this.showDataUploadErrorAlert();
+                            }
+                        } else {
+                            this.showTokenErrorAlert();
+                        }
+                    }
+                );
+            } ,
+        },
+
+        // --------------------------------------------------------------------
+        // LIFE HOOKS
+        // --------------------------------------------------------------------
+
+
+        // --------------------------------------------------------------------
+        // CHILD COMPONENTS
+        // --------------------------------------------------------------------
+
+        components: {
+            ElCol,
+            ElForm}
+
+    };
+
+</script>

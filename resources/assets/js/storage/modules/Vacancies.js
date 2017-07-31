@@ -4,18 +4,18 @@ import {Vacancy} from "../../shared-classes/entities/Vacancy";
 
 export default {
     namespaced: true,
+
     state: {
         vacancies: [],
     },
 
     getters:{
         vacancies(state){
-            return state.vacancies.map(vacancy => vacancy.clone());;
+            return state.vacancies.map(vacancy => vacancy.clone());
         }
     },
 
     mutations:{
-
         updateVacancies(state, vacancies: Vacancy[] | null){
              state.vacancies = vacancies.map(vacancy => vacancy.clone());
         },
@@ -34,6 +34,7 @@ export default {
                 vacancy.name        = data.name;
                 vacancy.contacts    = data.contacts;
                 vacancy.description = data.description;
+                vacancy.openedAt    = data.openedAt;
 
                 // We mustn't update date. Because we don't give
                 // user functionality that will change date. User
@@ -64,49 +65,49 @@ export default {
     },
 
     actions:{
-        loadList(context){
+        loadVacancies(context){
 
             return new Promise((resolve, reject) => {
                 window.axios.get(
                     "/api/admin/panel/vacancies"
                 ).then(
-                    response => {
+                    (response) => {
 
-                        let vacancies = response.data.vacancies.map(i=>{
+                        let vacancies: Vacancy[] = response.data.vacancies.map(i=>{
                             return new Vacancy(
                                 parseInt(i.id),
                                 i.name,
                                 i.contacts,
                                 i.description,
-                                new Date(i.date),
+                                new Date(Date.parse(i.opened_at)), //UTC Date string format to Date
                             )
                         });
 
                         context.commit('updateVacancies', vacancies);
-                        vacancies = null;
                         resolve(response);
                     }
                 ).catch(
-                    error => {
+                    (error) => {
                         reject(error);
                     }
                 );
             });
         },
-        createVacancy(context, vacancy: Vacancy){
+        createVacancy(context, vacancy: Vacancy) {
 
             return new Promise((resolve, reject) => {
                 window.axios.post(
                     '/api/admin/panel/vacancy', {
-                        id          : vacancy.id,
                         name        : vacancy.name,
                         contacts    : vacancy.contacts,
                         description : vacancy.description,
+                        openedAt    : vacancy.openedAt.toUTCString(),
                     }
                 ).then(
                     response => {
+                        // Get from response new ID of the vacancy record
+                        vacancy.id = response.data.id;
                         context.commit('createVacancy', vacancy);
-                        vacancy = null;
                         resolve(response);
                     }
                 ).catch(
@@ -116,24 +117,22 @@ export default {
                 );
             });
         },
-        updateVacancy(context, vacancy: Vacancy){
+        updateVacancy(context, vacancy: Vacancy) {
 
             return new Promise((resolve, reject) => {
                 window.axios.patch(
                     '/api/admin/panel/vacancy/' + vacancy.id, {
-                        id          : vacancy.id,
                         name        : vacancy.name,
                         contacts    : vacancy.contacts,
                         description : vacancy.description,
                     }
                 ).then(
-                    response => {
+                    (response) => {
                         context.commit('updateVacancy', vacancy);
-                        vacancy = null;
                         resolve(response);
                     }
                 ).catch(
-                    error    => {
+                    (error)    => {
                         reject(error);
                     }
                 );
@@ -147,7 +146,6 @@ export default {
                 ).then(
                     response => {
                         context.commit('deleteVacancy', vacancy);
-                        vacancy = null;
                         resolve(response);
                     }
                 ).catch(

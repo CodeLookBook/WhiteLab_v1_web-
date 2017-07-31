@@ -18,6 +18,7 @@ class CreateVacanciesTable extends Migration
             $table->string('name');
             $table->string('contacts');
             $table->text('description');
+            $table->string('opened_at');
             $table->timestamps();
         });
     }

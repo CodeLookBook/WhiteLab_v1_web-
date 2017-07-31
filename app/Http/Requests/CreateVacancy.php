@@ -27,6 +27,7 @@ class CreateVacancy extends FormRequest
             'name'        => "required|string|max:255",
             'contacts'    => "required|string|max:255",
             'description' => "required|string|max:65535",
+            'openedAt'    => "required|string|max:255",
         ];
     }
 }

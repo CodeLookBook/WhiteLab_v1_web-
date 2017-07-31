@@ -4,20 +4,20 @@ class Vacancy {
     _name        : string;
     _contacts    : string;
     _description : string;
-    _createdAt   : Date  ;
+    _openedAt    : Date  ;
 
     constructor(
         id          : number,
         name        : string,
         contacts    : string,
         description : string,
-        createdAt   : Date  ,
+        openedAt    : Date  ,
     ) {
         this._id          = id;
         this._name        = name;
         this._contacts    = contacts;
-        this._description = string;
-        this._createdAt   = createdAt;
+        this._description = description;
+        this._openedAt    = openedAt;
     }
 
     get id (): number {
@@ -44,11 +44,11 @@ class Vacancy {
     set description(value: string) {
         this._description = value;
     }
-    get createdAt (): Date {
-        return this._createdAt;
+    get openedAt (): Date {
+        return this._openedAt;
     }
-    set createdAt(value: Date) {
-        this._createdAt = value;
+    set openedAt(value: Date) {
+        this._openedAt = value;
     }
 
     clone(){
@@ -57,7 +57,7 @@ class Vacancy {
             this.name,
             this.contacts,
             this.description,
-            this.createdAt,
+            this.openedAt,
         )
     }
 }

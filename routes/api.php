@@ -24,7 +24,7 @@ Route::get ('/admin/panel/facebook-group'      , 'SocialGroupController@getFaceb
 Route::get ('/admin/panel/instagram-group'     , 'SocialGroupController@getInstagramGroupReference');
 Route::post('/admin/panel/share-button'        , 'ShareButtonController@retrieve');
 Route::post('/admin/panel/order-widget'        , 'OrderWidgetController@retrieve');
-Route::get ('/admin/panel/vacancies'         , 'OrderWidgetController@list'    );
+Route::get ('/admin/panel/vacancies'           , 'VacancyController@list'        );
 
 Route::group(['middleware'=>['super-admin']], function () {
     Route::patch ('admin/panel/greet'          , 'HomePageController@updateGreet');
@@ -55,14 +55,14 @@ Route::group(['middleware'=>['super-admin']], function (){
 });
 
 Route::group(['middleware'=>['super-admin']], function (){
-    Route::patch ('/admin/panel/order-widget' , 'OrderWidgetController@update');
+    Route::patch ('/admin/panel/order-widget'                   , 'OrderWidgetController@update');
     Route::delete('/admin/panel/order-widget/{name}/{language}' , 'OrderWidgetController@delete')
         ->where('name','Yclients')
         ->where('language', '(Russian|English|Slovak|russian|english|slovak)');
 });
 
 Route::group(['middleware'=>['super-admin']], function (){
-    Route::post  ('/admin/panel/vacancy'           , 'OrderWidgetController@create');
-    Route::patch ('/admin/panel/vacancy/{vacancy}' , 'OrderWidgetController@update');
-    Route::delete('/admin/panel/vacancy/{vacancy}' , 'OrderWidgetController@delete');
+    Route::post  ('/admin/panel/vacancy'           , 'VacancyController@create');
+    Route::patch ('/admin/panel/vacancy/{vacancy}' , 'VacancyController@update');
+    Route::delete('/admin/panel/vacancy/{vacancy}' , 'VacancyController@delete');
 });

@@ -148,7 +148,7 @@
                 });
             },
             onTokenLoaded (event: Object | null): void {
-                this.$router.push({name: 'panel'});
+                this.$router.push({name: 'homePageGreetTextSettings'});
                 this.$bus.$emit(TOKEN_EVENTS.LOADED);
             },
             onTokenLoadError401 (event: Object | null): void {
@@ -174,11 +174,11 @@
 
         mounted(){
 
-            // if token is exists and valid then REDIRECT to 'panel' page.
+            // if token is exists and valid then REDIRECT to 'homePageGreetTextSettings' page.
             {
                 if (this.token.isLoaded === true) {
                     if (!this.token.isExpired()) {
-                        this.$router.push({name: 'panel'});
+                        this.$router.push({name: 'homePageGreetTextSettings'});
                     } else {
                         this.token.del();
                     }

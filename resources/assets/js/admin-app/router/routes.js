@@ -10,10 +10,16 @@ import EditOrderButton           from "../components/pages/edit-order-button/pag
 import EditVacancies             from "../components/pages/edit-vacancies/page.vue"
 
 export default [
+
+    { path: '/*',                          component: LoginPage   },
     { path: '/admin',       name: 'app'  , component: LoginPage   },
     { path: '/admin/login', name: 'login', component: LoginPage   },
     {
         path: '/admin/panel', name: 'panel', component: PanelPage, children: [
+/*            {
+                path     : '/',
+                component: HomePageGreetTextSettings,
+            },*/
             {
                 path     : 'home-page-greet-text-settings',
                 name     : 'homePageGreetTextSettings',

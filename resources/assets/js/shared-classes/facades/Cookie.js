@@ -44,10 +44,20 @@ class Cookie {
      */
     set(name    : string,
         value   : string,
-        expires : Date = new Date (Date.now() + (7*24*60*60*1000)), //def-t: 7days
+        expires?: Date,
         path   ?: string,
         domain ?: string,
         secure ?: boolean): void {
+
+        // Set default value to 'expires' argument.
+        {
+            if (typeof expires === 'undefined') {
+                expires = new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)); //def-t: 7days
+            }
+            if (expires === null) {
+                expires = new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)); //def-t: 7days
+            }
+        }
 
         document.cookie = name.trim() + "=" + encodeURIComponent(value.trim()) +
             ((expires) ? "; expires=" + expires.toUTCString() : "") +

@@ -34,7 +34,13 @@ class Observable {
      * Notifies all subscribers about event and send event information
      * to them.
      */
-    notify(event: Object | null = null){
+    notify(event?: Object | null){
+
+        // set default value to 'event' argument
+        if(typeof event === "undefined"){
+            event = null;
+        }
+
         this._observers.forEach((callback, number, array) => {
             callback(event);
         });

@@ -8,8 +8,6 @@
     @yield('Styles')
 </head>
 <body>
-
 <!-- Vue.js start point tag -->
 <div id="app"></div>
-
 </body>

@@ -1,2 +1,12 @@
-[include]
-../resources/.*
+[ignore]
+.*/app/.*
+.*/bootstrap/.*
+.*/config/.*
+.*/node_modules/.*
+.*/public/.*
+.*/storage/.*
+.*/tests/.*
+.*/vendor/.*
+
+[options]
+unsafe.enable_getters_and_setters=true

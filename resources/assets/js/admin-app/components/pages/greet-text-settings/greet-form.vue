@@ -41,9 +41,7 @@
     import {Cookie} from "../../../../shared-classes/facades/Cookie";
     import LanguageSettings  from "../../../mixins/LanguageSettings.vue"
     import UserMessage from "../../../mixins/UserMessage.vue"
-    import ElForm from "../../../../../../../node_modules/element-ui/packages/form/src/form";
     import {LANGUAGES} from "../../../classes/enums/LANGUAGES";
-    import ElFormItem from "../../../../../../../node_modules/element-ui/packages/form/src/form-item";
     import {mapActions, mapGetters, mapMutations} from "vuex";
     import {Greet} from "../../../../shared-classes/entities/Greet";
     import {Token} from "../../../../shared-classes/facades/Token";
@@ -336,10 +334,6 @@
         // CHILD COMPONENTS
         // --------------------------------------------------------------------
 
-        components: {
-            ElFormItem,
-            ElForm
-        },
 
     };
 

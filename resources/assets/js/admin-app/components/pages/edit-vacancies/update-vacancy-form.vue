@@ -2,7 +2,6 @@
 
 <template lang="pug">
 
-
     el-form(:model="inputs", :rules="rules", label-position="left", ref="form")
         el-form-item
             el-col(
@@ -72,13 +71,12 @@
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
-    import ElForm           from "../../../../../../../node_modules/element-ui/packages/form/src/form.vue";
     import {Vacancy}        from "../../../../shared-classes/entities/Vacancy";
     import LanguageSettings from "../../../mixins/LanguageSettings.vue"
     import UserMessage      from "../../../mixins/UserMessage.vue"
     import {Token}          from "../../../../shared-classes/facades/Token";
     import {mapActions}     from "vuex";
-    import ElCol            from "element-ui/packages/col/src/col";
+
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -354,10 +352,6 @@
         // CHILD COMPONENTS
         // --------------------------------------------------------------------
 
-        components: {
-            ElCol,
-            ElForm
-        }
 
     };
 

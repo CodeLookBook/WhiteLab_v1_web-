@@ -53,6 +53,9 @@
                     width: 100%
 
                     .SCROLL
+                        position: absolute
+                        display: block
+                        +border(red)
 
 
     .SIDE-NAVBAR-IS-SHOWED

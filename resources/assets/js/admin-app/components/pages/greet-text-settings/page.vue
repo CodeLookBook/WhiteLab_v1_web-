@@ -46,7 +46,6 @@
     import LanguageSettings from "../../../mixins/LanguageSettings.vue"
     import GreetForm        from "./greet-form.vue"
     import {LANGUAGES}      from "../../../classes/enums/LANGUAGES";
-    import ElRow            from "element-ui/packages/row/src/row";
     import TokenGuard       from "../../../mixins/TokenGuard.vue"
 
     // ------------------------------------------------------------------------
@@ -107,7 +106,6 @@
         // --------------------------------------------------------------------
 
         components: {
-            ElRow,
             GreetForm,
         }
 

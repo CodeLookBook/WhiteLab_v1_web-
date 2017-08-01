@@ -9,9 +9,6 @@
         :md="{span:14, offset: 1}",
         :lg="{span:12, offset: 1}",
         )
-            //h3(v-if="ADMIN_APP_LANGUAGES.RUSSIAN   === language") РЕДАКТИРОВАНИЕ СПИСКА ОТКРЫТЫХ ВАКАНСИЙ
-            //h3(v-else="ADMIN_APP_LANGUAGES.SLOVAK  === language") UPRAVTE ZOZNAM OTVORENÝCH MIEST
-
             el-row
                 el-col
                     hr
@@ -22,10 +19,10 @@
                     add-vacancy-form
             el-row
                 el-col
-                    hr(v-if="vacancies.length !== 0")
-                    h3(v-if="ADMIN_APP_LANGUAGES.RUSSIAN   === language && vacancies.length !== 0") СПИСОК ОТКРЫТЫХ ВАКАНСИЙ:
-                    h3(v-if="ADMIN_APP_LANGUAGES.SLOVAK   === language && vacancies.length !== 0" ) ZOZNAM OTVORENÝCH PRACOVNÝCH MIEST
-                    hr(v-if="vacancies.length !== 0")
+                    hr
+                    h3(v-if="ADMIN_APP_LANGUAGES.RUSSIAN   === language && vacancies.length > 0") СПИСОК ОТКРЫТЫХ ВАКАНСИЙ:
+                    h3(v-if="ADMIN_APP_LANGUAGES.SLOVAK    === language && vacancies.length > 0" ) ZOZNAM OTVORENÝCH PRACOVNÝCH MIEST
+                    hr
                 el-col
                     update-vacancy-form(
                         v-for="vacancy in vacancies",
@@ -110,6 +107,7 @@
         // --------------------------------------------------------------------
 
 
+
         // --------------------------------------------------------------------
         // METHODS
         // --------------------------------------------------------------------
@@ -125,6 +123,7 @@
         // --------------------------------------------------------------------
 
         mounted() {
+
             this.loadVacancies().then(
                 (success) => {
                     //...

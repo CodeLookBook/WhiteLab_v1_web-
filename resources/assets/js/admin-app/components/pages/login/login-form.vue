@@ -41,15 +41,9 @@
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
-    import ElButton       from
-        "../../../../../../../node_modules/element-ui/packages/button/src/button";
-    import ElFormItem     from
-        "../../../../../../../node_modules/element-ui/packages/form/src/form-item";
     import {Token       } from "../../../../shared-classes/facades/Token";
     import {TOKEN_EVENTS} from "../../../classes/enums/events-names/TOKEN_EVENTS";
     import {CallBack    } from "../../../../shared-classes/types/CallBack";
-    import ElRow from "element-ui/packages/row/src/row";
-    import ElCol from "element-ui/packages/col/src/col";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -207,12 +201,7 @@
         // CHILD COMPONENTS
         // --------------------------------------------------------------------
 
-        components: {
-            ElCol,
-            ElRow,
-            ElFormItem,
-            ElButton
-        },
+
     };
 
 </script>

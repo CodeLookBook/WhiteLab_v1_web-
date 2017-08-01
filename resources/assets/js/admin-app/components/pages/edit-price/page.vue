@@ -63,7 +63,6 @@
 
     import LanguageSettings from "../../../mixins/LanguageSettings.vue"
     import UserMessage      from "../../../mixins/UserMessage.vue"
-    import ElForm           from "../../../../../../../node_modules/element-ui/packages/form/src/form.vue";
     import {Token}          from "../../../../shared-classes/facades/Token";
     import TokenGuard       from "../../../mixins/TokenGuard.vue"
 
@@ -172,7 +171,6 @@
         // CHILD COMPONENTS
         // --------------------------------------------------------------------
 
-        components: {ElForm},
 
     };
 

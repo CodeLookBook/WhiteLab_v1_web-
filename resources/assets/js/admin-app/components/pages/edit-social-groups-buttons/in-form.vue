@@ -31,7 +31,6 @@
     // COMPONENT
     // ------------------------------------------------------------------------
 
-    import ElForm from "../../../../../../../node_modules/element-ui/packages/form/src/form.vue";
     import LanguageSettings  from "../../../mixins/LanguageSettings.vue"
     import UserMessage from "../../../mixins/UserMessage.vue"
     import {mapActions, mapGetters} from "vuex";
@@ -251,7 +250,6 @@
         // CHILD COMPONENTS
         // --------------------------------------------------------------------
 
-        components: {ElForm}
 
     };
 

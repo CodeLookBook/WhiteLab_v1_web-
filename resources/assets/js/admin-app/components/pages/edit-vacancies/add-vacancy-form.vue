@@ -66,7 +66,6 @@
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
-    import ElForm           from "../../../../../../../node_modules/element-ui/packages/form/src/form.vue";
     import {Vacancy}        from "../../../../shared-classes/entities/Vacancy";
     import LanguageSettings from "../../../mixins/LanguageSettings.vue"
     import UserMessage      from "../../../mixins/UserMessage.vue"
@@ -218,8 +217,8 @@
                             this.rules.contacts[0].message     = "Povinné pole.";
                             this.rules.contacts[1].message     = "Maximálny počet znakov - 255";
                             this.rules.descriptionRu[0].message  = "Maximálny počet znakov - 65535.";
-                            this.rules.descriptionEn[0].message  = "Maximálny počet znakov - 65535.";
-                            this.rules.descriptionSl[0].message  = "Maximálny počet znakov - 65535.";
+                            this.rules.description[0].message  = "Maximálny počet znakov - 65535.";
+                            this.rules.description[0].message  = "Maximálny počet znakov - 65535.";
                         }
                             break;
 
@@ -231,9 +230,7 @@
 
                             this.rules.contacts[0].message     = "Обязательное поле.";
                             this.rules.contacts[1].message     = "Максимальное количество символов - 255.";
-                            this.rules.descriptionRu[0].message  = "Максимальное количество символов - 65535.";
-                            this.rules.descriptionEn[0].message  = "Максимальное количество символов - 65535.";
-                            this.rules.descriptionSl[0].message  = "Максимальное количество символов - 65535.";
+                            this.rules.description[0].message  = "Максимальное количество символов - 65535.";
                         }
                     }
                 },
@@ -306,7 +303,6 @@
         // CHILD COMPONENTS
         // --------------------------------------------------------------------
 
-        components: {ElForm}
 
     };
 

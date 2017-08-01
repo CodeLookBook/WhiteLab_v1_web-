@@ -1,13 +1,13 @@
 // @flow
 
-import {TokenLoaded} from "../observable/TokenLoaded";
-import {TokenUnloaded} from "../observable/TokenUnloaded";
-import {Cookie} from "./Cookie";
-import {CallBack} from "../types/CallBack";
-import {TokenDeleted} from "../observable/TokenDeleted";
-import {TOKEN_EVENTS} from "../../admin-app/classes/enums/events-names/TOKEN_EVENTS";
-import {TokenLoadError401} from "../observable/TokenLoadError401";
-import {TokenLoadError500} from "../observable/TokenLoadError500";
+import {TokenLoaded} from "../observable/TokenLoaded"
+import {TokenUnloaded} from "../observable/TokenUnloaded"
+import {Cookie} from "./Cookie"
+import {CallBack} from "../types/CallBack"
+import {TokenDeleted} from "../observable/TokenDeleted"
+import {TOKEN_EVENTS} from "../../admin-app/classes/enums/events-names/TOKEN_EVENTS"
+import {TokenLoadError401} from "../observable/TokenLoadError401"
+import {TokenLoadError500} from "../observable/TokenLoadError500"
 
 class Token {
 
@@ -176,16 +176,20 @@ class Token {
 
         return date;
     }
-    set _expirationTime(value: Date): void {
+    set _expirationTime(value: Date | null): void {
 
         // The expirationTime stored as a Unix timestamp;
-        this._cookie.set('token.expirationTime', value.toUTCString(), value);
+        if(value !== null) {
+            this._cookie.set('token.expirationTime', value.toUTCString(), value);
+        } else {
+            this._cookie.set('token.expirationTime', '');
+        }
 
         // Reset other values that were saved as cookies,
         // with new expiration time.
         {
             if (this.userRole) this.userRole = this.userRole ;
-            if (this.token  ) this.token   = this.token   ;
+            if (this.token   ) this.token    = this.token    ;
             if (this.isLoaded) this.isLoaded = this.isLoaded ;
         }
     }
@@ -233,7 +237,7 @@ class Token {
             if (this._expirationTime !== null) {
 
                 // SET COOKIE WITH EXPIRATION DATE
-                const date: Date =  new Date(this._expirationTime)
+                const date: Date =  new Date(this._expirationTime);
                 this._cookie.set('token.isLoaded', value.toString(), date);
 
             } else {

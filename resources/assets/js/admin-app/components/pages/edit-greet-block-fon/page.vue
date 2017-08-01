@@ -59,6 +59,7 @@
     import UserMessage      from "../../../mixins/UserMessage.vue"
     import TokenGuard       from "../../../mixins/TokenGuard.vue"
     import {Token} from "../../../../shared-classes/facades/Token";
+
     // ------------------------------------------------------------------------
     // COMPONENT
     // ------------------------------------------------------------------------

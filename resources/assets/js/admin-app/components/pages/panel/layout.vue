@@ -5,7 +5,6 @@
     .ADMIN-APP.TABLE(:class="classes")
         .ROW
             .SIDE-NAVBAR-SLOT.CELL
-
                 slot(name="SIDE-NAVBAR-SLOT")
             .GROUP-WRAPPER-SLOT.CELL
                 .GROUP-WRAPPER.TABLE
@@ -13,7 +12,7 @@
                         .SIDE-NAVBAR-TOGGLE-SLOT.CELL
                             slot(name="SIDE-NAVBAR-TOGGLE-SLOT")
                         .CONTENT-SLOT.CELL
-                            .SCROLL
+                            .SCROLL(style="padding-left: 40px;")
                                 slot(name="CONTENT-SLOT")
 
 </template>
@@ -26,37 +25,37 @@
         +size(100%, 100%)
         +position(relative, 0, (-$side-navbar-width))
         +transition(left, 0.2s)
+        .ROW
+            .SIDE-NAVBAR-SLOT.CELL
+                +position(absolute, 0px, 0px)
+                width: $side-navbar-width
+                height: 100%
+                overflow: auto
+                background-color: gray
 
-        .SIDE-NAVBAR-SLOT.CELL
-            +position(absolute, 0px, 0px)
-            width: $side-navbar-width
-            height: 100%
-            overflow: auto
-            background-color: gray
-
-        .GROUP-WRAPPER-SLOT.CELL
-            +position(absolute, 0px, $side-navbar-width)
-            +size(100%, 100%)
-            overflow: hidden
-
-            .GROUP-WRAPPER.TABLE
-                table-layout: fixed
+            .GROUP-WRAPPER-SLOT.CELL
+                +position(absolute, 0px, $side-navbar-width)
                 +size(100%, 100%)
+                overflow: hidden
 
-                .SIDE-NAVBAR-TOGGLE-SLOT.CELL
-                    width: 40px
-                    height: 100%
-                    vertical-align: top
+                .GROUP-WRAPPER.TABLE
+                    table-layout: fixed
+                    +size(100%, 100%)
 
-                .CONTENT-SLOT.CELL
-                    height: 100%
-                    width: 100%
+                    .ROW
+                        .SIDE-NAVBAR-TOGGLE-SLOT.CELL
+                            position: absolute
+                            top: 0
+                            left: 0
+                            width: $togle-button-slot-width
+                            height: 100%
+                            vertical-align: top
+                            z-index: 100000
 
-                    .SCROLL
-                        position: absolute
-                        display: block
-                        +border(red)
-
+                        .CONTENT-SLOT.CELL
+                            position: absolute
+                            height: 100%
+                            width: 100%
 
     .SIDE-NAVBAR-IS-SHOWED
         +position(relative, 0, 0)

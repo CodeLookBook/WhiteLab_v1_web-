@@ -11,9 +11,9 @@
     // IMPORT CHILD COMPONENTS
     // ------------------------------------------------------------------------
 
-    import {APP_LANGUAGES} from "../classes/enum/APP_LANGUAGES";
     import {mapActions, mapGetters} from "vuex";
-    import {Widget} from "../../shared-classes/entities/Widget";
+    import {Widget}                 from "../../shared-classes/entities/Widget";
+    import LanguageSettings         from "./LanguageSettings.vue";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -25,6 +25,14 @@
         // PROPERTIES
         // --------------------------------------------------------------------
 
+
+        // --------------------------------------------------------------------
+        // MIXINS
+        // --------------------------------------------------------------------
+
+        mixins:[
+            LanguageSettings,
+        ],
 
         // --------------------------------------------------------------------
         // DATA FIELDS
@@ -56,12 +64,7 @@
         // --------------------------------------------------------------------
         // WATCHED FIELDS
         // --------------------------------------------------------------------
-        /*
-                window.document.createElement('script')
-                this.setupYclientOrderWidgetScriptProps(newWidgetSettings);
-                this.mountYclientOrderWidget();
-                this.isYclientsOrderWidgetMounted = false;
-        */
+
 
         // --------------------------------------------------------------------
         // METHODS
@@ -75,12 +78,12 @@
                 'loadSlovakOrderWidget',
             ]),
 
-            mountYlientWidget(el: HTMLElement, appLanguage: string) {
+            mountYlientWidget() {
 
                 let widgetSrc: string = '';
 
-                switch (appLanguage) {
-                    case APP_LANGUAGES.RUSSIAN:
+                switch (this.language) {
+                    case this.APP_LANGUAGES.RUSSIAN:
 
                         if (this.russianOrderWidget.src.trim()) {
                             widgetSrc = this.russianOrderWidget.src.trim();
@@ -96,7 +99,7 @@
                         }
                         break;
 
-                    case APP_LANGUAGES.ENGLISH:
+                    case this.APP_LANGUAGES.ENGLISH:
 
                         if (this.englishOrderWidget.src.trim()) {
                             widgetSrc = this.englishOrderWidget.src.trim();
@@ -112,7 +115,7 @@
                         }
                         break;
 
-                    case APP_LANGUAGES.SLOVAK:
+                    case this.APP_LANGUAGES.SLOVAK:
 
                         if (this.slovakOrderWidget.src.trim()) {
                             widgetSrc = this.slovakOrderWidget.src.trim();
@@ -135,29 +138,64 @@
                 const script = window.document.createElement('script');
                 script.src = widgetSrc;
                 script.type = "text/javascript";
-                script.setAttribute('class', 'YCLIENT_ORDER_WIGET');
-                el.appendChild(script);
+                script.setAttribute('class', 'YCLIENT_ORDER_WIDGET');
+                this.$el.appendChild(script);
             },
 
-            //------------------------------------------------------
-            loadYclientWidget(el: HTMLElement, appLanguage: string) {
+            loadYclientWidget() {
 
                 // DELETE EXISTING SCRIPT
                 {
-                    const scripts = el.getElementsByClassName('YCLIENT_ORDER_WIGET');
-                    if (scripts) {
-                        if (scripts[0]) {
-                            el.removeChild(scripts[0]);
+                    const scripts       = document.getElementsByClassName('YCLIENT_ORDER_WIDGET');
+                    const yCloseIcons   = document.getElementsByClassName('yCloseIcon');
+                    const yWidgetCovers = document.getElementsByClassName('yWidgetCover');
+
+                    if (scripts !== null) {
+                        if(typeof scripts !== "undefined") {
+
+                            // Warning: You mustn't you 'this.$el' as parent.
+                            // In same situations it will acause Error. You
+                            // must fined it with plain JS.
+                            for (let i = 0; i < scripts.length; ++i) {
+                                const parent = scripts[i].parentElement;
+                                parent.removeChild(scripts[i]);
+                            }
+                        }
+                    }
+
+                    if (yCloseIcons !== null) {
+                        if(typeof yCloseIcons !== "undefined") {
+
+                            // Warning: You mustn't you 'this.$el' as parent.
+                            // In same situations it will acause Error. You
+                            // must fined it with plain JS.
+                            for (let i = 0; i < yCloseIcons.length; ++i) {
+                                const parent = yCloseIcons[i].parentElement;
+                                parent.removeChild(yCloseIcons[i]);
+                            }
+                        }
+                    }
+
+                    if (yWidgetCovers !== null) {
+                        if(typeof yWidgetCovers !== "undefined") {
+
+                            // Warning: You mustn't you 'this.$el' as parent.
+                            // In same situations it will acause Error. You
+                            // must fined it with plain JS.
+                            for (let i = 0; i < yWidgetCovers.length; ++i) {
+                                const parent = yWidgetCovers[i].parentElement;
+                                parent.removeChild(yWidgetCovers[i]);
+                            }
                         }
                     }
                 }
 
                 // LOAD WIDGETS SETTINGS for all kind of languages
                 {
-                    // IF REFS on widgets WASN't LOADED yet
-                    if( !this.russianOrderWidget.src ||
-                        !this.englishOrderWidget.src ||
-                        !this.slovakOrderWidget.src
+                    // IF REFS on widgets WASN't LOADED yet then load them
+                    if( !(!!this.russianOrderWidget.src &&
+                          !!this.englishOrderWidget.src &&
+                          !!this.slovakOrderWidget.src)
                     ){
 
                         // DOWNLOAD
@@ -168,8 +206,10 @@
                                         this.loadSlovakOrderWidget().then(
                                             (response) => {
 
+                                                console.log('WIDGET SRC WAS LOADED:');
+
                                                 //MOUNT SCRIPT
-                                                this.mountYlientWidget(el, appLanguage);
+                                                this.mountYlientWidget();
                                             }
                                         );
                                     }
@@ -177,20 +217,71 @@
                             }
                         );
 
-                        // IF refs LOADED already
                     } else {
 
-                        //MOUNT SCRIPT
-                        this.mountYlientWidget(el, appLanguage);
+                        //If refs were loaded, then - MOUNT SCRIPT
+                        this.mountYlientWidget();
                     }
                 }
             },
+
+            // EVENT HANDLERS
+
+            onAppLanguageChangedOnRussian(){
+                this.loadYclientWidget();
+            },
+            onAppLanguageChangedOnEnglish(){
+                this.loadYclientWidget();
+            },
+            onAppLanguageChangedOnSlovak(){
+                this.loadYclientWidget();
+            }
         },
 
         // --------------------------------------------------------------------
         // LIFE HOOKS
         // --------------------------------------------------------------------
 
+        mounted(){
+
+            this.loadYclientWidget();
+
+            // SUBSCRIBE ON EVENTS
+            {
+                this.$bus.$on(
+                    this.APP_COMPONENTS_EVENTS.NAVIGATION.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onAppLanguageChangedOnRussian
+                );
+                this.$bus.$on(
+                    this.APP_COMPONENTS_EVENTS.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onAppLanguageChangedOnEnglish
+                );
+                this.$bus.$on(
+                    this.APP_COMPONENTS_EVENTS.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onAppLanguageChangedOnSlovak
+                );
+            }
+        },
+
+        beforeDestroy(){
+
+            // UNSUBSCRIBE OF EVENTS
+            {
+                this.$bus.$off(
+                    this.APP_COMPONENTS_EVENTS.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onAppLanguageChangedOnRussian
+                );
+                this.$bus.$off(
+                    this.APP_COMPONENTS_EVENTS.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onAppLanguageChangedOnEnglish
+                );
+                this.$bus.$off(
+                    this.APP_COMPONENTS_EVENTS.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onAppLanguageChangedOnSlovak
+                );
+            }
+
+        },
 
         // --------------------------------------------------------------------
         // CHILD COMPONENTS

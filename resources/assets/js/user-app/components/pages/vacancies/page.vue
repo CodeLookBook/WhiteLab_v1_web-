@@ -4,25 +4,72 @@
 
     .VACANCIES-PAGE.TABLE: .ROW: .CELL
 
-        el-table.VACANCIES-TABLE(
+        // RUSSIAN TRUNSLATION
+        el-table.VACANCIES-TABLE.RU(
+            v-if="APP_LANGUAGES.RUSSIAN === language",
+            :data="list",
+            :fit="true",
+        )
+            el-table-column(type="expand")
+                template(scope="props")
+                    | {{ props.row.descriptionRu }}
+            el-table-column(
+                label="Дата",
+                prop="openedAt"
+            )
+            el-table-column(
+                label="Вакансия",
+                prop="nameRu"
+            )
+            el-table-column(
+                label="Контакты",
+                prop="contacts"
+            )
+
+        // ENGLISH TRUNSLATION
+        el-table.VACANCIES-TABLE.EN(
+            v-if="APP_LANGUAGES.ENGLISH === language",
             :data="list",
             :fit="true",
             style="",
         )
             el-table-column(type="expand")
                 template(scope="props")
-                    | {{ props.row.descriptionRu }}
+                    | {{ props.row.descriptionEn }}
             el-table-column(
-                label="Date",
-                prop="openedAt"
+            label="Date",
+            prop="openedAt"
             )
             el-table-column(
-                label="Vacancy",
-                prop="name"
+            label="Vacancy",
+            prop="nameEn"
             )
             el-table-column(
-                label="Contacts",
-                prop="contacts"
+            label="Contacts",
+            prop="contacts"
+            )
+
+        // SLOVAK TRUNSLATION
+        el-table.VACANCIES-TABLE.SL(
+            v-if="APP_LANGUAGES.SLOVAK === language",
+            :data="list",
+            :fit="true",
+            style="",
+        )
+            el-table-column(type="expand")
+                template(scope="props")
+                    | {{ props.row.descriptionSl }}
+            el-table-column(
+            label="Dátum",
+            prop="openedAt"
+            )
+            el-table-column(
+            label="Voľné miesto",
+            prop="nameSl"
+            )
+            el-table-column(
+            label="Kontakty",
+            prop="contacts"
             )
 
 </template>
@@ -48,7 +95,8 @@
     //*************************************************************************
 
     import {mapActions, mapGetters} from "vuex";
-    import {Vacancy} from "../../../../shared-classes/entities/Vacancy";
+    import {Vacancy}                from "../../../../shared-classes/entities/Vacancy";
+    import  LanguageSettings        from "../../../mixins/LanguageSettings.vue";
 
     //*************************************************************************
     // COMPONENT
@@ -61,6 +109,15 @@
         //*********************************************************************
 
 
+
+        //*********************************************************************
+        // MIXINS
+        //*********************************************************************
+
+        mixins:[
+            LanguageSettings,
+        ],
+
         //*********************************************************************
         // DATA FIELDS
         //*********************************************************************
@@ -68,10 +125,8 @@
         data(){
             const data: {
                 list: [],
-                isDateVisible: boolean,
             } = {
                 list: [],
-                isDateVisible: true,
             };
 
             return data;
@@ -92,12 +147,19 @@
         //*********************************************************************
 
         watch:{
+            /**
+             * Update list if vacancies were changed in the storage.
+             */
             vacancies:{
                 handler:function(newList, oldList){
+
+                    // Create new list with converted to string date.
                     this.list = newList.map((vacancy) => {
                         return {
                             id              : vacancy.id,
-                            name            : vacancy.name,
+                            nameRu          : vacancy.nameRu,
+                            nameEn          : vacancy.nameEn,
+                            nameSl          : vacancy.nameSl,
                             contacts        : vacancy.contacts,
                             descriptionRu   : vacancy.descriptionRu,
                             descriptionEn   : vacancy.descriptionEn,
@@ -127,6 +189,8 @@
 
         mounted(){
 
+            // LOAD list of VACANCIES if it wasn't loaded to the vuex storage
+            // already.
             if(this.vacancies !== null){
                 if(typeof this.vacancies !== "undefined"){
                     if(this.vacancies.length === 0){
@@ -135,11 +199,6 @@
                 }
             }
 
-/*            window.addEventListener('resize', function(){
-                const width = document.documentElement.clientWidth
-                    || document.body.clientWidth;
-                if(width < 350 ) this.isDateVisible = false;
-            });*/
         },
 
         //*********************************************************************

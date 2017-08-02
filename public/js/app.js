@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 370);
+/******/ 	return __webpack_require__(__webpack_require__.s = 375);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -22073,13 +22073,13 @@ var _TokenLoaded = __webpack_require__(103);
 
 var _TokenUnloaded = __webpack_require__(104);
 
-var _Cookie = __webpack_require__(20);
+var _Cookie = __webpack_require__(17);
 
 var _CallBack = __webpack_require__(31);
 
 var _TokenDeleted = __webpack_require__(100);
 
-var _TOKEN_EVENTS = __webpack_require__(52);
+var _TOKEN_EVENTS = __webpack_require__(53);
 
 var _TokenLoadError = __webpack_require__(101);
 
@@ -24112,66 +24112,6 @@ module.exports = g;
 "use strict";
 
 
-exports.__esModule = true;
-exports.hasOwn = hasOwn;
-exports.toObject = toObject;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-function hasOwn(obj, key) {
-  return hasOwnProperty.call(obj, key);
-};
-
-function extend(to, _from) {
-  for (var key in _from) {
-    to[key] = _from[key];
-  }
-  return to;
-};
-
-function toObject(arr) {
-  var res = {};
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i]) {
-      extend(res, arr[i]);
-    }
-  }
-  return res;
-};
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* eslint-disable no-undefined */
-
-var throttle = __webpack_require__(50);
-
-/**
- * Debounce execution of a function. Debouncing, unlike throttling,
- * guarantees that a function is only executed a single time, either at the
- * very beginning of a series of calls, or at the very end.
- *
- * @param  {Number}   delay         A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
- * @param  {Boolean}  atBegin       Optional, defaults to false. If atBegin is false or unspecified, callback will only be executed `delay` milliseconds
- *                                  after the last debounced-function call. If atBegin is true, callback will be executed only at the first debounced-function call.
- *                                  (After the throttled-function has not been called for `delay` milliseconds, the internal counter is reset).
- * @param  {Function} callback      A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
- *                                  to `callback` when the debounced-function is executed.
- *
- * @return {Function} A new, debounced function.
- */
-module.exports = function ( delay, atBegin, callback ) {
-	return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
-};
-
-
-/***/ }),
-/* 19 */,
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
@@ -24333,7 +24273,7 @@ var _init = _flowRuntime2.default.annotate(function () {
 exports.Cookie = Cookie;
 
 /***/ }),
-/* 21 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24419,6 +24359,66 @@ var COMPONENTS_EVENTS = Object.freeze({
 exports.COMPONENTS_EVENTS = COMPONENTS_EVENTS;
 
 /***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.hasOwn = hasOwn;
+exports.toObject = toObject;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+function hasOwn(obj, key) {
+  return hasOwnProperty.call(obj, key);
+};
+
+function extend(to, _from) {
+  for (var key in _from) {
+    to[key] = _from[key];
+  }
+  return to;
+};
+
+function toObject(arr) {
+  var res = {};
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i]) {
+      extend(res, arr[i]);
+    }
+  }
+  return res;
+};
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* eslint-disable no-undefined */
+
+var throttle = __webpack_require__(51);
+
+/**
+ * Debounce execution of a function. Debouncing, unlike throttling,
+ * guarantees that a function is only executed a single time, either at the
+ * very beginning of a series of calls, or at the very end.
+ *
+ * @param  {Number}   delay         A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
+ * @param  {Boolean}  atBegin       Optional, defaults to false. If atBegin is false or unspecified, callback will only be executed `delay` milliseconds
+ *                                  after the last debounced-function call. If atBegin is true, callback will be executed only at the first debounced-function call.
+ *                                  (After the throttled-function has not been called for `delay` milliseconds, the internal counter is reset).
+ * @param  {Function} callback      A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
+ *                                  to `callback` when the debounced-function is executed.
+ *
+ * @return {Function} A new, debounced function.
+ */
+module.exports = function ( delay, atBegin, callback ) {
+	return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
+};
+
+
+/***/ }),
+/* 21 */,
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -24555,7 +24555,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(49)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)))
 
 /***/ }),
 /* 24 */
@@ -24571,7 +24571,7 @@ exports.Vacancy = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9;
 
 var _flowRuntime = __webpack_require__(0);
 
@@ -24624,27 +24624,35 @@ function _initializerWarningHelper(descriptor, context) {
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var Vacancy = (_dec = _flowRuntime2.default.annotate(_flowRuntime2.default.class("Vacancy", _flowRuntime2.default.property("_id", _flowRuntime2.default.number()), _flowRuntime2.default.property("_name", _flowRuntime2.default.string()), _flowRuntime2.default.property("_contacts", _flowRuntime2.default.string()), _flowRuntime2.default.property("_descriptionRu", _flowRuntime2.default.string()), _flowRuntime2.default.property("_descriptionEn", _flowRuntime2.default.string()), _flowRuntime2.default.property("_descriptionSl", _flowRuntime2.default.string()), _flowRuntime2.default.property("_openedAt", _flowRuntime2.default.ref("Date")), _flowRuntime2.default.method("constructor", _flowRuntime2.default.param("id", _flowRuntime2.default.number()), _flowRuntime2.default.param("name", _flowRuntime2.default.string()), _flowRuntime2.default.param("contacts", _flowRuntime2.default.string()), _flowRuntime2.default.param("descriptionRu", _flowRuntime2.default.string()), _flowRuntime2.default.param("descriptionEn", _flowRuntime2.default.string()), _flowRuntime2.default.param("descriptionSl", _flowRuntime2.default.string()), _flowRuntime2.default.param("openedAt", _flowRuntime2.default.ref("Date"))), _flowRuntime2.default.method("id", _flowRuntime2.default.return(_flowRuntime2.default.number())), _flowRuntime2.default.method("id", _flowRuntime2.default.param("value", _flowRuntime2.default.number())), _flowRuntime2.default.method("name", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("name", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("contacts", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("contacts", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionRu", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionRu", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionEn", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionEn", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionSl", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionSl", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("openedAt", _flowRuntime2.default.return(_flowRuntime2.default.ref("Date"))), _flowRuntime2.default.method("openedAt", _flowRuntime2.default.param("value", _flowRuntime2.default.ref("Date"))), _flowRuntime2.default.method("clone"))), _dec2 = _flowRuntime2.default.decorate(_flowRuntime2.default.number()), _dec3 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec4 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec5 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec6 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec7 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec8 = _flowRuntime2.default.decorate(_flowRuntime2.default.ref("Date")), _dec(_class = (_class2 = function () {
-    function Vacancy(id, name, contacts, descriptionRu, descriptionEn, descriptionSl, openedAt) {
+var Vacancy = (_dec = _flowRuntime2.default.annotate(_flowRuntime2.default.class("Vacancy", _flowRuntime2.default.property("_id", _flowRuntime2.default.number()), _flowRuntime2.default.property("_nameRu", _flowRuntime2.default.string()), _flowRuntime2.default.property("_nameEn", _flowRuntime2.default.string()), _flowRuntime2.default.property("_nameSl", _flowRuntime2.default.string()), _flowRuntime2.default.property("_contacts", _flowRuntime2.default.string()), _flowRuntime2.default.property("_descriptionRu", _flowRuntime2.default.string()), _flowRuntime2.default.property("_descriptionEn", _flowRuntime2.default.string()), _flowRuntime2.default.property("_descriptionSl", _flowRuntime2.default.string()), _flowRuntime2.default.property("_openedAt", _flowRuntime2.default.ref("Date")), _flowRuntime2.default.method("constructor", _flowRuntime2.default.param("id", _flowRuntime2.default.number()), _flowRuntime2.default.param("nameRu", _flowRuntime2.default.string()), _flowRuntime2.default.param("nameEn", _flowRuntime2.default.string()), _flowRuntime2.default.param("nameSl", _flowRuntime2.default.string()), _flowRuntime2.default.param("contacts", _flowRuntime2.default.string()), _flowRuntime2.default.param("descriptionRu", _flowRuntime2.default.string()), _flowRuntime2.default.param("descriptionEn", _flowRuntime2.default.string()), _flowRuntime2.default.param("descriptionSl", _flowRuntime2.default.string()), _flowRuntime2.default.param("openedAt", _flowRuntime2.default.ref("Date"))), _flowRuntime2.default.method("id", _flowRuntime2.default.return(_flowRuntime2.default.number())), _flowRuntime2.default.method("id", _flowRuntime2.default.param("value", _flowRuntime2.default.number())), _flowRuntime2.default.method("nameRu", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("nameRu", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("nameEn", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("nameEn", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("nameSl", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("nameSl", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("contacts", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("contacts", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionRu", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionRu", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionEn", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionEn", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionSl", _flowRuntime2.default.return(_flowRuntime2.default.string())), _flowRuntime2.default.method("descriptionSl", _flowRuntime2.default.param("value", _flowRuntime2.default.string())), _flowRuntime2.default.method("openedAt", _flowRuntime2.default.return(_flowRuntime2.default.ref("Date"))), _flowRuntime2.default.method("openedAt", _flowRuntime2.default.param("value", _flowRuntime2.default.ref("Date"))), _flowRuntime2.default.method("clone"))), _dec2 = _flowRuntime2.default.decorate(_flowRuntime2.default.number()), _dec3 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec4 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec5 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec6 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec7 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec8 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec9 = _flowRuntime2.default.decorate(_flowRuntime2.default.string()), _dec10 = _flowRuntime2.default.decorate(_flowRuntime2.default.ref("Date")), _dec(_class = (_class2 = function () {
+    function Vacancy(id, nameRu, nameEn, nameSl, contacts, descriptionRu, descriptionEn, descriptionSl, openedAt) {
         _classCallCheck(this, Vacancy);
 
         _initDefineProp(this, "_id", _descriptor, this);
 
-        _initDefineProp(this, "_name", _descriptor2, this);
+        _initDefineProp(this, "_nameRu", _descriptor2, this);
 
-        _initDefineProp(this, "_contacts", _descriptor3, this);
+        _initDefineProp(this, "_nameEn", _descriptor3, this);
 
-        _initDefineProp(this, "_descriptionRu", _descriptor4, this);
+        _initDefineProp(this, "_nameSl", _descriptor4, this);
 
-        _initDefineProp(this, "_descriptionEn", _descriptor5, this);
+        _initDefineProp(this, "_contacts", _descriptor5, this);
 
-        _initDefineProp(this, "_descriptionSl", _descriptor6, this);
+        _initDefineProp(this, "_descriptionRu", _descriptor6, this);
 
-        _initDefineProp(this, "_openedAt", _descriptor7, this);
+        _initDefineProp(this, "_descriptionEn", _descriptor7, this);
+
+        _initDefineProp(this, "_descriptionSl", _descriptor8, this);
+
+        _initDefineProp(this, "_openedAt", _descriptor9, this);
 
         var _idType = _flowRuntime2.default.number();
 
-        var _nameType = _flowRuntime2.default.string();
+        var _nameRuType = _flowRuntime2.default.string();
+
+        var _nameEnType = _flowRuntime2.default.string();
+
+        var _nameSlType = _flowRuntime2.default.string();
 
         var _contactsType = _flowRuntime2.default.string();
 
@@ -24658,7 +24666,11 @@ var Vacancy = (_dec = _flowRuntime2.default.annotate(_flowRuntime2.default.class
 
         _flowRuntime2.default.param("id", _idType).assert(id);
 
-        _flowRuntime2.default.param("name", _nameType).assert(name);
+        _flowRuntime2.default.param("nameRu", _nameRuType).assert(nameRu);
+
+        _flowRuntime2.default.param("nameEn", _nameEnType).assert(nameEn);
+
+        _flowRuntime2.default.param("nameSl", _nameSlType).assert(nameSl);
 
         _flowRuntime2.default.param("contacts", _contactsType).assert(contacts);
 
@@ -24671,7 +24683,9 @@ var Vacancy = (_dec = _flowRuntime2.default.annotate(_flowRuntime2.default.class
         _flowRuntime2.default.param("openedAt", _openedAtType).assert(openedAt);
 
         this._id = id;
-        this._name = name;
+        this._nameRu = nameRu;
+        this._nameEn = nameEn;
+        this._nameSl = nameSl;
         this._contacts = contacts;
         this._descriptionRu = descriptionRu;
         this._descriptionEn = descriptionEn;
@@ -24682,7 +24696,7 @@ var Vacancy = (_dec = _flowRuntime2.default.annotate(_flowRuntime2.default.class
     _createClass(Vacancy, [{
         key: "clone",
         value: function clone() {
-            return new Vacancy(this.id, this.name, this.contacts, this.descriptionRu, this.descriptionEn, this.descriptionSl, this.openedAt);
+            return new Vacancy(this.id, this.nameRu, this.nameEn, this.nameSl, this.contacts, this.descriptionRu, this.descriptionEn, this.descriptionSl, this.openedAt);
         }
     }, {
         key: "id",
@@ -24699,86 +24713,114 @@ var Vacancy = (_dec = _flowRuntime2.default.annotate(_flowRuntime2.default.class
             this._id = value;
         }
     }, {
-        key: "name",
+        key: "nameRu",
         get: function get() {
             var _returnType2 = _flowRuntime2.default.return(_flowRuntime2.default.string());
 
-            return _returnType2.assert(this._name);
+            return _returnType2.assert(this._nameRu);
         },
         set: function set(value) {
             var _valueType2 = _flowRuntime2.default.string();
 
             _flowRuntime2.default.param("value", _valueType2).assert(value);
 
-            this._name = value;
+            this._nameRu = value;
         }
     }, {
-        key: "contacts",
+        key: "nameEn",
         get: function get() {
             var _returnType3 = _flowRuntime2.default.return(_flowRuntime2.default.string());
 
-            return _returnType3.assert(this._contacts);
+            return _returnType3.assert(this._nameEn);
         },
         set: function set(value) {
             var _valueType3 = _flowRuntime2.default.string();
 
             _flowRuntime2.default.param("value", _valueType3).assert(value);
 
-            this._contacts = value;
+            this._nameEn = value;
         }
     }, {
-        key: "descriptionRu",
+        key: "nameSl",
         get: function get() {
             var _returnType4 = _flowRuntime2.default.return(_flowRuntime2.default.string());
 
-            return _returnType4.assert(this._descriptionRu);
+            return _returnType4.assert(this._nameSl);
         },
         set: function set(value) {
             var _valueType4 = _flowRuntime2.default.string();
 
             _flowRuntime2.default.param("value", _valueType4).assert(value);
 
-            this._descriptionRu = value;
+            this._nameSl = value;
         }
     }, {
-        key: "descriptionEn",
+        key: "contacts",
         get: function get() {
             var _returnType5 = _flowRuntime2.default.return(_flowRuntime2.default.string());
 
-            return _returnType5.assert(this._descriptionEn);
+            return _returnType5.assert(this._contacts);
         },
         set: function set(value) {
             var _valueType5 = _flowRuntime2.default.string();
 
             _flowRuntime2.default.param("value", _valueType5).assert(value);
 
-            this._descriptionEn = value;
+            this._contacts = value;
         }
     }, {
-        key: "descriptionSl",
+        key: "descriptionRu",
         get: function get() {
             var _returnType6 = _flowRuntime2.default.return(_flowRuntime2.default.string());
 
-            return _returnType6.assert(this._descriptionSl);
+            return _returnType6.assert(this._descriptionRu);
         },
         set: function set(value) {
             var _valueType6 = _flowRuntime2.default.string();
 
             _flowRuntime2.default.param("value", _valueType6).assert(value);
 
+            this._descriptionRu = value;
+        }
+    }, {
+        key: "descriptionEn",
+        get: function get() {
+            var _returnType7 = _flowRuntime2.default.return(_flowRuntime2.default.string());
+
+            return _returnType7.assert(this._descriptionEn);
+        },
+        set: function set(value) {
+            var _valueType7 = _flowRuntime2.default.string();
+
+            _flowRuntime2.default.param("value", _valueType7).assert(value);
+
+            this._descriptionEn = value;
+        }
+    }, {
+        key: "descriptionSl",
+        get: function get() {
+            var _returnType8 = _flowRuntime2.default.return(_flowRuntime2.default.string());
+
+            return _returnType8.assert(this._descriptionSl);
+        },
+        set: function set(value) {
+            var _valueType8 = _flowRuntime2.default.string();
+
+            _flowRuntime2.default.param("value", _valueType8).assert(value);
+
             this._descriptionSl = value;
         }
     }, {
         key: "openedAt",
         get: function get() {
-            var _returnType7 = _flowRuntime2.default.return(_flowRuntime2.default.ref("Date"));
+            var _returnType9 = _flowRuntime2.default.return(_flowRuntime2.default.ref("Date"));
 
-            return _returnType7.assert(this._openedAt);
+            return _returnType9.assert(this._openedAt);
         },
         set: function set(value) {
-            var _valueType7 = _flowRuntime2.default.ref("Date");
+            var _valueType9 = _flowRuntime2.default.ref("Date");
 
-            _flowRuntime2.default.param("value", _valueType7).assert(value);
+            _flowRuntime2.default.param("value", _valueType9).assert(value);
 
             this._openedAt = value;
         }
@@ -24788,22 +24830,28 @@ var Vacancy = (_dec = _flowRuntime2.default.annotate(_flowRuntime2.default.class
 }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "_id", [_dec2], {
     enumerable: true,
     initializer: null
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "_name", [_dec3], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, "_nameRu", [_dec3], {
     enumerable: true,
     initializer: null
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "_contacts", [_dec4], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, "_nameEn", [_dec4], {
     enumerable: true,
     initializer: null
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "_descriptionRu", [_dec5], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "_nameSl", [_dec5], {
     enumerable: true,
     initializer: null
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "_descriptionEn", [_dec6], {
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "_contacts", [_dec6], {
     enumerable: true,
     initializer: null
-}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "_descriptionSl", [_dec7], {
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "_descriptionRu", [_dec7], {
     enumerable: true,
     initializer: null
-}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "_openedAt", [_dec8], {
+}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "_descriptionEn", [_dec8], {
+    enumerable: true,
+    initializer: null
+}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, "_descriptionSl", [_dec9], {
+    enumerable: true,
+    initializer: null
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "_openedAt", [_dec10], {
     enumerable: true,
     initializer: null
 })), _class2)) || _class);
@@ -25702,7 +25750,7 @@ var _vue = __webpack_require__(7);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _popup = __webpack_require__(47);
+var _popup = __webpack_require__(48);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26422,6 +26470,46 @@ exports.Id = Id;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.APP_LANGUAGES = undefined;
+
+var _flowRuntime = __webpack_require__(0);
+
+var _flowRuntime2 = _interopRequireDefault(_flowRuntime);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _counterType = _flowRuntime2.default.number(),
+    _counter = _counterType.assert(0);
+
+function _id() {
+    var _returnType = _flowRuntime2.default.return(_flowRuntime2.default.string());
+
+    return _returnType.assert((++_counter).toString());
+}
+
+_flowRuntime2.default.annotate(_id, _flowRuntime2.default.function(_flowRuntime2.default.return(_flowRuntime2.default.string())));
+
+var APP_LANGUAGES = Object.freeze({
+
+    DEFAULT: 'en',
+
+    RUSSIAN: 'ru',
+    ENGLISH: 'en',
+    SLOVAK: 'sl'
+});
+
+exports.APP_LANGUAGES = APP_LANGUAGES;
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.EVENTS = undefined;
 
 var _flowRuntime = __webpack_require__(0);
@@ -26467,7 +26555,7 @@ var _EVENTSType = _flowRuntime2.default.object(_flowRuntime2.default.property("H
 exports.EVENTS = EVENTS;
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26501,7 +26589,7 @@ var Height = function (_Size) {
 exports.Height = Height;
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26524,7 +26612,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -26787,7 +26875,7 @@ module.exports =
 /***/ 260:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(17);
+	module.exports = __webpack_require__(19);
 
 /***/ },
 
@@ -26951,7 +27039,7 @@ module.exports =
 /******/ });
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports =
@@ -27202,7 +27290,7 @@ module.exports =
 /******/ });
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27279,7 +27367,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27581,7 +27669,7 @@ exports.default = {
 exports.PopupManager = _popupManager2.default;
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27594,7 +27682,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 exports.isVNode = isVNode;
 exports.getFirstComponentChild = getFirstComponentChild;
 
-var _util = __webpack_require__(17);
+var _util = __webpack_require__(19);
 
 function isVNode(node) {
   return (typeof node === 'undefined' ? 'undefined' : _typeof(node)) === 'object' && (0, _util.hasOwn)(node, 'componentOptions');
@@ -27607,7 +27695,7 @@ function getFirstComponentChild(children) {
 };
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -27797,7 +27885,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports) {
 
 /* eslint-disable no-undefined,no-param-reassign,no-shadow */
@@ -27894,7 +27982,7 @@ module.exports = function ( delay, noTrailing, callback, debounceMode ) {
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30407,7 +30495,7 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30439,7 +30527,7 @@ var TOKEN_EVENTS = Object.freeze({
 exports.TOKEN_EVENTS = TOKEN_EVENTS;
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30569,7 +30657,7 @@ var Greet = (_dec = _flowRuntime2.default.annotate(_flowRuntime2.default.class("
 exports.Greet = Greet;
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30840,7 +30928,7 @@ var ShareButtonSettings = (_dec = _flowRuntime2.default.annotate(_flowRuntime2.d
 exports.ShareButtonSettings = ShareButtonSettings;
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30997,46 +31085,6 @@ var Widget = (_dec = _flowRuntime2.default.annotate(_flowRuntime2.default.class(
 exports.Widget = Widget;
 
 /***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.APP_LANGUAGES = undefined;
-
-var _flowRuntime = __webpack_require__(0);
-
-var _flowRuntime2 = _interopRequireDefault(_flowRuntime);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var _counterType = _flowRuntime2.default.number(),
-    _counter = _counterType.assert(0);
-
-function _id() {
-    var _returnType = _flowRuntime2.default.return(_flowRuntime2.default.string());
-
-    return _returnType.assert((++_counter).toString());
-}
-
-_flowRuntime2.default.annotate(_id, _flowRuntime2.default.function(_flowRuntime2.default.return(_flowRuntime2.default.string())));
-
-var APP_LANGUAGES = Object.freeze({
-
-    DEFAULT: 'en',
-
-    RUSSIAN: 'ru',
-    ENGLISH: 'en',
-    SLOVAK: 'sl'
-});
-
-exports.APP_LANGUAGES = APP_LANGUAGES;
-
-/***/ }),
 /* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31052,7 +31100,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _dec, _class;
 
-var _EVENTS = __webpack_require__(41);
+var _EVENTS = __webpack_require__(42);
 
 var _EventObject = __webpack_require__(12);
 
@@ -31064,21 +31112,21 @@ var _ScrollingUp = __webpack_require__(148);
 
 var _ScrolledUp = __webpack_require__(146);
 
-var _ScrollingDown = __webpack_require__(204);
+var _ScrollingDown = __webpack_require__(205);
 
 var _ScrolledDown = __webpack_require__(145);
 
-var _ScrollStarted = __webpack_require__(201);
+var _ScrollStarted = __webpack_require__(202);
 
-var _ScrollStopped = __webpack_require__(202);
+var _ScrollStopped = __webpack_require__(203);
 
 var _Size = __webpack_require__(32);
 
-var _Height = __webpack_require__(42);
+var _Height = __webpack_require__(43);
 
 var _Scroll = __webpack_require__(112);
 
-var _ScrollTo = __webpack_require__(203);
+var _ScrollTo = __webpack_require__(204);
 
 var _flowRuntime = __webpack_require__(0);
 
@@ -32385,7 +32433,7 @@ return Promise$2;
 
 //# sourceMappingURL=es6-promise.map
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(49), __webpack_require__(16)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50), __webpack_require__(16)))
 
 /***/ }),
 /* 59 */
@@ -34779,7 +34827,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _ShareButtonSettings = __webpack_require__(54);
+var _ShareButtonSettings = __webpack_require__(55);
 
 var _flowRuntime = __webpack_require__(0);
 
@@ -34925,7 +34973,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _Token = __webpack_require__(8);
 
-var _Greet = __webpack_require__(53);
+var _Greet = __webpack_require__(54);
 
 var _es6Promise = __webpack_require__(58);
 
@@ -35041,7 +35089,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Widget = __webpack_require__(55);
+var _Widget = __webpack_require__(56);
 
 var _flowRuntime = __webpack_require__(0);
 
@@ -35418,15 +35466,14 @@ exports.default = {
             if (typeof vacancy !== 'undefined') {
 
                 vacancy.id = data.id;
-                vacancy.name = data.name;
+                vacancy.nameRu = data.nameRu;
+                vacancy.nameEn = data.nameEn;
+                vacancy.nameSl = data.nameSl;
                 vacancy.contacts = data.contacts;
-                vacancy.description = data.description;
+                vacancy.descriptionRu = data.descriptionRu;
+                vacancy.descriptionEn = data.descriptionEn;
+                vacancy.descriptionSl = data.descriptionSl;
                 vacancy.openedAt = data.openedAt;
-
-                // We mustn't update date. Because we don't give
-                // user functionality that will change date. User
-                // can't do that.
-                // vacancy.date = data.date;
             } else {
                 throw new Error("Vacancy can't be update at the " + "'vuex' storage list. It has wrong id.");
             }
@@ -35458,7 +35505,7 @@ exports.default = {
 
                     var _vacanciesType2 = _flowRuntime2.default.array(_flowRuntime2.default.ref(_Vacancy.Vacancy)),
                         vacancies = _vacanciesType2.assert(response.data.vacancies.map(function (i) {
-                        return new _Vacancy.Vacancy(parseInt(i.id), i.name, i.contacts, i.description_ru, i.description_en, i.description_sl, new Date(Date.parse(i.opened_at)));
+                        return new _Vacancy.Vacancy(parseInt(i.id), i.name_ru, i.name_en, i.name_sl, i.contacts, i.description_ru, i.description_en, i.description_sl, new Date(Date.parse(i.opened_at)));
                     } //UTC Date string format to Date
                     ));
 
@@ -35476,7 +35523,9 @@ exports.default = {
 
             return new Promise(function (resolve, reject) {
                 window.axios.post('/api/admin/panel/vacancy', {
-                    name: vacancy.name,
+                    nameRu: vacancy.nameRu,
+                    nameEn: vacancy.nameEn,
+                    nameSl: vacancy.nameSl,
                     contacts: vacancy.contacts,
                     descriptionRu: vacancy.descriptionRu,
                     descriptionEn: vacancy.descriptionEn,
@@ -35499,7 +35548,9 @@ exports.default = {
 
             return new Promise(function (resolve, reject) {
                 window.axios.patch('/api/admin/panel/vacancy/' + vacancy.id, {
-                    name: vacancy.name,
+                    nameRu: vacancy.nameRu,
+                    nameEn: vacancy.nameEn,
+                    nameSl: vacancy.nameSl,
                     contacts: vacancy.contacts,
                     descriptionRu: vacancy.descriptionRu,
                     descriptionEn: vacancy.descriptionEn,
@@ -38097,7 +38148,7 @@ module.exports =
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(43);
+	module.exports = __webpack_require__(44);
 
 /***/ },
 /* 11 */
@@ -38306,7 +38357,7 @@ module.exports =
 /* 14 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(47);
+	module.exports = __webpack_require__(48);
 
 /***/ },
 /* 15 */
@@ -38764,7 +38815,7 @@ module.exports =
 /* 24 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(44);
+	module.exports = __webpack_require__(45);
 
 /***/ },
 /* 25 */
@@ -39109,7 +39160,7 @@ module.exports =
 /* 30 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(46);
+	module.exports = __webpack_require__(47);
 
 /***/ },
 /* 31 */
@@ -40772,7 +40823,7 @@ module.exports =
 /* 69 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(18);
+	module.exports = __webpack_require__(20);
 
 /***/ },
 /* 70 */
@@ -43318,7 +43369,7 @@ module.exports =
 /* 108 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(45);
+	module.exports = __webpack_require__(46);
 
 /***/ },
 /* 109 */
@@ -44430,7 +44481,7 @@ module.exports =
 /* 129 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(50);
+	module.exports = __webpack_require__(51);
 
 /***/ },
 /* 130 */
@@ -52337,7 +52388,7 @@ module.exports =
 /* 192 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(48);
+	module.exports = __webpack_require__(49);
 
 /***/ },
 /* 193 */
@@ -60919,7 +60970,7 @@ module.exports =
 /* 332 */
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(17);
+	module.exports = __webpack_require__(19);
 
 /***/ },
 /* 333 */
@@ -64543,7 +64594,7 @@ module.exports =
 /***/ 62:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(18);
+	module.exports = __webpack_require__(20);
 
 /***/ },
 
@@ -64958,7 +65009,7 @@ exports.default = function (Vue) {
   return template;
 };
 
-var _util = __webpack_require__(17);
+var _util = __webpack_require__(19);
 
 var RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
 /**
@@ -66180,7 +66231,7 @@ module.exports =
 /***/ 14:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(44);
+	module.exports = __webpack_require__(45);
 
 /***/ },
 
@@ -66194,14 +66245,14 @@ module.exports =
 /***/ 59:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(46);
+	module.exports = __webpack_require__(47);
 
 /***/ },
 
 /***/ 60:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(43);
+	module.exports = __webpack_require__(44);
 
 /***/ },
 
@@ -66215,7 +66266,7 @@ module.exports =
 /***/ 62:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(18);
+	module.exports = __webpack_require__(20);
 
 /***/ },
 
@@ -67305,7 +67356,7 @@ module.exports =
 /***/ 269:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(45);
+	module.exports = __webpack_require__(46);
 
 /***/ },
 
@@ -67587,14 +67638,14 @@ module.exports =
 /***/ 62:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(18);
+	module.exports = __webpack_require__(20);
 
 /***/ },
 
 /***/ 209:
 /***/ function(module, exports) {
 
-	module.exports = __webpack_require__(48);
+	module.exports = __webpack_require__(49);
 
 /***/ },
 
@@ -70795,13 +70846,13 @@ if(false) {
 
 
 /* styles */
-__webpack_require__(354)
+__webpack_require__(358)
 
 var Component = __webpack_require__(2)(
   /* script */
-  __webpack_require__(195),
+  __webpack_require__(196),
   /* template */
-  __webpack_require__(312),
+  __webpack_require__(315),
   /* scopeId */
   null,
   /* cssModules */
@@ -70879,7 +70930,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.APP_BUTTONS_NAMES = undefined;
 
-var _APP_LANGUAGES = __webpack_require__(56);
+var _APP_LANGUAGES = __webpack_require__(41);
 
 var APP_BUTTONS_NAMES = Object.freeze({
 
@@ -71107,11 +71158,11 @@ var _vuex = __webpack_require__(9);
 
 var _vuex2 = _interopRequireDefault(_vuex);
 
-var _app = __webpack_require__(272);
+var _app = __webpack_require__(274);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _router = __webpack_require__(206);
+var _router = __webpack_require__(207);
 
 var _Store = __webpack_require__(105);
 
@@ -71125,7 +71176,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(200);
+__webpack_require__(201);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -71449,21 +71500,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 // COMPONENT
 // ------------------------------------------------------------------------
 
-var _layout = __webpack_require__(273);
+var _layout = __webpack_require__(275);
 
 var _layout2 = _interopRequireDefault(_layout);
 
-var _topNavbarSlider = __webpack_require__(285);
+var _topNavbarSlider = __webpack_require__(287);
 
 var _topNavbarSlider2 = _interopRequireDefault(_topNavbarSlider);
 
-var _COMPONENTS_EVENTS = __webpack_require__(21);
+var _COMPONENTS_EVENTS = __webpack_require__(18);
 
-var _APP_LANGUAGES = __webpack_require__(56);
+var _APP_LANGUAGES = __webpack_require__(41);
 
 var _APP_BUTTONS_NAMES = __webpack_require__(144);
 
-var _Cookie = __webpack_require__(20);
+var _Cookie = __webpack_require__(17);
 
 var _vuex = __webpack_require__(9);
 
@@ -71488,7 +71539,6 @@ exports.default = {
     // MIXINS
     //---------------------------------------------------------------------
 
-    mixins: [_Yclients2.default],
 
     // --------------------------------------------------------------------
     // DATA FIELDS
@@ -71560,16 +71610,22 @@ exports.default = {
                     break;
 
                 case this.APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED:
+                    this.language = this.APP_LANGUAGES.RUSSIAN;
+                    this.cookie.set('app.language', this.language);
                     this.$bus.$emit(this.APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED);
                     this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                     break;
 
                 case this.APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED:
+                    this.language = this.APP_LANGUAGES.ENGLISH;
+                    this.cookie.set('app.language', this.language);
                     this.$bus.$emit(this.APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED);
                     this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                     break;
 
                 case this.APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED:
+                    this.language = this.APP_LANGUAGES.SLOVAK;
+                    this.cookie.set('app.language', this.language);
                     this.$bus.$emit(this.APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED);
                     this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                     break;
@@ -71631,32 +71687,6 @@ exports.default = {
             var _returnType6 = _flowRuntime2.default.return(_flowRuntime2.default.void());
 
             this.$router.push({ name: 'vacancies' });
-        },
-        onRussianLanguageMenuItemClick: function onRussianLanguageMenuItemClick() {
-            var _returnType7 = _flowRuntime2.default.return(_flowRuntime2.default.void());
-
-            this.language = this.APP_LANGUAGES.RUSSIAN;
-            this.cookie.set('app.language', this.language);
-            this.loadYclientWidget(this.$el, this.language);
-        },
-        onEnglishLanguageMenuItemClick: function onEnglishLanguageMenuItemClick() {
-            var _returnType8 = _flowRuntime2.default.return(_flowRuntime2.default.void());
-
-            this.language = this.APP_LANGUAGES.ENGLISH;
-            this.cookie.set('app.language', this.language);
-            this.loadYclientWidget(this.$el, this.language);
-        },
-        onSlovakLanguageMenuItemClick: function onSlovakLanguageMenuItemClick() {
-            var _returnType9 = _flowRuntime2.default.return(_flowRuntime2.default.void());
-
-            this.language = this.APP_LANGUAGES.SLOVAK;
-            this.cookie.set('app.language', this.language);
-            this.loadYclientWidget(this.$el, this.language);
-        },
-        onOrderButtonClick: function onOrderButtonClick() {
-            //...
-
-            var _returnType10 = _flowRuntime2.default.return(_flowRuntime2.default.void());
         }
     }),
 
@@ -71668,7 +71698,6 @@ exports.default = {
 
         // LOAD DATA from server
         {
-            this.loadYclientWidget(this.$el, this.language);
             this.loadFacebookGroupReference();
             this.loadInstagramGroupReference();
         }
@@ -71685,10 +71714,22 @@ exports.default = {
             // this.$bus.$emit(this.APP_EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED)
             // May be realazied if it will be need.
 
-            this.$bus.$on(this.APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED, this.onRussianLanguageMenuItemClick);
-            this.$bus.$on(this.APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED, this.onEnglishLanguageMenuItemClick);
-            this.$bus.$on(this.APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED, this.onSlovakLanguageMenuItemClick);
-            this.$bus.$on(this.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED, this.onOrderButtonClick);
+            /*this.$bus.$on(
+                this.APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
+                this.onRussianLanguageMenuItemClick
+            );
+            this.$bus.$on(
+                this.APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
+                this.onEnglishLanguageMenuItemClick
+            );
+            this.$bus.$on(
+                this.APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
+                this.onSlovakLanguageMenuItemClick
+            );
+            this.$bus.$on(
+                this.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED,
+                this.onOrderButtonClick
+            );*/
         }
         //                this.$bus.$emit(this.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED)
     },
@@ -71762,15 +71803,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 // COMPONENT
 // ------------------------------------------------------------------------
 
-var _mainContentSlot = __webpack_require__(275);
+var _mainContentSlot = __webpack_require__(277);
 
 var _mainContentSlot2 = _interopRequireDefault(_mainContentSlot);
 
-var _sideNavbarSlot = __webpack_require__(276);
+var _sideNavbarSlot = __webpack_require__(278);
 
 var _sideNavbarSlot2 = _interopRequireDefault(_sideNavbarSlot);
 
-var _COMPONENTS_EVENTS = __webpack_require__(21);
+var _COMPONENTS_EVENTS = __webpack_require__(18);
 
 var _flowRuntime = __webpack_require__(0);
 
@@ -71871,11 +71912,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Height = __webpack_require__(42);
+var _Height = __webpack_require__(43);
 
-var _COMPONENTS_EVENTS = __webpack_require__(21);
+var _COMPONENTS_EVENTS = __webpack_require__(18);
 
-var _EVENTS = __webpack_require__(41);
+var _EVENTS = __webpack_require__(42);
 
 var _EventFactory = __webpack_require__(57);
 
@@ -71995,23 +72036,23 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _sroll = __webpack_require__(284);
+var _sroll = __webpack_require__(286);
 
 var _sroll2 = _interopRequireDefault(_sroll);
 
-var _Height = __webpack_require__(42);
+var _Height = __webpack_require__(43);
 
-var _COMPONENTS_EVENTS = __webpack_require__(21);
+var _COMPONENTS_EVENTS = __webpack_require__(18);
 
-var _EVENTS = __webpack_require__(41);
+var _EVENTS = __webpack_require__(42);
 
 var _EventObject = __webpack_require__(12);
 
-var _topNavbarSlot = __webpack_require__(277);
+var _topNavbarSlot = __webpack_require__(279);
 
 var _topNavbarSlot2 = _interopRequireDefault(_topNavbarSlot);
 
-var _contentSlot = __webpack_require__(274);
+var _contentSlot = __webpack_require__(276);
 
 var _contentSlot2 = _interopRequireDefault(_contentSlot);
 
@@ -72306,11 +72347,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Height = __webpack_require__(42);
+var _Height = __webpack_require__(43);
 
-var _COMPONENTS_EVENTS = __webpack_require__(21);
+var _COMPONENTS_EVENTS = __webpack_require__(18);
 
-var _EVENTS = __webpack_require__(41);
+var _EVENTS = __webpack_require__(42);
 
 var _EventObject = __webpack_require__(12);
 
@@ -72547,7 +72588,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _pageBlockMap = __webpack_require__(278);
+var _pageBlockMap = __webpack_require__(280);
 
 var _pageBlockMap2 = _interopRequireDefault(_pageBlockMap);
 
@@ -72763,6 +72804,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 // ------------------------------------------------------------------------
@@ -72773,19 +72815,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 // COMPONENT
 // ------------------------------------------------------------------------
 
-var _APP_LANGUAGES = __webpack_require__(56);
+var _APP_LANGUAGES = __webpack_require__(41);
 
 var _APP_BUTTONS_NAMES = __webpack_require__(144);
 
-var _COMPONENTS_EVENTS = __webpack_require__(21);
+var _COMPONENTS_EVENTS = __webpack_require__(18);
 
-var _Cookie = __webpack_require__(20);
+var _Cookie = __webpack_require__(17);
 
 var _vuex = __webpack_require__(9);
 
 var _Yclients = __webpack_require__(140);
 
 var _Yclients2 = _interopRequireDefault(_Yclients);
+
+var _LanguageSettings = __webpack_require__(288);
+
+var _LanguageSettings2 = _interopRequireDefault(_LanguageSettings);
 
 var _flowRuntime = __webpack_require__(0);
 
@@ -72804,19 +72850,16 @@ exports.default = {
     // MIXINS
     // --------------------------------------------------------------------
 
-    mixins: [_Yclients2.default],
+    mixins: [_LanguageSettings2.default, _Yclients2.default],
 
     // --------------------------------------------------------------------
     // DATA FIELDS
     // --------------------------------------------------------------------
 
     data: function data() {
-        var data = _flowRuntime2.default.object(_flowRuntime2.default.property("BUTTONS_NAMES", _flowRuntime2.default.ref("object")), _flowRuntime2.default.property("SHARED_ITEMS_NAMES", _flowRuntime2.default.ref("object")), _flowRuntime2.default.property("APP_LANGUAGES", _flowRuntime2.default.ref("object")), _flowRuntime2.default.property("cookie", _flowRuntime2.default.ref(_Cookie.Cookie)), _flowRuntime2.default.property("language", _flowRuntime2.default.union(_flowRuntime2.default.string(), _flowRuntime2.default.null()))).assert({
+        var data = _flowRuntime2.default.object(_flowRuntime2.default.property("BUTTONS_NAMES", _flowRuntime2.default.ref("object")), _flowRuntime2.default.property("SHARED_ITEMS_NAMES", _flowRuntime2.default.ref("object"))).assert({
             BUTTONS_NAMES: _APP_BUTTONS_NAMES.APP_BUTTONS_NAMES.HOME_PAGE,
-            SHARED_ITEMS_NAMES: _APP_BUTTONS_NAMES.APP_BUTTONS_NAMES.SHARED,
-            APP_LANGUAGES: _APP_LANGUAGES.APP_LANGUAGES,
-            cookie: _Cookie.Cookie.getInstance(),
-            language: _Cookie.Cookie.getInstance().get('app.language') ? _Cookie.Cookie.getInstance().get('app.language') : _APP_LANGUAGES.APP_LANGUAGES.DEFAULT
+            SHARED_ITEMS_NAMES: _APP_BUTTONS_NAMES.APP_BUTTONS_NAMES.SHARED
         });
         return data;
     },
@@ -72836,23 +72879,7 @@ exports.default = {
     // METHODS
     // --------------------------------------------------------------------
 
-    methods: _extends({}, (0, _vuex.mapActions)('HomePageGreet', ['downloadGreet']), (0, _vuex.mapActions)('FacebookShareButtonSettings', ['loadFacebookShareButtonSettings']), {
-
-        // EVENT HANDLERS
-
-        onAppLanguageChangedOnRussian: function onAppLanguageChangedOnRussian() {
-            this.language = this.APP_LANGUAGES.RUSSIAN;
-            this.loadYclientWidget(this.$el, this.language);
-        },
-        onAppLanguageChangedOnEnglish: function onAppLanguageChangedOnEnglish() {
-            this.language = this.APP_LANGUAGES.ENGLISH;
-            this.loadYclientWidget(this.$el, this.language);
-        },
-        onAppLanguageChangedOnSlovak: function onAppLanguageChangedOnSlovak() {
-            this.language = this.APP_LANGUAGES.SLOVAK;
-            this.loadYclientWidget(this.$el, this.language);
-        }
-    }),
+    methods: _extends({}, (0, _vuex.mapActions)('HomePageGreet', ['downloadGreet']), (0, _vuex.mapActions)('FacebookShareButtonSettings', ['loadFacebookShareButtonSettings'])),
 
     // --------------------------------------------------------------------
     // LIFE HOOKS
@@ -72860,17 +72887,6 @@ exports.default = {
 
     mounted: function mounted() {
 
-        // LOAD WIDGETS
-        {
-            this.loadYclientWidget(this.$el, this.language);
-        }
-
-        // SUBSCRIBE ON EVENTS
-        {
-            this.$bus.$on(_COMPONENTS_EVENTS.COMPONENTS_EVENTS.APP.NAVIGATION.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED, this.onAppLanguageChangedOnRussian);
-            this.$bus.$on(_COMPONENTS_EVENTS.COMPONENTS_EVENTS.APP.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED, this.onAppLanguageChangedOnEnglish);
-            this.$bus.$on(_COMPONENTS_EVENTS.COMPONENTS_EVENTS.APP.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED, this.onAppLanguageChangedOnSlovak);
-        }
         //DOWNLOAD FROM DB
 
         // malty-language GREET texts from server
@@ -72879,12 +72895,6 @@ exports.default = {
         // share button settings
         this.loadFacebookShareButtonSettings('Home-page' /*location*/);
     }
-
-    // --------------------------------------------------------------------
-    // CHILD COMPONENTS
-    // --------------------------------------------------------------------
-
-
 };
 
 /***/ }),
@@ -72898,11 +72908,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _pageBlockGreet = __webpack_require__(280);
+var _pageBlockGreet = __webpack_require__(282);
 
 var _pageBlockGreet2 = _interopRequireDefault(_pageBlockGreet);
 
-var _COMPONENTS_EVENTS = __webpack_require__(21);
+var _COMPONENTS_EVENTS = __webpack_require__(18);
 
 var _flowRuntime = __webpack_require__(0);
 
@@ -73118,6 +73128,53 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 //*************************************************************************
@@ -73131,6 +73188,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var _vuex = __webpack_require__(9);
 
 var _Vacancy = __webpack_require__(24);
+
+var _LanguageSettings = __webpack_require__(288);
+
+var _LanguageSettings2 = _interopRequireDefault(_LanguageSettings);
 
 var _flowRuntime = __webpack_require__(0);
 
@@ -73146,13 +73207,18 @@ exports.default = {
 
 
     //*********************************************************************
+    // MIXINS
+    //*********************************************************************
+
+    mixins: [_LanguageSettings2.default],
+
+    //*********************************************************************
     // DATA FIELDS
     //*********************************************************************
 
     data: function data() {
-        var data = _flowRuntime2.default.object(_flowRuntime2.default.property("list", _flowRuntime2.default.tuple()), _flowRuntime2.default.property("isDateVisible", _flowRuntime2.default.boolean())).assert({
-            list: [],
-            isDateVisible: true
+        var data = _flowRuntime2.default.object(_flowRuntime2.default.property("list", _flowRuntime2.default.tuple())).assert({
+            list: []
         });
 
         return data;
@@ -73170,12 +73236,19 @@ exports.default = {
     //*********************************************************************
 
     watch: {
+        /**
+         * Update list if vacancies were changed in the storage.
+         */
         vacancies: {
             handler: function handler(newList, oldList) {
+
+                // Create new list with converted to string date.
                 this.list = newList.map(function (vacancy) {
                     return {
                         id: vacancy.id,
-                        name: vacancy.name,
+                        nameRu: vacancy.nameRu,
+                        nameEn: vacancy.nameEn,
+                        nameSl: vacancy.nameSl,
                         contacts: vacancy.contacts,
                         descriptionRu: vacancy.descriptionRu,
                         descriptionEn: vacancy.descriptionEn,
@@ -73200,6 +73273,8 @@ exports.default = {
 
     mounted: function mounted() {
 
+        // LOAD list of VACANCIES if it wasn't loaded to the vuex storage
+        // already.
         if (this.vacancies !== null) {
             if (typeof this.vacancies !== "undefined") {
                 if (this.vacancies.length === 0) {
@@ -73207,12 +73282,6 @@ exports.default = {
                 }
             }
         }
-
-        /*            window.addEventListener('resize', function(){
-                        const width = document.documentElement.clientWidth
-                            || document.body.clientWidth;
-                        if(width < 350 ) this.isDateVisible = false;
-                    });*/
     }
 };
 
@@ -73235,7 +73304,7 @@ var _EventObject = __webpack_require__(12);
 
 var _EventFactory = __webpack_require__(57);
 
-var _EVENTS = __webpack_require__(41);
+var _EVENTS = __webpack_require__(42);
 
 var _Size = __webpack_require__(32);
 
@@ -73479,9 +73548,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Height = __webpack_require__(42);
+var _Height = __webpack_require__(43);
 
-var _COMPONENTS_EVENTS = __webpack_require__(21);
+var _COMPONENTS_EVENTS = __webpack_require__(18);
 
 var _vue = __webpack_require__(7);
 
@@ -73495,7 +73564,7 @@ var _Scrolling = __webpack_require__(147);
 
 var _HeightChanged = __webpack_require__(111);
 
-var _Width = __webpack_require__(205);
+var _Width = __webpack_require__(206);
 
 var _Size = __webpack_require__(32);
 
@@ -73811,6 +73880,136 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _Cookie = __webpack_require__(17);
+
+var _APP_LANGUAGES = __webpack_require__(41);
+
+var _COMPONENTS_EVENTS = __webpack_require__(18);
+
+var _flowRuntime = __webpack_require__(0);
+
+var _flowRuntime2 = _interopRequireDefault(_flowRuntime);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// ------------------------------------------------------------------------
+// MIXIN
+// ------------------------------------------------------------------------
+
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+
+    // --------------------------------------------------------------------
+    // PROPERTIES
+    // --------------------------------------------------------------------
+
+
+    // --------------------------------------------------------------------
+    // DATA FIELDS
+    // --------------------------------------------------------------------
+
+    data: function data() {
+
+        var data = _flowRuntime2.default.object(_flowRuntime2.default.property("APP_LANGUAGES", _flowRuntime2.default.object()), _flowRuntime2.default.property("APP_COMPONENTS_EVENTS", _flowRuntime2.default.object()), _flowRuntime2.default.property("cookies", _flowRuntime2.default.object()), _flowRuntime2.default.property("language", _flowRuntime2.default.string())).assert({
+            APP_LANGUAGES: _APP_LANGUAGES.APP_LANGUAGES,
+            APP_COMPONENTS_EVENTS: _COMPONENTS_EVENTS.COMPONENTS_EVENTS.APP,
+            cookies: _Cookie.Cookie.getInstance(),
+            language: _Cookie.Cookie.getInstance().get('app.language') ? _Cookie.Cookie.getInstance().get('app.language') : _APP_LANGUAGES.APP_LANGUAGES.DEFAULT
+        });
+
+        return data;
+    },
+
+
+    // --------------------------------------------------------------------
+    // COMPUTED FIELDS
+    // --------------------------------------------------------------------
+
+
+    // --------------------------------------------------------------------
+    // WATCHED FIELDS
+    // --------------------------------------------------------------------
+
+
+    // --------------------------------------------------------------------
+    // METHODS
+    // --------------------------------------------------------------------
+
+    methods: {
+
+        // EVENT HANDLERS
+
+        /**
+         * Handles click on admin side navbar 'russian' language item.
+         */
+        onRussianLanguageMenuItemClick: function onRussianLanguageMenuItemClick() {
+            var _returnType = _flowRuntime2.default.return(_flowRuntime2.default.void());
+
+            this.language = this.cookies.get('app.language');
+        },
+
+
+        /**
+         * Handles click on admin side navbar 'english' language item.
+         */
+        onEnglishLanguageMenuItemClick: function onEnglishLanguageMenuItemClick() {
+            var _returnType2 = _flowRuntime2.default.return(_flowRuntime2.default.void());
+
+            this.language = this.cookies.get('app.language');
+        },
+
+
+        /**
+         * Handles click on admin side navbar 'russian' language item.
+         */
+        onSlovakLanguageMenuItemClick: function onSlovakLanguageMenuItemClick() {
+            var _returnType3 = _flowRuntime2.default.return(_flowRuntime2.default.void());
+
+            this.language = this.cookies.get('app.language');
+        }
+    },
+
+    // --------------------------------------------------------------------
+    // LIFE HOOKS
+    // --------------------------------------------------------------------
+
+    mounted: function mounted() {
+
+        // SUBSCRIBE on events
+        {
+            this.$bus.$on(this.APP_COMPONENTS_EVENTS.NAVIGATION.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED, this.onRussianLanguageMenuItemClick);
+            this.$bus.$on(this.APP_COMPONENTS_EVENTS.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED, this.onEnglishLanguageMenuItemClick);
+            this.$bus.$on(this.APP_COMPONENTS_EVENTS.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED, this.onSlovakLanguageMenuItemClick);
+        }
+    },
+    beforeDestroy: function beforeDestroy() {
+
+        // UNSUBSCRIBE of events
+        {
+            this.$bus.$off(this.APP_COMPONENTS_EVENTS.NAVIGATION.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED, this.onRussianLanguageMenuItemClick);
+            this.$bus.$off(this.APP_COMPONENTS_EVENTS.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED, this.onEnglishLanguageMenuItemClick);
+            this.$bus.$off(this.APP_COMPONENTS_EVENTS.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED, this.onSlovakLanguageMenuItemClick);
+        }
+    }
+};
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; //
 //
 //
@@ -73828,11 +74027,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 // COMPONENT
 // ------------------------------------------------------------------------
 
-var _APP_LANGUAGES = __webpack_require__(56);
-
 var _vuex = __webpack_require__(9);
 
-var _Widget = __webpack_require__(55);
+var _Widget = __webpack_require__(56);
+
+var _LanguageSettings = __webpack_require__(288);
+
+var _LanguageSettings2 = _interopRequireDefault(_LanguageSettings);
 
 var _flowRuntime = __webpack_require__(0);
 
@@ -73846,6 +74047,12 @@ exports.default = {
     // PROPERTIES
     // --------------------------------------------------------------------
 
+
+    // --------------------------------------------------------------------
+    // MIXINS
+    // --------------------------------------------------------------------
+
+    mixins: [_LanguageSettings2.default],
 
     // --------------------------------------------------------------------
     // DATA FIELDS
@@ -73870,32 +74077,20 @@ exports.default = {
     // --------------------------------------------------------------------
     // WATCHED FIELDS
     // --------------------------------------------------------------------
-    /*
-            window.document.createElement('script')
-            this.setupYclientOrderWidgetScriptProps(newWidgetSettings);
-            this.mountYclientOrderWidget();
-            this.isYclientsOrderWidgetMounted = false;
-    */
+
 
     // --------------------------------------------------------------------
     // METHODS
     // --------------------------------------------------------------------
 
     methods: _extends({}, (0, _vuex.mapActions)('OrderWidget', ['loadRussianOrderWidget', 'loadEnglishOrderWidget', 'loadSlovakOrderWidget']), {
-        mountYlientWidget: function mountYlientWidget(el, appLanguage) {
-            var _elType = _flowRuntime2.default.ref("HTMLElement");
-
-            var _appLanguageType = _flowRuntime2.default.string();
-
-            _flowRuntime2.default.param("el", _elType).assert(el);
-
-            _flowRuntime2.default.param("appLanguage", _appLanguageType).assert(appLanguage);
+        mountYlientWidget: function mountYlientWidget() {
 
             var _widgetSrcType = _flowRuntime2.default.string(),
                 widgetSrc = _widgetSrcType.assert('');
 
-            switch (appLanguage) {
-                case _APP_LANGUAGES.APP_LANGUAGES.RUSSIAN:
+            switch (this.language) {
+                case this.APP_LANGUAGES.RUSSIAN:
 
                     if (this.russianOrderWidget.src.trim()) {
                         widgetSrc = _widgetSrcType.assert(this.russianOrderWidget.src.trim());
@@ -73911,7 +74106,7 @@ exports.default = {
                     }
                     break;
 
-                case _APP_LANGUAGES.APP_LANGUAGES.ENGLISH:
+                case this.APP_LANGUAGES.ENGLISH:
 
                     if (this.englishOrderWidget.src.trim()) {
                         widgetSrc = _widgetSrcType.assert(this.englishOrderWidget.src.trim());
@@ -73927,7 +74122,7 @@ exports.default = {
                     }
                     break;
 
-                case _APP_LANGUAGES.APP_LANGUAGES.SLOVAK:
+                case this.APP_LANGUAGES.SLOVAK:
 
                     if (this.slovakOrderWidget.src.trim()) {
                         widgetSrc = _widgetSrcType.assert(this.slovakOrderWidget.src.trim());
@@ -73949,83 +74144,135 @@ exports.default = {
             var script = window.document.createElement('script');
             script.src = widgetSrc;
             script.type = "text/javascript";
-            script.setAttribute('class', 'YCLIENT_ORDER_WIGET');
-            el.appendChild(script);
+            script.setAttribute('class', 'YCLIENT_ORDER_WIDGET');
+            this.$el.appendChild(script);
         },
-
-
-        //------------------------------------------------------
-        loadYclientWidget: function loadYclientWidget(el, appLanguage) {
+        loadYclientWidget: function loadYclientWidget() {
             var _this = this;
-
-            var _elType2 = _flowRuntime2.default.ref("HTMLElement");
-
-            var _appLanguageType2 = _flowRuntime2.default.string();
-
-            _flowRuntime2.default.param("el", _elType2).assert(el);
-
-            _flowRuntime2.default.param("appLanguage", _appLanguageType2).assert(appLanguage);
 
             // DELETE EXISTING SCRIPT
             {
-                var scripts = el.getElementsByClassName('YCLIENT_ORDER_WIGET');
-                if (scripts) {
-                    if (scripts[0]) {
-                        el.removeChild(scripts[0]);
+                var scripts = document.getElementsByClassName('YCLIENT_ORDER_WIDGET');
+                var yCloseIcons = document.getElementsByClassName('yCloseIcon');
+                var yWidgetCovers = document.getElementsByClassName('yWidgetCover');
+
+                if (scripts !== null) {
+                    if (typeof scripts !== "undefined") {
+
+                        // Warning: You mustn't you 'this.$el' as parent.
+                        // In same situations it will acause Error. You
+                        // must fined it with plain JS.
+                        for (var i = 0; i < scripts.length; ++i) {
+                            var parent = scripts[i].parentElement;
+                            parent.removeChild(scripts[i]);
+                        }
+                    }
+                }
+
+                if (yCloseIcons !== null) {
+                    if (typeof yCloseIcons !== "undefined") {
+
+                        // Warning: You mustn't you 'this.$el' as parent.
+                        // In same situations it will acause Error. You
+                        // must fined it with plain JS.
+                        for (var _i = 0; _i < yCloseIcons.length; ++_i) {
+                            var _parent = yCloseIcons[_i].parentElement;
+                            _parent.removeChild(yCloseIcons[_i]);
+                        }
+                    }
+                }
+
+                if (yWidgetCovers !== null) {
+                    if (typeof yWidgetCovers !== "undefined") {
+
+                        // Warning: You mustn't you 'this.$el' as parent.
+                        // In same situations it will acause Error. You
+                        // must fined it with plain JS.
+                        for (var _i2 = 0; _i2 < yWidgetCovers.length; ++_i2) {
+                            var _parent2 = yWidgetCovers[_i2].parentElement;
+                            _parent2.removeChild(yWidgetCovers[_i2]);
+                        }
                     }
                 }
             }
 
             // LOAD WIDGETS SETTINGS for all kind of languages
             {
-                // IF REFS on widgets WASN't LOADED yet
-                if (!this.russianOrderWidget.src || !this.englishOrderWidget.src || !this.slovakOrderWidget.src) {
+                // IF REFS on widgets WASN't LOADED yet then load them
+                if (!(!!this.russianOrderWidget.src && !!this.englishOrderWidget.src && !!this.slovakOrderWidget.src)) {
 
                     // DOWNLOAD
                     this.loadRussianOrderWidget().then(function (response) {
                         _this.loadEnglishOrderWidget().then(function (response) {
                             _this.loadSlovakOrderWidget().then(function (response) {
 
+                                console.log('WIDGET SRC WAS LOADED:');
+
                                 //MOUNT SCRIPT
-                                _this.mountYlientWidget(el, appLanguage);
+                                _this.mountYlientWidget();
                             });
                         });
                     });
-
-                    // IF refs LOADED already
                 } else {
 
-                    //MOUNT SCRIPT
-                    this.mountYlientWidget(el, appLanguage);
+                    //If refs were loaded, then - MOUNT SCRIPT
+                    this.mountYlientWidget();
                 }
             }
+        },
+
+
+        // EVENT HANDLERS
+
+        onAppLanguageChangedOnRussian: function onAppLanguageChangedOnRussian() {
+            this.loadYclientWidget();
+        },
+        onAppLanguageChangedOnEnglish: function onAppLanguageChangedOnEnglish() {
+            this.loadYclientWidget();
+        },
+        onAppLanguageChangedOnSlovak: function onAppLanguageChangedOnSlovak() {
+            this.loadYclientWidget();
         }
-    })
+    }),
 
     // --------------------------------------------------------------------
     // LIFE HOOKS
     // --------------------------------------------------------------------
 
+    mounted: function mounted() {
 
-    // --------------------------------------------------------------------
-    // CHILD COMPONENTS
-    // --------------------------------------------------------------------
+        this.loadYclientWidget();
 
+        // SUBSCRIBE ON EVENTS
+        {
+            this.$bus.$on(this.APP_COMPONENTS_EVENTS.NAVIGATION.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED, this.onAppLanguageChangedOnRussian);
+            this.$bus.$on(this.APP_COMPONENTS_EVENTS.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED, this.onAppLanguageChangedOnEnglish);
+            this.$bus.$on(this.APP_COMPONENTS_EVENTS.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED, this.onAppLanguageChangedOnSlovak);
+        }
+    },
+    beforeDestroy: function beforeDestroy() {
 
+        // UNSUBSCRIBE OF EVENTS
+        {
+            this.$bus.$off(this.APP_COMPONENTS_EVENTS.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED, this.onAppLanguageChangedOnRussian);
+            this.$bus.$off(this.APP_COMPONENTS_EVENTS.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED, this.onAppLanguageChangedOnEnglish);
+            this.$bus.$off(this.APP_COMPONENTS_EVENTS.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED, this.onAppLanguageChangedOnSlovak);
+        }
+    }
 };
 
 /***/ }),
-/* 196 */,
 /* 197 */,
 /* 198 */,
 /* 199 */,
-/* 200 */
+/* 200 */,
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _vueRouter = __webpack_require__(51);
+var _vueRouter = __webpack_require__(52);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -74088,7 +74335,7 @@ window.Vue.use(_elementUi2.default, { locale: _ruRU2.default });
  * A Vue.js component for sharing links to social networks, work with
  * Vue.js 1.X or 2.X
  */
-var SocialSharing = __webpack_require__(327);
+var SocialSharing = __webpack_require__(331);
 window.Vue.use(SocialSharing);
 
 /**
@@ -74121,7 +74368,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74155,7 +74402,7 @@ var ScrollStarted = function (_EventObject) {
 exports.ScrollStarted = ScrollStarted;
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74189,7 +74436,7 @@ var ScrollStopped = function (_EventObject) {
 exports.ScrollStopped = ScrollStopped;
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74223,7 +74470,7 @@ var ScrollTo = function (_EventObject) {
 exports.ScrollTo = ScrollTo;
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74257,7 +74504,7 @@ var ScrollingDown = function (_EventObject) {
 exports.ScrollingDown = ScrollingDown;
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74291,7 +74538,7 @@ var Width = function (_Size) {
 exports.Width = Width;
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74302,11 +74549,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.router = undefined;
 
-var _routes = __webpack_require__(207);
+var _routes = __webpack_require__(208);
 
 var _routes2 = _interopRequireDefault(_routes);
 
-var _vueRouter = __webpack_require__(51);
+var _vueRouter = __webpack_require__(52);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -74332,7 +74579,7 @@ var router = new _vueRouter2.default({
 exports.router = router;
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -74342,19 +74589,19 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _page = __webpack_require__(281);
+var _page = __webpack_require__(283);
 
 var _page2 = _interopRequireDefault(_page);
 
-var _page3 = __webpack_require__(283);
+var _page3 = __webpack_require__(285);
 
 var _page4 = _interopRequireDefault(_page3);
 
-var _page5 = __webpack_require__(282);
+var _page5 = __webpack_require__(284);
 
 var _page6 = _interopRequireDefault(_page5);
 
-var _page7 = __webpack_require__(279);
+var _page7 = __webpack_require__(281);
 
 var _page8 = _interopRequireDefault(_page7);
 
@@ -74365,138 +74612,143 @@ exports.default = [{ path: '*', redirect: '/' }, { path: '/', name: 'app', compo
 { path: '/vacancies', name: 'vacancies', component: _page4.default }];
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.CONTENT-SLOT {\n  position: relative;\n  top: 0;\n  left: 0;\n}\n", ""]);
 
 /***/ }),
-/* 209 */,
-/* 210 */
+/* 210 */,
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.HOME-PAGE {\n  width: 100%;\n  height: 100%;\n}\n", ""]);
 
 /***/ }),
-/* 211 */,
 /* 212 */,
 /* 213 */,
-/* 214 */
+/* 214 */,
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.VACANCIES-PAGE[data-v-1ff7aa6f] {\n  height: 100%;\n  width: 100%;\n  padding: 4em 2em 4em 2em;\n}\n.VACANCIES-PAGE h1[data-v-1ff7aa6f] {\n    font-size: 1em;\n}\n.VACANCIES-TABLE[data-v-1ff7aa6f] {\n  margin-top: 2em;\n  min-width: 30em;\n}\n", ""]);
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.PAGE-BLOCK[data-v-2a9667a0] {\n  width: 100%;\n  height: 100%;\n}\n.MAP-IMG[data-v-2a9667a0] {\n  width: 100%;\n  height: 100%;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-color: #b6b6b6;\n  background-position: center center;\n  background-image: url(/address_map.jpg);\n}\n", ""]);
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.SIDE-NAVBAR-SLOT {\n  position: absolute;\n  top: 0;\n  height: 100%;\n  overflow: auto;\n  z-index: 60000;\n}\n@media (min-width: 261px) {\n.SIDE-NAVBAR-SLOT {\n      left: -260px;\n      width: 260px;\n}\n}\n@media (max-width: 260px) {\n.SIDE-NAVBAR-SLOT {\n      left: -100%;\n      width: 100%;\n}\n}\n", ""]);
 
 /***/ }),
-/* 217 */,
 /* 218 */,
 /* 219 */,
 /* 220 */,
-/* 221 */
+/* 221 */,
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "", ""]);
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.SIDE-NAVBAR[data-v-3f8afd78] {\n  min-height: 100%;\n}\n@media (min-width: 667px) {\n.SIDE-NAVBAR .H-LANG[data-v-3f8afd78] {\n      display: none;\n}\n}\n@media (min-width: 745px) {\n.SIDE-NAVBAR .H-PRICE[data-v-3f8afd78] {\n      display: none;\n}\n}\n@media (min-width: 950px) {\n.SIDE-NAVBAR .H-ADDRESS[data-v-3f8afd78] {\n      display: none;\n}\n}\n@media (min-width: 990px) {\n.SIDE-NAVBAR .H-VACANCIES[data-v-3f8afd78] {\n      display: none;\n}\n}\n.SIDE-NAVBAR .H-ORDER[data-v-3f8afd78] {\n    cursor: default;\n    line-height: 57px         !important;\n}\n@media (min-width: 564px) {\n.SIDE-NAVBAR .H-ORDER[data-v-3f8afd78] {\n        display: none;\n}\n}\n.SIDE-NAVBAR .H-ORDER .H-BUTTON[data-v-3f8afd78] {\n      display: inline-block;\n      background-color: #ff627b;\n      color: white;\n      border: none;\n      width: 100%;\n}\n.SIDE-NAVBAR .H-ORDER .H-BUTTON[data-v-3f8afd78]:hover {\n        color: white;\n        border-color: white;\n        background-color: #f4576e;\n}\n.SIDE-NAVBAR .H-ORDER .H-BUTTON[data-v-3f8afd78]:active {\n        background-color: #ec576e;\n}\n.SIDE-NAVBAR .H-ICON[data-v-3f8afd78] {\n    line-height: 68px         !important;\n    text-align: center;\n    width: 50%;\n    float: left;\n}\n.SIDE-NAVBAR .H-ICON img[data-v-3f8afd78] {\n      display: inline-block !important;\n      height: 1.4em        !important;\n      opacity: 0.8;\n      color: white;\n}\n.SIDE-NAVBAR .H-CLOSE[data-v-3f8afd78] {\n    text-align: right;\n}\n@media (min-width: 469px) {\n.SIDE-NAVBAR .H-IN[data-v-3f8afd78], .SIDE-NAVBAR .H-FB[data-v-3f8afd78] {\n      display: none;\n}\n}\n@media (min-width: 850px) {\n.TOP-NAVBAR[data-v-3f8afd78] {\n    padding: 0 10% 0 10%           !important;\n}\n}\n@media (max-width: 849px) {\n.TOP-NAVBAR[data-v-3f8afd78] {\n    padding: 0 5% 0 5%             !important;\n}\n}\n.ITEM[data-v-3f8afd78] {\n  float: right !important;\n}\n.TOGGLE[data-v-3f8afd78] {\n  color: #66a0df;\n  display: none;\n  line-height: 64px !important;\n  font-size: 1.7em;\n  border: none !important;\n}\n.TOGGLE[data-v-3f8afd78]:hover {\n    border: none !important;\n    color: #66A0DF;\n}\n@media (max-width: 990px) {\n.TOGGLE[data-v-3f8afd78] {\n      display: inline-block;\n}\n}\n.LOGO[data-v-3f8afd78] {\n  line-height: 85px !important;\n  border: none !important;\n  opacity: 0.75;\n}\n.LOGO[data-v-3f8afd78]:hover {\n    opacity: 1;\n    border: none !important;\n}\n.LOGO[data-v-3f8afd78]:active {\n    background-color: #EEF1F6;\n}\n.LOGO img[data-v-3f8afd78] {\n    display: inline-block;\n    width: auto;\n    height: 2.5em;\n}\n.ORDER[data-v-3f8afd78] {\n  line-height: 63px !important;\n  border: none !important;\n  cursor: default !important;\n}\n@media (max-width: 564px) {\n.ORDER[data-v-3f8afd78] {\n      display: none;\n}\n}\n.ORDER .BUTTON[data-v-3f8afd78] {\n    background-color: #ff627b;\n    color: white;\n    border: none;\n}\n.ORDER .BUTTON[data-v-3f8afd78]:hover {\n      color: white;\n      border-color: white;\n      background-color: #f4576e;\n}\n.ORDER .BUTTON[data-v-3f8afd78]:active {\n      background-color: #ec576e;\n}\n@media (max-width: 667px) {\n.LANG[data-v-3f8afd78] {\n    display: none;\n}\n}\n@media (max-width: 990px) {\n.VACANCIES[data-v-3f8afd78] {\n    display: none;\n}\n}\n@media (max-width: 950px) {\n.ADDRESS[data-v-3f8afd78] {\n    display: none;\n}\n}\n@media (max-width: 745px) {\n.PRICE[data-v-3f8afd78] {\n    display: none;\n}\n}\n.IN[data-v-3f8afd78], .FB[data-v-3f8afd78] {\n  line-height: 72px !important;\n}\n.IN:hover .ICON[data-v-3f8afd78], .FB:hover .ICON[data-v-3f8afd78] {\n    opacity: 1;\n}\n@media (max-width: 469px) {\n.IN[data-v-3f8afd78], .FB[data-v-3f8afd78] {\n      display: none;\n}\n}\n.IN .ICON[data-v-3f8afd78], .FB .ICON[data-v-3f8afd78] {\n    height: 1.2em !important;\n    opacity: 0.50;\n}\n", ""]);
 
 /***/ }),
-/* 223 */,
 /* 224 */,
 /* 225 */,
 /* 226 */,
 /* 227 */,
 /* 228 */,
 /* 229 */,
-/* 230 */
+/* 230 */,
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.SCROLL {\n  height: 100%;\n  overflow-y: scroll;\n}\n", ""]);
 
 /***/ }),
-/* 231 */,
 /* 232 */,
-/* 233 */
+/* 233 */,
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.TOP-NAVBAR-SLIDER[data-v-59d07e5b] {\n  width: 100%;\n  height: auto;\n  z-index: 50000;\n}\n.TOP-NAVBAR-SLIDER.SHOWN[data-v-59d07e5b] {\n    position: fixed;\n    top: 0;\n    transition: top, 0.5s;\n}\n.TOP-NAVBAR-SLIDER.HIDDEN[data-v-59d07e5b] {\n    top: -4em;\n}\n", ""]);
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "", ""]);
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.TOP-NAVBAR-SLOT[data-v-5bc0762a] {\n  position: relative;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: auto;\n}\n", ""]);
 
 /***/ }),
-/* 236 */,
 /* 237 */,
 /* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)();
+exports.push([module.i, "", ""]);
+
+/***/ }),
+/* 239 */,
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.MAIN-CONTENT-SLOT {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n", ""]);
 
 /***/ }),
-/* 239 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.PAGE-BLOCK[data-v-7bac4c7e] {\n  background-color: black;\n}\n.PAGE-BLOCK .DIV-IMG[data-v-7bac4c7e] {\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-color: #b6b6b6;\n    background-position: center center;\n    background-image: url(/home-page_greet-block-fon.jpg);\n}\n.PAGE-BLOCK .DIV-IMG .CONTENT[data-v-7bac4c7e] {\n      position: relative;\n      width: 100%;\n      height: 100%;\n      color: white;\n}\n.PAGE-BLOCK .DIV-IMG .CONTENT .ROW > .CELL[data-v-7bac4c7e] {\n        vertical-align: middle;\n        text-align: justify;\n}\n.PAGE-BLOCK .DIV-IMG .CONTENT .ROW > .CELL div[data-v-7bac4c7e] {\n          margin: auto auto;\n          width: 17em;\n}\n.PAGE-BLOCK .DIV-IMG .CONTENT .ROW > .CELL div .BIG-LOGO[data-v-7bac4c7e] {\n            width: 100%;\n            padding-top: 2em;\n            height: auto;\n}\n.PAGE-BLOCK .DIV-IMG .CONTENT .ROW > .CELL div p[data-v-7bac4c7e] {\n            width: 80%;\n            margin: 2.5em 10% 1em 10%;\n            text-align: justify;\n            font-size: 0.85em;\n}\n.PAGE-BLOCK .DIV-IMG .CONTENT .ROW > .CELL div .ORDER[data-v-7bac4c7e] {\n            width: 80%;\n            margin: 0 10% 1em 10%;\n            background-color: #ff627b;\n            color: white;\n            border: none;\n}\n.PAGE-BLOCK .DIV-IMG .CONTENT .ROW > .CELL div .ORDER[data-v-7bac4c7e]:hover {\n              color: white;\n              border-color: white;\n              background-color: #f4576e;\n}\n.PAGE-BLOCK .DIV-IMG .CONTENT .ROW > .CELL div .ORDER[data-v-7bac4c7e]:active {\n              background-color: #ec576e;\n}\n.PAGE-BLOCK .DIV-IMG .CONTENT .ROW > .CELL div .SOCIAL-SHARE[data-v-7bac4c7e] {\n            display: block !important;\n            width: 100%  !important;\n}\n.PAGE-BLOCK-appear-class[data-v-7bac4c7e] {\n  opacity: 0;\n}\n.PAGE-BLOCK-appear-to-class[data-v-7bac4c7e] {\n  opacity: 1;\n  transition: opacity, 0.3s;\n}\n.CONTENT-appear-class[data-v-7bac4c7e] {\n  opacity: 0;\n}\n.CONTENT-appear-to-class[data-v-7bac4c7e] {\n  opacity: 1;\n  transition-property: opacity;\n  transition-duration: 200ms;\n  transition-timing-function: ease;\n  transition-delay: 500ms;\n}\n", ""]);
 
 /***/ }),
-/* 240 */,
-/* 241 */,
 /* 242 */,
 /* 243 */,
-/* 244 */
+/* 244 */,
+/* 245 */,
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.APP-LAYOUT {\n  position: relative;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  overflow: visible;\n  transition: left, 0.5s;\n}\n.APP-LAYOUT .WRAPPER {\n    width: 100%;\n    height: 100%;\n}\n@media (min-width: 261px) {\n.SHOW-SIDE-NAVBAR {\n    left: 260px;\n}\n}\n@media (max-width: 260px) {\n.SHOW-SIDE-NAVBAR {\n    left: 100%;\n}\n}\n", ""]);
 
 /***/ }),
-/* 245 */,
-/* 246 */,
-/* 247 */
+/* 247 */,
+/* 248 */,
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)();
 exports.push([module.i, "\n.CONTACTS-PAGE {\n  height: 100%;\n  width: 100%;\n}\n", ""]);
 
 /***/ }),
-/* 248 */,
-/* 249 */,
 /* 250 */,
 /* 251 */,
 /* 252 */,
@@ -74519,18 +74771,20 @@ exports.push([module.i, "\n.CONTACTS-PAGE {\n  height: 100%;\n  width: 100%;\n}\
 /* 269 */,
 /* 270 */,
 /* 271 */,
-/* 272 */
+/* 272 */,
+/* 273 */,
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(342)
+__webpack_require__(346)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(181),
   /* template */
-  __webpack_require__(300),
+  __webpack_require__(303),
   /* scopeId */
   "data-v-3f8afd78",
   /* cssModules */
@@ -74557,18 +74811,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 273 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(364)
+__webpack_require__(369)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(182),
   /* template */
-  __webpack_require__(322),
+  __webpack_require__(326),
   /* scopeId */
   null,
   /* cssModules */
@@ -74595,18 +74849,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 274 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(328)
+__webpack_require__(332)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(183),
   /* template */
-  __webpack_require__(286),
+  __webpack_require__(289),
   /* scopeId */
   null,
   /* cssModules */
@@ -74633,18 +74887,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 275 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(358)
+__webpack_require__(363)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(184),
   /* template */
-  __webpack_require__(316),
+  __webpack_require__(320),
   /* scopeId */
   null,
   /* cssModules */
@@ -74671,18 +74925,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 276 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(336)
+__webpack_require__(340)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(185),
   /* template */
-  __webpack_require__(294),
+  __webpack_require__(297),
   /* scopeId */
   null,
   /* cssModules */
@@ -74709,18 +74963,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 277 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(355)
+__webpack_require__(359)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(186),
   /* template */
-  __webpack_require__(313),
+  __webpack_require__(316),
   /* scopeId */
   "data-v-5bc0762a",
   /* cssModules */
@@ -74747,18 +75001,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 278 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(335)
+__webpack_require__(339)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(187),
   /* template */
-  __webpack_require__(293),
+  __webpack_require__(296),
   /* scopeId */
   "data-v-2a9667a0",
   /* cssModules */
@@ -74785,18 +75039,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 279 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(367)
+__webpack_require__(372)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(188),
   /* template */
-  __webpack_require__(325),
+  __webpack_require__(329),
   /* scopeId */
   null,
   /* cssModules */
@@ -74823,18 +75077,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 280 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(359)
+__webpack_require__(364)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(189),
   /* template */
-  __webpack_require__(317),
+  __webpack_require__(321),
   /* scopeId */
   "data-v-7bac4c7e",
   /* cssModules */
@@ -74861,18 +75115,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 281 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(330)
+__webpack_require__(334)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(190),
   /* template */
-  __webpack_require__(288),
+  __webpack_require__(291),
   /* scopeId */
   null,
   /* cssModules */
@@ -74899,18 +75153,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 282 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(341)
+__webpack_require__(345)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(191),
   /* template */
-  __webpack_require__(299),
+  __webpack_require__(302),
   /* scopeId */
   null,
   /* cssModules */
@@ -74937,18 +75191,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 283 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(334)
+__webpack_require__(338)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(192),
   /* template */
-  __webpack_require__(292),
+  __webpack_require__(295),
   /* scopeId */
   "data-v-1ff7aa6f",
   /* cssModules */
@@ -74975,18 +75229,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 284 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(350)
+__webpack_require__(354)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(193),
   /* template */
-  __webpack_require__(308),
+  __webpack_require__(311),
   /* scopeId */
   null,
   /* cssModules */
@@ -75013,18 +75267,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 285 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(353)
+__webpack_require__(357)
 
 var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(194),
   /* template */
-  __webpack_require__(311),
+  __webpack_require__(314),
   /* scopeId */
   "data-v-59d07e5b",
   /* cssModules */
@@ -75051,7 +75305,45 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 286 */
+/* 288 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(361)
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(195),
+  /* template */
+  __webpack_require__(318),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\xampp\\htdocs\\WhiteLab_v1_web\\resources\\assets\\js\\user-app\\mixins\\LanguageSettings.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] LanguageSettings.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5f1b6d04", Component.options)
+  } else {
+    hotAPI.reload("data-v-5f1b6d04", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75069,8 +75361,8 @@ if (false) {
 }
 
 /***/ }),
-/* 287 */,
-/* 288 */
+/* 290 */,
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75091,10 +75383,10 @@ if (false) {
 }
 
 /***/ }),
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75104,8 +75396,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "ROW"
   }, [_c('div', {
     staticClass: "CELL"
-  }, [_c('el-table', {
-    staticClass: "VACANCIES-TABLE",
+  }, [(_vm.APP_LANGUAGES.RUSSIAN === _vm.language) ? _c('el-table', {
+    staticClass: "VACANCIES-TABLE RU",
     attrs: {
       "data": _vm.list,
       "fit": true
@@ -75122,20 +75414,82 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }])
   }), _c('el-table-column', {
     attrs: {
+      "label": "Дата",
+      "prop": "openedAt"
+    }
+  }), _c('el-table-column', {
+    attrs: {
+      "label": "Вакансия",
+      "prop": "nameRu"
+    }
+  }), _c('el-table-column', {
+    attrs: {
+      "label": "Контакты",
+      "prop": "contacts"
+    }
+  })], 1) : _vm._e(), (_vm.APP_LANGUAGES.ENGLISH === _vm.language) ? _c('el-table', {
+    staticClass: "VACANCIES-TABLE EN",
+    attrs: {
+      "data": _vm.list,
+      "fit": true
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "expand"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(props) {
+        return [_vm._v(_vm._s(props.row.descriptionEn))]
+      }
+    }])
+  }), _c('el-table-column', {
+    attrs: {
       "label": "Date",
       "prop": "openedAt"
     }
   }), _c('el-table-column', {
     attrs: {
       "label": "Vacancy",
-      "prop": "name"
+      "prop": "nameEn"
     }
   }), _c('el-table-column', {
     attrs: {
       "label": "Contacts",
       "prop": "contacts"
     }
-  })], 1)], 1)])])
+  })], 1) : _vm._e(), (_vm.APP_LANGUAGES.SLOVAK === _vm.language) ? _c('el-table', {
+    staticClass: "VACANCIES-TABLE SL",
+    attrs: {
+      "data": _vm.list,
+      "fit": true
+    }
+  }, [_c('el-table-column', {
+    attrs: {
+      "type": "expand"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(props) {
+        return [_vm._v(_vm._s(props.row.descriptionSl))]
+      }
+    }])
+  }), _c('el-table-column', {
+    attrs: {
+      "label": "Dátum",
+      "prop": "openedAt"
+    }
+  }), _c('el-table-column', {
+    attrs: {
+      "label": "Voľné miesto",
+      "prop": "nameSl"
+    }
+  }), _c('el-table-column', {
+    attrs: {
+      "label": "Kontakty",
+      "prop": "contacts"
+    }
+  })], 1) : _vm._e()], 1)])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -75146,7 +75500,7 @@ if (false) {
 }
 
 /***/ }),
-/* 293 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75170,7 +75524,7 @@ if (false) {
 }
 
 /***/ }),
-/* 294 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75187,11 +75541,11 @@ if (false) {
 }
 
 /***/ }),
-/* 295 */,
-/* 296 */,
-/* 297 */,
 /* 298 */,
-/* 299 */
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75210,7 +75564,7 @@ if (false) {
 }
 
 /***/ }),
-/* 300 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75264,14 +75618,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "index": _vm.APP_EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED
     }
-  }, [_vm._v(_vm._s(_vm.APP_ITEMS_NAMES.VACANCIES_MENU_ITEM[_vm.language]))]), (_vm.isOrderWidgetExists) ? _c('el-menu-item', {
+  }, [_vm._v(_vm._s(_vm.APP_ITEMS_NAMES.VACANCIES_MENU_ITEM[_vm.language]))]), _c('el-menu-item', {
     staticClass: "H-ORDER",
     attrs: {
       "index": _vm.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED
     }
   }, [_c('el-button', {
     staticClass: "H-BUTTON ms_booking"
-  }, [_vm._v(_vm._s(_vm.APP_ITEMS_NAMES.ORDER_MENU_BUTTON[_vm.language]))])], 1) : _vm._e(), _c('el-menu-item', {
+  }, [_vm._v(_vm._s(_vm.APP_ITEMS_NAMES.ORDER_MENU_BUTTON[_vm.language]))])], 1), _c('el-menu-item', {
     staticClass: "H-IN H-ICON",
     attrs: {
       "index": _vm.APP_EVENTS_ID.IN_MENU_ITEM_CLICKED
@@ -75319,14 +75673,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": "/images/logos/logo_whitelab_without_border.png"
     }
-  })]), (_vm.isOrderWidgetExists) ? _c('el-menu-item', {
+  })]), _c('el-menu-item', {
     staticClass: "ORDER ITEM",
     attrs: {
       "index": _vm.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED
     }
   }, [_c('el-button', {
     staticClass: "BUTTON ms_booking"
-  }, [_vm._v(_vm._s(_vm.APP_ITEMS_NAMES.ORDER_MENU_BUTTON[_vm.language]))])], 1) : _vm._e(), _c('el-submenu', {
+  }, [_vm._v(_vm._s(_vm.APP_ITEMS_NAMES.ORDER_MENU_BUTTON[_vm.language]))])], 1), _c('el-submenu', {
     staticClass: "LANG ITEM",
     attrs: {
       "index": _vm.APP_EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED
@@ -75400,14 +75754,14 @@ if (false) {
 }
 
 /***/ }),
-/* 301 */,
-/* 302 */,
-/* 303 */,
 /* 304 */,
 /* 305 */,
 /* 306 */,
 /* 307 */,
-/* 308 */
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75424,9 +75778,9 @@ if (false) {
 }
 
 /***/ }),
-/* 309 */,
-/* 310 */,
-/* 311 */
+/* 312 */,
+/* 313 */,
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75444,7 +75798,7 @@ if (false) {
 }
 
 /***/ }),
-/* 312 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75459,7 +75813,7 @@ if (false) {
 }
 
 /***/ }),
-/* 313 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75476,9 +75830,24 @@ if (false) {
 }
 
 /***/ }),
-/* 314 */,
-/* 315 */,
-/* 316 */
+/* 317 */,
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c("div")
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-5f1b6d04", module.exports)
+  }
+}
+
+/***/ }),
+/* 319 */,
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75510,7 +75879,7 @@ if (false) {
 }
 
 /***/ }),
-/* 317 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75549,9 +75918,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": "/images/logos/logo_whitelab_without_border_white.png"
     }
-  }), (_vm.language === _vm.APP_LANGUAGES.RUSSIAN) ? _c('p', [_vm._v(_vm._s(_vm.greetTextRu))]) : _vm._e(), (_vm.language === _vm.APP_LANGUAGES.ENGLISH) ? _c('p', [_vm._v(_vm._s(_vm.greetTextEn))]) : _vm._e(), (_vm.language === _vm.APP_LANGUAGES.SLOVAK) ? _c('p', [_vm._v(_vm._s(_vm.greetTextSl))]) : _vm._e(), (_vm.isOrderWidgetExists) ? _c('el-button', {
+  }), (_vm.language === _vm.APP_LANGUAGES.RUSSIAN) ? _c('p', [_vm._v(_vm._s(_vm.greetTextRu))]) : _vm._e(), (_vm.language === _vm.APP_LANGUAGES.ENGLISH) ? _c('p', [_vm._v(_vm._s(_vm.greetTextEn))]) : _vm._e(), (_vm.language === _vm.APP_LANGUAGES.SLOVAK) ? _c('p', [_vm._v(_vm._s(_vm.greetTextSl))]) : _vm._e(), _c('el-button', {
     staticClass: "ORDER ms_booking"
-  }, [_vm._v(_vm._s(_vm.BUTTONS_NAMES.ORDER_BUTTON[_vm.language]))]) : _vm._e(), _c('social-sharing', {
+  }, [_vm._v(_vm._s(_vm.BUTTONS_NAMES.ORDER_BUTTON[_vm.language]))]), _c('social-sharing', {
     staticClass: "SOCIAL-SHARE",
     attrs: {
       "url": _vm.facebookShareButtonSettings.url,
@@ -75593,11 +75962,11 @@ if (false) {
 }
 
 /***/ }),
-/* 318 */,
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75621,9 +75990,9 @@ if (false) {
 }
 
 /***/ }),
-/* 323 */,
-/* 324 */,
-/* 325 */
+/* 327 */,
+/* 328 */,
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -75646,8 +76015,8 @@ if (false) {
 }
 
 /***/ }),
-/* 326 */,
-/* 327 */
+/* 330 */,
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75972,13 +76341,13 @@ if (typeof window !== 'undefined') {
 module.exports = SocialSharing;
 
 /***/ }),
-/* 328 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(208);
+var content = __webpack_require__(209);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -75998,14 +76367,14 @@ if(false) {
 }
 
 /***/ }),
-/* 329 */,
-/* 330 */
+/* 333 */,
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(210);
+var content = __webpack_require__(211);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76025,16 +76394,16 @@ if(false) {
 }
 
 /***/ }),
-/* 331 */,
-/* 332 */,
-/* 333 */,
-/* 334 */
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(214);
+var content = __webpack_require__(215);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76054,13 +76423,13 @@ if(false) {
 }
 
 /***/ }),
-/* 335 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(215);
+var content = __webpack_require__(216);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76080,13 +76449,13 @@ if(false) {
 }
 
 /***/ }),
-/* 336 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(216);
+var content = __webpack_require__(217);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76106,17 +76475,17 @@ if(false) {
 }
 
 /***/ }),
-/* 337 */,
-/* 338 */,
-/* 339 */,
-/* 340 */,
-/* 341 */
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(221);
+var content = __webpack_require__(222);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76136,13 +76505,13 @@ if(false) {
 }
 
 /***/ }),
-/* 342 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(222);
+var content = __webpack_require__(223);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76162,20 +76531,20 @@ if(false) {
 }
 
 /***/ }),
-/* 343 */,
-/* 344 */,
-/* 345 */,
-/* 346 */,
 /* 347 */,
 /* 348 */,
 /* 349 */,
-/* 350 */
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(230);
+var content = __webpack_require__(231);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76195,15 +76564,15 @@ if(false) {
 }
 
 /***/ }),
-/* 351 */,
-/* 352 */,
-/* 353 */
+/* 355 */,
+/* 356 */,
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(233);
+var content = __webpack_require__(234);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76223,13 +76592,13 @@ if(false) {
 }
 
 /***/ }),
-/* 354 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(234);
+var content = __webpack_require__(235);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76249,13 +76618,13 @@ if(false) {
 }
 
 /***/ }),
-/* 355 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(235);
+var content = __webpack_require__(236);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76275,15 +76644,41 @@ if(false) {
 }
 
 /***/ }),
-/* 356 */,
-/* 357 */,
-/* 358 */
+/* 360 */,
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
 var content = __webpack_require__(238);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("ffb85cd2", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-5f1b6d04\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LanguageSettings.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-5f1b6d04\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LanguageSettings.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 362 */,
+/* 363 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(240);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76303,13 +76698,13 @@ if(false) {
 }
 
 /***/ }),
-/* 359 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(239);
+var content = __webpack_require__(241);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76329,17 +76724,17 @@ if(false) {
 }
 
 /***/ }),
-/* 360 */,
-/* 361 */,
-/* 362 */,
-/* 363 */,
-/* 364 */
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(244);
+var content = __webpack_require__(246);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76359,15 +76754,15 @@ if(false) {
 }
 
 /***/ }),
-/* 365 */,
-/* 366 */,
-/* 367 */
+/* 370 */,
+/* 371 */,
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(247);
+var content = __webpack_require__(249);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76387,9 +76782,9 @@ if(false) {
 }
 
 /***/ }),
-/* 368 */,
-/* 369 */,
-/* 370 */
+/* 373 */,
+/* 374 */,
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(151);

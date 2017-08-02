@@ -23,7 +23,8 @@
                             p(v-if="language === APP_LANGUAGES.ENGLISH") {{greetTextEn}}
                             p(v-if="language === APP_LANGUAGES.SLOVAK ") {{greetTextSl}}
 
-                            el-button.ORDER.ms_booking(v-if="isOrderWidgetExists") {{BUTTONS_NAMES.ORDER_BUTTON[language]}}
+                            //el-button.ORDER.ms_booking(v-if="isOrderWidgetExists") {{BUTTONS_NAMES.ORDER_BUTTON[language]}}
+                            el-button.ORDER.ms_booking {{BUTTONS_NAMES.ORDER_BUTTON[language]}}
 
                             social-sharing.SOCIAL-SHARE(
                                 :url               = "facebookShareButtonSettings.url",
@@ -134,6 +135,7 @@
     import {Cookie           } from "../../../../shared-classes/facades/Cookie";
     import {mapActions, mapGetters} from "vuex";
     import Yclients            from "../../../mixins/Yclients.vue";
+    import LanguageSettings    from "../../../mixins/LanguageSettings.vue";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -146,12 +148,12 @@
         // --------------------------------------------------------------------
 
 
-
         // --------------------------------------------------------------------
         // MIXINS
         // --------------------------------------------------------------------
 
         mixins: [
+            LanguageSettings,
             Yclients,
         ],
 
@@ -163,17 +165,9 @@
             const data: {
                 BUTTONS_NAMES       : object,
                 SHARED_ITEMS_NAMES  : object,
-                APP_LANGUAGES       : object,
-                cookie              : Cookie,
-                language            : string | null
             } = {
                 BUTTONS_NAMES       : APP_BUTTONS_NAMES.HOME_PAGE,
                 SHARED_ITEMS_NAMES  : APP_BUTTONS_NAMES.SHARED,
-                APP_LANGUAGES       : APP_LANGUAGES,
-                cookie              : Cookie.getInstance(),
-                language            : Cookie.getInstance().get('app.language') ?
-                                      Cookie.getInstance().get('app.language') :
-                                      APP_LANGUAGES.DEFAULT,
             };
             return data;
         },
@@ -216,21 +210,6 @@
             ...mapActions('FacebookShareButtonSettings', [
                 'loadFacebookShareButtonSettings'
             ]),
-
-            // EVENT HANDLERS
-
-            onAppLanguageChangedOnRussian(){
-                this.language = this.APP_LANGUAGES.RUSSIAN;
-                this.loadYclientWidget(this.$el, this.language);
-            },
-            onAppLanguageChangedOnEnglish(){
-                this.language = this.APP_LANGUAGES.ENGLISH;
-                this.loadYclientWidget(this.$el, this.language);
-            },
-            onAppLanguageChangedOnSlovak(){
-                this.language = this.APP_LANGUAGES.SLOVAK;
-                this.loadYclientWidget(this.$el, this.language);
-            }
         },
 
         // --------------------------------------------------------------------
@@ -239,26 +218,6 @@
 
         mounted(){
 
-            // LOAD WIDGETS
-            {
-                this.loadYclientWidget(this.$el, this.language);
-            }
-
-            // SUBSCRIBE ON EVENTS
-            {
-                this.$bus.$on(
-                    COMPONENTS_EVENTS.APP.NAVIGATION.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
-                    this.onAppLanguageChangedOnRussian
-                );
-                this.$bus.$on(
-                    COMPONENTS_EVENTS.APP.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
-                    this.onAppLanguageChangedOnEnglish
-                );
-                this.$bus.$on(
-                    COMPONENTS_EVENTS.APP.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
-                    this.onAppLanguageChangedOnSlovak
-                );
-            }
             //DOWNLOAD FROM DB
 
             // malty-language GREET texts from server
@@ -266,7 +225,7 @@
 
             // share button settings
             this.loadFacebookShareButtonSettings('Home-page'/*location*/);
-        }
+        },
 
         // --------------------------------------------------------------------
         // CHILD COMPONENTS

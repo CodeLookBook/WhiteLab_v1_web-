@@ -27,13 +27,13 @@
         data(){
 
             const data: {
-                APP_LANGUAGES: Object,
+                APP_LANGUAGES        : Object,
                 APP_COMPONENTS_EVENTS: Object,
-                cookies : Object,
-                language: string,
+                cookies              : Object,
+                language             : string,
             } = {
                 APP_LANGUAGES: APP_LANGUAGES,
-                APP_COMPONENTS_EVENTS: COMPONENTS_EVENTS,
+                APP_COMPONENTS_EVENTS: COMPONENTS_EVENTS.APP,
                 cookies : Cookie.getInstance(),
                 language: Cookie.getInstance().get('app.language') ?
                           Cookie.getInstance().get('app.language') :
@@ -92,15 +92,34 @@
             // SUBSCRIBE on events
             {
                 this.$bus.$on(
-                    this.APP_COMPONENTS_EVENTS.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.APP_COMPONENTS_EVENTS.NAVIGATION.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
                     this.onRussianLanguageMenuItemClick
                 );
                 this.$bus.$on(
-                    this.APP_COMPONENTS_EVENTS.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.APP_COMPONENTS_EVENTS.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
                     this.onEnglishLanguageMenuItemClick
                 );
                 this.$bus.$on(
-                    this.APP_COMPONENTS_EVENTS.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.APP_COMPONENTS_EVENTS.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onSlovakLanguageMenuItemClick
+                );
+            }
+        },
+
+        beforeDestroy(){
+
+            // UNSUBSCRIBE of events
+            {
+                this.$bus.$off(
+                    this.APP_COMPONENTS_EVENTS.NAVIGATION.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onRussianLanguageMenuItemClick
+                );
+                this.$bus.$off(
+                    this.APP_COMPONENTS_EVENTS.NAVIGATION.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onEnglishLanguageMenuItemClick
+                );
+                this.$bus.$off(
+                    this.APP_COMPONENTS_EVENTS.NAVIGATION.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
                     this.onSlovakLanguageMenuItemClick
                 );
             }

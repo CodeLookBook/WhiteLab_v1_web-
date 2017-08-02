@@ -18,7 +18,9 @@ class VacancyController extends Controller
     function create(CreateVacancy $request){
 
         $vacancy = new Vacancy();
-        $vacancy->name           = $request->input('name');
+        $vacancy->name_ru        = $request->input('nameRu');
+        $vacancy->name_en        = $request->input('nameEn');
+        $vacancy->name_sl        = $request->input('nameSl');
         $vacancy->contacts       = $request->input('contacts');
         $vacancy->description_ru = $request->input('descriptionRu');
         $vacancy->description_en = $request->input('descriptionEn');
@@ -32,8 +34,10 @@ class VacancyController extends Controller
     }
 
     function update(UpdateVacancy $request, Vacancy $vacancy){
-        $vacancy->name        = $request->input('name');
-        $vacancy->contacts    = $request->input('contacts');
+        $vacancy->name_ru        = $request->input('nameRu');
+        $vacancy->name_en        = $request->input('nameEn');
+        $vacancy->name_sl        = $request->input('nameSl');
+        $vacancy->contacts       = $request->input('contacts');
         $vacancy->description_ru = $request->input('descriptionRu');
         $vacancy->description_en = $request->input('descriptionEn');
         $vacancy->description_sl = $request->input('descriptionSl');

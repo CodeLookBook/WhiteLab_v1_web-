@@ -32,7 +32,7 @@
             el-menu-item.H-VACANCIES(:index="APP_EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED")
                 | {{APP_ITEMS_NAMES.VACANCIES_MENU_ITEM[language]}}
 
-            el-menu-item.H-ORDER(v-if="isOrderWidgetExists", :index="APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.H-BUTTON.ms_booking
+            el-menu-item.H-ORDER(:index="APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.H-BUTTON.ms_booking
                 | {{APP_ITEMS_NAMES.ORDER_MENU_BUTTON[language]}}
             el-menu-item.H-IN(:index="APP_EVENTS_ID.IN_MENU_ITEM_CLICKED", class="H-ICON")
                 img(src="/images/icons/in-white.png")
@@ -53,7 +53,7 @@
                 el-menu-item.LOGO(:index="APP_EVENTS_ID.LOGO_ITEM_CLICKED", :route="{name: '/'}")
                     img(src="/images/logos/logo_whitelab_without_border.png")
 
-                el-menu-item.ORDER.ITEM(v-if="isOrderWidgetExists", :index="APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.BUTTON.ms_booking
+                el-menu-item.ORDER.ITEM(:index="APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED"): el-button.BUTTON.ms_booking
                     | {{APP_ITEMS_NAMES.ORDER_MENU_BUTTON[language]}}
 
 
@@ -258,10 +258,6 @@
         // MIXINS
         //---------------------------------------------------------------------
 
-        mixins: [
-            Yclients,
-        ],
-
 
         // --------------------------------------------------------------------
         // DATA FIELDS
@@ -351,16 +347,22 @@
                         break;
 
                     case this.APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED:
+                        this.language = this.APP_LANGUAGES.RUSSIAN;
+                        this.cookie.set('app.language', this.language);
                         this.$bus.$emit(this.APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED);
                         this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
                     case this.APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED:
+                        this.language = this.APP_LANGUAGES.ENGLISH;
+                        this.cookie.set('app.language', this.language);
                         this.$bus.$emit(this.APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED);
                         this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
 
                     case this.APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED:
+                        this.language = this.APP_LANGUAGES.SLOVAK;
+                        this.cookie.set('app.language', this.language);
                         this.$bus.$emit(this.APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED);
                         this.$bus.$emit(this.APP_EVENTS_ID.CLOSE_SIDEBAR_MENU_ITEM_CLICKED);
                         break;
@@ -412,24 +414,6 @@
             onVacanciesMenuItemClick        (): void {
                 this.$router.push({name: 'vacancies'});
             },
-            onRussianLanguageMenuItemClick  (): void {
-                this.language = this.APP_LANGUAGES.RUSSIAN;
-                this.cookie.set('app.language', this.language);
-                this.loadYclientWidget(this.$el, this.language);
-            },
-            onEnglishLanguageMenuItemClick  (): void {
-                this.language = this.APP_LANGUAGES.ENGLISH;
-                this.cookie.set('app.language', this.language);
-                this.loadYclientWidget(this.$el, this.language);
-            },
-            onSlovakLanguageMenuItemClick   (): void {
-                this.language = this.APP_LANGUAGES.SLOVAK;
-                this.cookie.set('app.language', this.language);
-                this.loadYclientWidget(this.$el, this.language);
-            },
-            onOrderButtonClick              (): void {
-                //...
-            },
         },
 
         // --------------------------------------------------------------------
@@ -441,7 +425,6 @@
 
             // LOAD DATA from server
             {
-                this.loadYclientWidget(this.$el, this.language);
                 this.loadFacebookGroupReference ();
                 this.loadInstagramGroupReference();
             }
@@ -476,7 +459,7 @@
                 // this.$bus.$emit(this.APP_EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED)
                 // May be realazied if it will be need.
 
-                this.$bus.$on(
+                /*this.$bus.$on(
                     this.APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
                     this.onRussianLanguageMenuItemClick
                 );
@@ -491,7 +474,7 @@
                 this.$bus.$on(
                     this.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED,
                     this.onOrderButtonClick
-                );
+                );*/
             }
 //                this.$bus.$emit(this.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED)
 

@@ -1,7 +1,9 @@
 class Vacancy {
 
     _id             : number;
-    _name           : string;
+    _nameRu         : string;
+    _nameEn         : string;
+    _nameSl         : string;
     _contacts       : string;
     _descriptionRu  : string;
     _descriptionEn  : string;
@@ -9,16 +11,20 @@ class Vacancy {
     _openedAt       : Date  ;
 
     constructor(
-        id              : number,
-        name            : string,
-        contacts        : string,
+        id             : number,
+        nameRu         : string,
+        nameEn         : string,
+        nameSl         : string,
+        contacts       : string,
         descriptionRu  : string,
         descriptionEn  : string,
         descriptionSl  : string,
         openedAt        : Date  ,
     ) {
         this._id            = id;
-        this._name          = name;
+        this._nameRu        = nameRu;
+        this._nameEn        = nameEn;
+        this._nameSl        = nameSl;
         this._contacts      = contacts;
         this._descriptionRu = descriptionRu;
         this._descriptionEn = descriptionEn;
@@ -32,11 +38,23 @@ class Vacancy {
     set id(value: number) {
         this._id = value;
     }
-    get name (): string {
-        return this._name;
+    get nameRu (): string {
+        return this._nameRu;
     }
-    set name(value: string) {
-        this._name = value;
+    set nameRu(value: string) {
+        this._nameRu = value;
+    }
+    get nameEn (): string {
+        return this._nameEn;
+    }
+    set nameEn(value: string) {
+        this._nameEn = value;
+    }
+    get nameSl (): string {
+        return this._nameSl;
+    }
+    set nameSl(value: string) {
+        this._nameSl = value;
     }
     get contacts (): string {
         return this._contacts;
@@ -72,7 +90,9 @@ class Vacancy {
     clone(){
         return new Vacancy(
             this.id,
-            this.name,
+            this.nameRu,
+            this.nameEn,
+            this.nameSl,
             this.contacts,
             this.descriptionRu,
             this.descriptionEn,

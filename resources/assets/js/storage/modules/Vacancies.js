@@ -30,16 +30,15 @@ export default {
 
             if (typeof vacancy !== 'undefined') {
 
-                vacancy.id          = data.id;
-                vacancy.name        = data.name;
-                vacancy.contacts    = data.contacts;
-                vacancy.description = data.description;
-                vacancy.openedAt    = data.openedAt;
-
-                // We mustn't update date. Because we don't give
-                // user functionality that will change date. User
-                // can't do that.
-                // vacancy.date = data.date;
+                vacancy.id              = data.id;
+                vacancy.nameRu          = data.nameRu;
+                vacancy.nameEn          = data.nameEn;
+                vacancy.nameSl          = data.nameSl;
+                vacancy.contacts        = data.contacts;
+                vacancy.descriptionRu   = data.descriptionRu;
+                vacancy.descriptionEn   = data.descriptionEn;
+                vacancy.descriptionSl   = data.descriptionSl;
+                vacancy.openedAt        = data.openedAt;
 
             } else {
                 throw new Error("Vacancy can't be update at the " +
@@ -76,7 +75,9 @@ export default {
                         let vacancies: Vacancy[] = response.data.vacancies.map(i=>{
                             return new Vacancy(
                                 parseInt(i.id),
-                                i.name,
+                                i.name_ru,
+                                i.name_en,
+                                i.name_sl,
                                 i.contacts,
                                 i.description_ru,
                                 i.description_en,
@@ -100,7 +101,9 @@ export default {
             return new Promise((resolve, reject) => {
                 window.axios.post(
                     '/api/admin/panel/vacancy', {
-                        name          : vacancy.name,
+                        nameRu        : vacancy.nameRu,
+                        nameEn        : vacancy.nameEn,
+                        nameSl        : vacancy.nameSl,
                         contacts      : vacancy.contacts,
                         descriptionRu : vacancy.descriptionRu,
                         descriptionEn : vacancy.descriptionEn,
@@ -126,7 +129,9 @@ export default {
             return new Promise((resolve, reject) => {
                 window.axios.patch(
                     '/api/admin/panel/vacancy/' + vacancy.id, {
-                        name          : vacancy.name,
+                        nameRu        : vacancy.nameRu,
+                        nameEn        : vacancy.nameEn,
+                        nameSl        : vacancy.nameSl,
                         contacts      : vacancy.contacts,
                         descriptionRu : vacancy.descriptionRu,
                         descriptionEn : vacancy.descriptionEn,

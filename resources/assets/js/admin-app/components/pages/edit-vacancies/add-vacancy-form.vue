@@ -10,10 +10,39 @@
             :md="{span:11}",
             :lg="{span:11}",
             )
-                el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Должность:", prop="name" )
-                    el-input(v-model="inputs.name", v-cloak)
-                el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Kancelária:", prop="name" )
-                    el-input(v-model="inputs.name", v-cloak)
+                el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Должность на русском:", prop="nameRu" )
+                    el-input(v-model="inputs.nameRu", v-cloak)
+                el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Pozícia v ruštine:", prop="nameRu" )
+                    el-input(v-model="inputs.nameRu", v-cloak)
+
+            el-col(
+            :xs="{span:0}",
+            :sm="{span:2}",
+            :md="{span:2}",
+            :lg="{span:2}",
+            ) &nbsp;
+
+            el-col(
+            :xs="{span:24}",
+            :sm="{span:11}",
+            :md="{span:11}",
+            :lg="{span:11}",
+            )
+                el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Должность на английском:", prop="nameEn" )
+                    el-input(v-model="inputs.nameEn", v-cloak)
+                el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Pozícia v angličtine:", prop="nameEn" )
+                    el-input(v-model="inputs.nameEn", v-cloak)
+
+            el-col(
+            :xs="{span:24}",
+            :sm="{span:11}",
+            :md="{span:11}",
+            :lg="{span:11}",
+            )
+                el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Должность на словацком:", prop="nameSl" )
+                    el-input(v-model="inputs.nameSl", v-cloak)
+                el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Pozícia v slovenskom:", prop="nameSl" )
+                    el-input(v-model="inputs.nameSl", v-cloak)
 
             el-col(
             :xs="{span:0}",
@@ -30,7 +59,7 @@
             )
                 el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Котакты:", prop="contacts" )
                     el-input(v-model="inputs.contacts", v-cloak)
-                el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="kontakty:", v-model="inputs.contacts", prop="contacts" )
+                el-form-item(v-if="LANGUAGES.SLOVAK  === language", label="Kontakty:", prop="contacts" )
                     el-input(v-model="inputs.contacts", v-cloak)
 
         el-form-item(v-if="LANGUAGES.RUSSIAN === language", label="Требования/описание для русскоязычной версии сайта:", prop="descriptionRu" )
@@ -70,7 +99,7 @@
     import LanguageSettings from "../../../mixins/LanguageSettings.vue"
     import UserMessage      from "../../../mixins/UserMessage.vue"
     import {Token}          from "../../../../shared-classes/facades/Token";
-    import {mapActions} from "vuex";
+    import {mapActions}     from "vuex";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -102,7 +131,9 @@
                 token   : Token,
                 inputs  : {
                     id              : number,
-                    name            : string,
+                    nameRu          : string,
+                    nameEn          : string,
+                    nameSl          : string,
                     contacts        : string,
                     descriptionRu   : string,
                     descriptionEn   : string,
@@ -114,7 +145,9 @@
                 token : Token.getInstance(),
                 inputs: {
                     id              : 0,
-                    name            : '',
+                    nameRu          : '',
+                    nameEn          : '',
+                    nameSl          : '',
                     contacts        : '',
                     descriptionRu   : '',
                     descriptionEn   : '',
@@ -131,7 +164,29 @@
                     },
                 },
                 rules: {
-                    name:[
+                    nameRu:[
+                        {
+                            required: true,
+                            trigger : 'blur, change',
+                            message : ''
+                        },
+                        {
+                            max: 255,
+                            message: '',
+                        }
+                    ],
+                    nameEn:[
+                        {
+                            required: true,
+                            trigger : 'blur, change',
+                            message : ''
+                        },
+                        {
+                            max: 255,
+                            message: '',
+                        }
+                    ],
+                    nameSl:[
                         {
                             required: true,
                             trigger : 'blur, change',
@@ -196,8 +251,12 @@
 
                             // FORM russian errors MESSAGES.
                         {
-                            this.rules.name[0].message         = "Обязательное поле.";
-                            this.rules.name[1].message         = "Максимальное количество символов - 255.";
+                            this.rules.nameRu[0].message       = "Обязательное поле.";
+                            this.rules.nameRu[1].message       = "Максимальное количество символов - 255.";
+                            this.rules.nameEn[0].message       = "Обязательное поле.";
+                            this.rules.nameEn[1].message       = "Максимальное количество символов - 255.";
+                            this.rules.nameSl[0].message       = "Обязательное поле.";
+                            this.rules.nameSl[1].message       = "Максимальное количество символов - 255.";
 
                             this.rules.contacts[0].message     = "Обязательное поле.";
                             this.rules.contacts[1].message     = "Максимальное количество символов - 255.";
@@ -211,26 +270,37 @@
 
                             // FORM russian errors MESSAGES.
                         {
-                            this.rules.name[0].message         = "Povinné pole.";
-                            this.rules.name[1].message         = "Maximálny počet znakov - 255.";
+                            this.rules.nameRu[0].message       = "Povinné pole.";
+                            this.rules.nameRu[1].message       = "Maximálny počet znakov - 255.";
+                            this.rules.nameEn[0].message       = "Povinné pole.";
+                            this.rules.nameEn[1].message       = "Maximálny počet znakov - 255.";
+                            this.rules.nameSl[0].message       = "Povinné pole.";
+                            this.rules.nameSl[1].message       = "Maximálny počet znakov - 255.";
 
                             this.rules.contacts[0].message     = "Povinné pole.";
                             this.rules.contacts[1].message     = "Maximálny počet znakov - 255";
                             this.rules.descriptionRu[0].message  = "Maximálny počet znakov - 65535.";
-                            this.rules.description[0].message  = "Maximálny počet znakov - 65535.";
-                            this.rules.description[0].message  = "Maximálny počet znakov - 65535.";
+                            this.rules.descriptionEn[0].message  = "Maximálny počet znakov - 65535.";
+                            this.rules.descriptionSl[0].message  = "Maximálny počet znakov - 65535.";
                         }
                             break;
 
                         default:
+
                             // FORM russian errors MESSAGES.
                         {
-                            this.rules.name[0].message         = "Обязательное поле.";
-                            this.rules.name[1].message         = "Максимальное количество символов - 255.";
+                            this.rules.nameRu[0].message       = "Обязательное поле.";
+                            this.rules.nameRu[1].message       = "Максимальное количество символов - 255.";
+                            this.rules.nameEn[0].message       = "Обязательное поле.";
+                            this.rules.nameEn[1].message       = "Максимальное количество символов - 255.";
+                            this.rules.nameSl[0].message       = "Обязательное поле.";
+                            this.rules.nameSl[1].message       = "Максимальное количество символов - 255.";
 
                             this.rules.contacts[0].message     = "Обязательное поле.";
                             this.rules.contacts[1].message     = "Максимальное количество символов - 255.";
-                            this.rules.description[0].message  = "Максимальное количество символов - 65535.";
+                            this.rules.descriptionRu[0].message  = "Максимальное количество символов - 65535.";
+                            this.rules.descriptionEn[0].message  = "Максимальное количество символов - 65535.";
+                            this.rules.descriptionSl[0].message  = "Максимальное количество символов - 65535.";
                         }
                     }
                 },
@@ -247,7 +317,6 @@
             ...mapActions('Vacancies', [
                 'createVacancy',
                 'updateVacancy',
-                'deleteVacancy',
             ]),
 
             onSaveButtonClick(){
@@ -259,7 +328,9 @@
                         this.createVacancy(
                             new Vacancy(
                                 this.inputs.id,
-                                this.inputs.name,
+                                this.inputs.nameRu,
+                                this.inputs.nameEn,
+                                this.inputs.nameSl,
                                 this.inputs.contacts,
                                 this.inputs.descriptionRu,
                                 this.inputs.descriptionEn,

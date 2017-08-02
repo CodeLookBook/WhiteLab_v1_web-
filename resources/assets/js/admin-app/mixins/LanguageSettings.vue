@@ -89,6 +89,20 @@
             }
         },
 
+        beforeDestroy(){
+
+            // SUBSCRIBE on events
+            {
+                this.$bus.$off(
+                    SIDE_NAVBAR_EVENTS.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onRussianLanguageMenuItemClick
+                );
+                this.$bus.$off(
+                    SIDE_NAVBAR_EVENTS.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
+                    this.onSlovakLanguageMenuItemClick
+                );
+            }
+        },
         // --------------------------------------------------------------------
         // CHILD COMPONENTS
         // --------------------------------------------------------------------

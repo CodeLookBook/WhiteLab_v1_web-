@@ -17,18 +17,20 @@
                     hr
                 el-col
                     add-vacancy-form
-            el-row
+            el-row(v-if="vacancies && vacancies.length > 0")
                 el-col
                     hr
-                    h3(v-if="ADMIN_APP_LANGUAGES.RUSSIAN   === language && vacancies.length > 0") СПИСОК ОТКРЫТЫХ ВАКАНСИЙ:
-                    h3(v-if="ADMIN_APP_LANGUAGES.SLOVAK    === language && vacancies.length > 0" ) ZOZNAM OTVORENÝCH PRACOVNÝCH MIEST
+                    h3(v-if="ADMIN_APP_LANGUAGES.RUSSIAN   === language") СПИСОК ОТКРЫТЫХ ВАКАНСИЙ:
+                    h3(v-if="ADMIN_APP_LANGUAGES.SLOVAK    === language") ZOZNAM OTVORENÝCH PRACOVNÝCH MIEST
                     hr
                 el-col
                     update-vacancy-form(
                         v-for="vacancy in vacancies",
                         :key="vacancy.id",
                         :pId="vacancy.id",
-                        :pName="vacancy.name",
+                        :pNameRu="vacancy.nameRu",
+                        :pNameEn="vacancy.nameEn",
+                        :pNameSl="vacancy.nameSl",
                         :pContacts="vacancy.contacts",
                         :pDescriptionRu="vacancy.descriptionRu",
                         :pDescriptionEn="vacancy.descriptionEn",

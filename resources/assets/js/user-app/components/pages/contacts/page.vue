@@ -18,7 +18,7 @@
     // ------------------------------------------------------------------------
 
     import PageBlockMap from "./page-block-map.vue"
-    import Yclients from "../../../mixins/Yclients.vue";
+    import Yclients     from "../../../mixins/Yclients.vue";
 
     // ------------------------------------------------------------------------
     // COMPONENT

@@ -241,7 +241,6 @@
     import {APP_BUTTONS_NAMES   } from "../../classes/enum/APP_BUTTONS_NAMES";
     import {Cookie              } from "../../../shared-classes/facades/Cookie";
     import {mapActions, mapGetters} from "vuex";
-    import Yclients                 from "../../mixins/Yclients.vue";
 
     // ------------------------------------------------------------------------
     // COMPONENT
@@ -252,11 +251,6 @@
         // --------------------------------------------------------------------
         // PROPERTIES
         // --------------------------------------------------------------------
-
-
-        //---------------------------------------------------------------------
-        // MIXINS
-        //---------------------------------------------------------------------
 
 
         // --------------------------------------------------------------------
@@ -394,6 +388,7 @@
                     default:
                         throw new Error("Wrong event ID number. Click on " +
                             "app top-navigation menu item can't be handled.");
+
                 }
             },
             onLogoItemClick                 (): void {
@@ -455,28 +450,7 @@
                     this.APP_EVENTS_ID.VACANCIES_MENU_ITEM_CLICKED,
                     this.onVacanciesMenuItemClick
                 );
-
-                // this.$bus.$emit(this.APP_EVENTS_ID.LANGUAGE_SUBMENU_ITEM_CLICKED)
-                // May be realazied if it will be need.
-
-                /*this.$bus.$on(
-                    this.APP_EVENTS_ID.RUSSIAN_LANGUAGE_MENU_ITEM_CLICKED,
-                    this.onRussianLanguageMenuItemClick
-                );
-                this.$bus.$on(
-                    this.APP_EVENTS_ID.ENGLISH_LANGUAGE_MENU_ITEM_CLICKED,
-                    this.onEnglishLanguageMenuItemClick
-                );
-                this.$bus.$on(
-                    this.APP_EVENTS_ID.SLOVAK_LANGUAGE_MENU_ITEM_CLICKED,
-                    this.onSlovakLanguageMenuItemClick
-                );
-                this.$bus.$on(
-                    this.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED,
-                    this.onOrderButtonClick
-                );*/
             }
-//                this.$bus.$emit(this.APP_EVENTS_ID.ORDER_MENU_ITEM_CLICKED)
 
         },
 

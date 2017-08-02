@@ -97,6 +97,7 @@
     import {mapActions, mapGetters} from "vuex";
     import {Vacancy}                from "../../../../shared-classes/entities/Vacancy";
     import  LanguageSettings        from "../../../mixins/LanguageSettings.vue";
+    import Yclients from "../../../mixins/Yclients.vue";
 
     //*************************************************************************
     // COMPONENT
@@ -116,6 +117,7 @@
 
         mixins:[
             LanguageSettings,
+            Yclients,
         ],
 
         //*********************************************************************

@@ -144,11 +144,13 @@
 
             loadYclientWidget() {
 
-                // DELETE EXISTING SCRIPT
+                // DELETE EXISTING WIDGET SCRIPTS AND ELEMENTS
                 {
                     const scripts       = document.getElementsByClassName('YCLIENT_ORDER_WIDGET');
                     const yCloseIcons   = document.getElementsByClassName('yCloseIcon');
                     const yWidgetCovers = document.getElementsByClassName('yWidgetCover');
+                    const yWidgetBlocks = document.getElementsByClassName('yWidgetBlock');
+                    const yStyles       = document.querySelectorAll('link[href*="yclients.com/css/ywidget/newweb.css"]')
 
                     if (scripts !== null) {
                         if(typeof scripts !== "undefined") {
@@ -179,12 +181,29 @@
                     if (yWidgetCovers !== null) {
                         if(typeof yWidgetCovers !== "undefined") {
 
-                            // Warning: You mustn't you 'this.$el' as parent.
-                            // In same situations it will acause Error. You
-                            // must fined it with plain JS.
                             for (let i = 0; i < yWidgetCovers.length; ++i) {
                                 const parent = yWidgetCovers[i].parentElement;
                                 parent.removeChild(yWidgetCovers[i]);
+                            }
+                        }
+                    }
+
+                    if (yWidgetBlocks !== null) {
+                        if(typeof yWidgetBlocks !== "undefined") {
+
+                            for (let i = 0; i < yWidgetBlocks.length; ++i) {
+                                const parent = yWidgetBlocks[i].parentElement;
+                                parent.removeChild(yWidgetBlocks[i]);
+                            }
+                        }
+                    }
+
+                    if (yStyles !== null) {
+                        if(typeof yStyles !== "undefined") {
+
+                            for (let i = 0; i < yStyles.length; ++i) {
+                                const parent = yStyles[i].parentElement;
+                                parent.removeChild(yStyles[i]);
                             }
                         }
                     }
@@ -205,8 +224,6 @@
                                     (response) => {
                                         this.loadSlovakOrderWidget().then(
                                             (response) => {
-
-                                                console.log('WIDGET SRC WAS LOADED:');
 
                                                 //MOUNT SCRIPT
                                                 this.mountYlientWidget();

@@ -134,7 +134,6 @@
     import {COMPONENTS_EVENTS} from "../../../classes/enum/COMPONENTS_EVENTS";
     import {Cookie           } from "../../../../shared-classes/facades/Cookie";
     import {mapActions, mapGetters} from "vuex";
-    import Yclients            from "../../../mixins/Yclients.vue";
     import LanguageSettings    from "../../../mixins/LanguageSettings.vue";
 
     // ------------------------------------------------------------------------
@@ -154,7 +153,6 @@
 
         mixins: [
             LanguageSettings,
-            Yclients,
         ],
 
         // --------------------------------------------------------------------

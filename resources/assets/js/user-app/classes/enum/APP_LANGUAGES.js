@@ -9,7 +9,7 @@ function _id(): string{
 
 const APP_LANGUAGES = Object.freeze({
 
-    DEFAULT: 'en',
+    DEFAULT: 'sl',
 
     RUSSIAN: 'ru',
     ENGLISH: 'en',
